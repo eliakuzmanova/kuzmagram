@@ -1,6 +1,6 @@
-const Add = require("../models/Post");
+const User = require("../models/User");
 
-// exports.getAll = () => Add.find({}).lean();
+exports.getAll = () => User.find({}).lean();
 
 // exports.getById = (id) => Add.findById(id).lean();
 
