@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400&display=swap');
+
+:root{
+    --blue: rgb(37, 212, 215);
+    --dark-gray: rgb(84, 84, 84);;
+    --light-gray: rgb(205, 204, 204);
+}
+
+.footer {
+    margin: 20px;
+    border-top: 2px solid var(--light-gray);
+    font-family: 'Noto Sans', sans-serif;
+    color: var(--dark-gray);
+}
