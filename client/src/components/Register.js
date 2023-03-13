@@ -7,7 +7,7 @@ import Footer from "./Footer";
 export default function Register() {
 
     return (
-        <>
+        <div className={styles["top-container"]}>
             <main className={styles["main"]}>
                 <div className={styles["register-wrapper"]}>
                     <div className={styles["div-logo"]}>
@@ -37,6 +37,6 @@ export default function Register() {
                 </div>
             </main>
             <Footer />
-        </>
+        </div>
     )
 }

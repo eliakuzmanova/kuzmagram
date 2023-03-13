@@ -8,6 +8,11 @@
     --light-gray: rgb(205, 204, 204);
 }
 
+.top-container{
+    display: flex;
+    flex-direction: column;
+}
+
 .main {
     display: flex;
     justify-content: center;
@@ -21,8 +26,10 @@
     border: 2px solid var(--light-gray);
     border-radius: 15px;
     width: 500px;
-    height: 680px;
+    max-height: 680px;
+    height: auto;
     margin-top: 20px;
+
 }
 
 .div-logo {
@@ -143,3 +150,7 @@
 .sign-in:hover{
     color: var(--dark-gray);
 }
+
+/* @media screen and (min-width: 800px){
+    
+} */

@@ -1,27 +1,69 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400&display=swap');
-
+:root{
+    --blue: rgb(28, 183, 185);
+    --dark-gray: rgb(84, 84, 84);
+    --light-gray: rgb(205, 204, 204);
+}
 body{
-    display: grid;
-    grid-template-areas: 
-    "nav main main aside"
-    "nav main main aside"
-    "nav main main footer";
-
-    /* grid-template-areas: 
-    "nav main main main aside aside"
-    "nav main main main aside aside"
-    "nav main main main aside aside"
-    "nav main main main aside aside"
-    "nav main main main footer footer"
-    "nav main main main footer footer"; */
-
-    grid-template-columns: 140px auto;
-    gap: 20px;
+    height: 100vh;
+    width: 100vh;
+}
+.container-home {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
-header {grid-area: header;}
-main {grid-area: main;}
-aside {grid-area: aside;}
-footer {grid-area: footer;}
+.navbar {
+    display: flex;
+    border-right: 2px solid var(--light-gray);
+
+}
+
+.logo {
+
+    font-family: 'Dancing Script', cursive;
+    font-size: 35px;
+    color: rgb(54, 54, 54);
+    margin-bottom: 40px;
+    margin-top: 15px;
+    transition:all 0.9s linear;
+}
+.logo:hover {
+    color: var(--blue);
+}
+ul{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+    width: 170px;
+    height: 100vh;
+}
+li {
+    position: relative;
+    top: 100px;
+    list-style-type: none;
+    margin-bottom: 40px;
+}
+.logout{
+    position: relative;
+    top: 130px;
+}
+.link {
+    
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--dark-gray);
+    font-size: 19px;
+    transition:all 0.3s ease-in-out;
+}
+
+.link:hover {
+    color: var(--blue);
+  
+}
+
 
