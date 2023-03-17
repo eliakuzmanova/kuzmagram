@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400&display=swap');
 
-:root{
+/* :root{
     --blue: rgb(28, 183, 185);
     --dark-gray: rgb(84, 84, 84);
     --light-gray: rgb(205, 204, 204);
-}
+} */
 /* .footer{
     width: 100%;
     position: fixed;
@@ -16,8 +16,8 @@
 .footer {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    align-items: center
+    /* justify-content: space-between; */
+    /* align-items: center */
 }
 
 .container-footer {

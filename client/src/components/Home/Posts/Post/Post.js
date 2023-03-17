@@ -6,18 +6,18 @@ import { Link } from "react-router-dom"
 import styles from "./post.module.css";
 
 
-export default function Post() {
+export default function Post({photo}) {
     return (
         <article className={styles["post"]}>
             <section className={styles["user-section"]}>
                 <div className={styles["user-container"]}>
-                    <img className={styles["user-image"]} src={require("../../../images/profil.jpg")} alt="user" />
+                    <img className={styles["user-image"]} src={require("./../../../../images/profil.jpg")} alt="user" />
                     <Link className={styles["user-username"]}>username</Link>
                 </div>
                 <FaEllipsisH className={styles["icon-more"]}/>
             </section>
             <section className={styles["post-image-section"]}>
-                <img className={styles["post-image"]} src={require("../../../images/city.jpg")} alt="post" />
+                <img className={styles["post-image"]} src={photo} alt="post" />
             </section>
             <section className={styles["icons-section"]}>
                 <div className={styles["actions-container"]}>

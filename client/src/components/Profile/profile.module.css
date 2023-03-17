@@ -1,0 +1,184 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@500&display=swap');
+
+/* :root{
+    --blue: rgb(28, 183, 185);
+    --dark-gray: rgb(56, 56, 56);
+    --light-gray: rgb(205, 204, 204);
+} */
+.profile-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 100vh;
+    
+}
+
+.profile-main{
+    display: flex;
+    flex-grow: 1;
+    padding: 1em;
+    overflow-y: scroll;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 970px;
+}
+
+.profile-main::-webkit-scrollbar {
+    width: 0;
+    /* Remove scrollbar space */
+    background: transparent;
+    /* Optional: just make scrollbar invisible */
+}
+
+.profile-all-info-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    /* align-items: center; */
+}
+
+
+.profile-photo{
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-left: 70px;
+}
+
+.profile-info{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 90px;
+    margin-top: 10px;
+}
+
+.profile-options{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.profile-username{
+
+    font-size: 27px;
+    font-weight: 400;
+    color: var(--dark-gray);
+    font-family: 'Noto Sans', sans-serif;
+}
+
+.profile-info-button{
+    margin-left: 90px;
+    padding: 4px 10px 4px 10px;
+    border: 2px solid  rgb(229, 229, 229);
+    background-color: rgb(229, 229, 229);
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    color:var(--dark-gray);
+    border-radius: 10px;
+    cursor: pointer;
+    transition:all 0.1s ease-in-out;
+}
+
+.profile-info-button:hover{
+
+    border: 2px solid var(--light-gray);
+    background-color: var(--light-gray);
+}
+
+.profile-followers{
+    display: flex;
+    margin-top: 30px;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.profile-followers-text{
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color:var(--dark-gray);
+    /* margin-right: 16px; */
+}
+
+.profile-followers-link{
+    text-decoration: none;
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color:var(--dark-gray);
+    cursor: pointer;
+    /* margin-right: 14px; */
+}
+
+.profile-description-container{
+    display: flex;
+    margin-top: 30px;
+}
+
+.profile-description{
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color:var(--dark-gray);
+}
+
+.profile-posts{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+ 
+    margin-top: 50px;
+}
+
+.profile-content-option-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid var(--light-gray);
+}
+.profile-content-option{
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding-top: 20px;
+}
+.option-clicked{
+    border-top: 1px solid var(--dark-gray);
+    color: var(--dark-gray);
+}
+
+.profile-content-option-container-icon{
+    display: flex;
+    align-items: center;
+}
+.profile-content-option-container-text{
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
+}
+.profile-content-option-text{
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    color:var(--dark-gray);
+    cursor: pointer;
+}
+.profile-content-option-icon{
+    
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    color:var(--dark-gray);
+    cursor: pointer;
+}
+

@@ -1,0 +1,10 @@
+
+
+.main {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: auto;
+    flex-direction: column
+
+
+}

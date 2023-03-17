@@ -1,12 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400&display=swap');
 
-:root{
-    --blue: rgb(28, 183, 185);
-    --dark-gray: rgb(84, 84, 84);
-    --light-gray: rgb(205, 204, 204);
-}
-
 .post{
     display: flex;
     flex-direction: column;
@@ -16,7 +10,7 @@
     /* border: 1px solid var(--light-gray);
     border-radius: 12px; */
    border-bottom: 1px solid var(--light-gray);
-    
+   margin-bottom: 20px;    
 }
 
 .user-image {
@@ -36,7 +30,7 @@
 
 .user-username{
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 500;
     color: var(--dark-gray);
     font-family: 'Noto Sans', sans-serif;
     margin-left: 8px;
@@ -130,7 +124,7 @@
 .comment-username{
     text-decoration: none;
     font-size: 13px;
-    font-weight: bold;
+    font-weight: 600;
     color: var(--dark-gray);
     font-family: 'Noto Sans', sans-serif;
 }
