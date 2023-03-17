@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400&display=swap');
+
+:root {
+    --blue: rgb(28, 183, 185);
+    --dark-gray: rgb(84, 84, 84);
+    --light-gray: rgb(205, 204, 204);
+}
+
+.aside-home {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.profile-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+
+}
+
+.user-photo {
+    width: 62px;
+    height: 62px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.user-username {
+    text-decoration: none;
+    font-weight: bold;
+    color: var(--dark-gray);
+    font-family: 'Noto Sans', sans-serif;
+    margin-left: 15px;
+    font-size: 15px;
+}
+
+.suggestion-photo {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.suggestion-text-container {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.suggestion-text {
+    color: var(--light-gray);
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 500;
+    color: rgb(160, 160, 160);
+    font-size: 15px;
+}
+
+.suggestion-profile-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    margin-left: 5px;
+}
+
+.suggestion-profile-info-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.suggestion-username {
+    text-decoration: none;
+    font-weight: bold;
+    color: var(--dark-gray);
+    font-family: 'Noto Sans', sans-serif;
+    margin-left: 12px;
+    font-size: 12px;
+}
+
+.suggestion-follow {
+
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--dark-gray);
+    font-size: 13px;
+    transition: all 0.1s ease-in-out;
+}
+
+.suggestion-follow:hover {
+    color: var(--blue);
+
+}

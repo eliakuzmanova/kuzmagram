@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
-import styles from "../styles/login.module.css";
-import Footer from "./Footer";
+import styles from "./login.module.css";
+import Footer from "../Footer/Footer";
 
 export default function Login() {
     return(

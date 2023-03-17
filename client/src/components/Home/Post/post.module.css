@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400&display=swap');
+
+:root{
+    --blue: rgb(28, 183, 185);
+    --dark-gray: rgb(84, 84, 84);
+    --light-gray: rgb(205, 204, 204);
+}
+
+.post{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 500px;
+    /* border: 1px solid var(--light-gray);
+    border-radius: 12px; */
+   border-bottom: 1px solid var(--light-gray);
+    
+}
+
+.user-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.icon-more{
+    color: var(--dark-gray);
+}
+
+.post-image{
+    width: 100%;
+    height: 600px;
+}
+
+.user-username{
+    text-decoration: none;
+    font-weight: bold;
+    color: var(--dark-gray);
+    font-family: 'Noto Sans', sans-serif;
+    margin-left: 8px;
+    
+}
+
+.user-section{
+     display: flex;
+     flex-direction: row;
+     justify-content: space-between;
+     align-items: center;
+    margin-bottom: 8px;
+     padding: 5px;
+
+}
+.user-container{
+     display: flex;
+    flex-direction: row;
+    align-items: center; 
+}
+
+.icons-section{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 8px;
+    margin-bottom: 5px;
+}
+
+.actions-container {
+    display: flex;
+    align-items: center;
+}
+.last-icon-container{
+    display: flex;
+    align-items: center;
+}
+.icon{
+   font-size: 30px;
+   color: var(--dark-gray);
+}
+
+.icon-message{
+    margin-left: 12px;
+}
+
+.comments-section{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    margin-top: 13px;
+}
+
+.text-likes{
+    font-size: 13px;
+    color: var(--dark-gray);
+    font-family: 'Noto Sans', sans-serif;
+    margin: 0px 3px 5px 0px;
+}
+
+.description-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-top: 8px;
+}
+
+
+.username-description{
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--dark-gray);
+    font-family: 'Noto Sans', sans-serif;
+}
+
+.description{
+    font-size: 13.5px;
+    color: var(--dark-gray);
+    font-family: 'Noto Sans', sans-serif;
+}
+
+.comment-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 13px;
+}
+
+.comment-username{
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
+    color: var(--dark-gray);
+    font-family: 'Noto Sans', sans-serif;
+}
+
+.comment{
+    font-size: 12.5px;
+    color: var(--dark-gray);
+    font-family: 'Noto Sans', sans-serif;
+}
+
+.comment-like-icon{
+    color: var(--dark-gray);
+}
+
+.textarea-container{
+    margin-top: 13px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.comment-btn{
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--dark-gray);
+    font-size: 14px;
+    transition:all 0.1s ease-in-out;
+}
+.comment-btn:hover {
+    color: var(--blue);
+  
+}
+
+.textarea{
+    border: none;
+    outline: none;
+    resize:none;
+    height: 18px;
+    
+}
+
+.textarea::placeholder{
+    font-size: 15px;
+}
+
+/* .textarea:hover{
+    border-style: none;
+    border: 0px;
+} */
+

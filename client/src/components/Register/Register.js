@@ -1,8 +1,8 @@
 
-import styles from "../styles/register.module.css";
+import styles from "./register.module.css";
 
 import { Link } from "react-router-dom"
-import Footer from "./Footer";
+import Footer from "../Footer/Footer";
 
 export default function Register() {
 
