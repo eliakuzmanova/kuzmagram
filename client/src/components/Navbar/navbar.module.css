@@ -1,22 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400&display=swap');
-
-/* :root{
-    --blue: rgb(28, 183, 185);
-    --dark-gray: rgb(84, 84, 84);
-    --light-gray: rgb(205, 204, 204);
-} */
-
 
 .navbar {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
     border-right: 2px solid var(--light-gray);
-
-  
-    /* z-index: 10; */
     background-color: rgb(255, 255, 255);
-   
-  
+    width: 210px;
+    height: 100vh;
 }
 
 .logo {
@@ -24,7 +15,6 @@
     font-family: 'Dancing Script', cursive;
     font-size: 35px;
     color: rgb(54, 54, 54);
-    margin-bottom: 40px;
     margin-top: 15px;
     transition:all 0.9s linear;
 }
@@ -33,34 +23,52 @@
 }
 .ul-nav{
     display: flex;
-    
     flex-direction: column;
-    align-items: center;
-    padding: 0px;
-    width: 170px;
-    height: 100vh;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+    height: 60%;
+    
 }
 .li-nav {
-    position: relative;
-    top: 100px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     list-style-type: none;
-    margin-bottom: 40px;
 }
-.logout{
-    position: relative;
-    top: 130px;
-}
+
+
 .link {
     
     font-family: 'Noto Sans', sans-serif;
-    font-weight: 600;
+    font-weight: 500;
     text-decoration: none;
     color: var(--dark-gray);
-    font-size: 19px;
+    font-size: 17px;
     transition:all 0.1s ease-in-out;
 }
 
 .link:hover {
     color: var(--blue);
   
+}
+.logout{
+    margin-bottom: 15px;
+}
+
+.nav-icon{
+    color: var(--dark-gray);
+    font-size: 28px;
+    margin-left: 24px;
+    margin-right: 12px;
+
+}
+
+.nav-image{
+    width: 27px;
+    height: 27px;
+    margin-left: 24px;
+    margin-right: 12px;
+    border-radius: 50%;
+    object-fit: cover;
 }
