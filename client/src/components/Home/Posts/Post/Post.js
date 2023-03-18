@@ -2,6 +2,7 @@ import { FaEllipsisH } from "react-icons/fa"
 import { HiOutlineBookmark } from "react-icons/hi2";
 import { HiOutlineHeart } from "react-icons/hi2";
 import { HiOutlineChatBubbleOvalLeft } from "react-icons/hi2";
+import  Comments  from "./../../../Comments/Comments";
 import { Link } from "react-router-dom"
 import styles from "./post.module.css";
 
@@ -40,10 +41,7 @@ export default function Post({photo}) {
                     <p className={styles["description"]}> <Link className={styles["username-description"]}>username</Link> Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere nam aperiam culpa aut maiores explicabo dicta odio ducimus voluptates, dolorum incidunt deleniti eum inventore assumenda eius commodi consequuntur ipsam consequatur!</p>
                 </div>
                 
-                <div className={styles["comment-container"]}>
-                    <p className={styles["comment"]}><Link className={styles["comment-username"]}>username</Link> Comment</p>
-                    <HiOutlineHeart className={styles["comment-like-icon"]} />
-                </div>
+               <Comments />
                 <div className={styles["textarea-container"]}>
                     <textarea className={styles["textarea"]} name="comment-area" id="comment-area" maxlength="50" placeholder="Comment..."></textarea>
                     <Link className={styles["comment-btn"]}>Comment</Link>

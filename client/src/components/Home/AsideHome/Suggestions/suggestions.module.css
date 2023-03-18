@@ -1,0 +1,22 @@
+
+
+.suggestion-text-container {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.suggestion-text {
+    color: var(--light-gray);
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 500;
+    color: rgb(134, 134, 134);
+    font-size: 15px;
+}
+
+.suggestion-container{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}

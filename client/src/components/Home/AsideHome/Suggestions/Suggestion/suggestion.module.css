@@ -1,0 +1,46 @@
+.suggestion-photo {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.suggestion-profile-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    margin-left: 5px;
+    margin-bottom: 13px;
+}
+
+.suggestion-profile-info-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.suggestion-username {
+    text-decoration: none;
+    font-weight: 600;
+    color: var(--dark-gray);
+    font-family: 'Noto Sans', sans-serif;
+    margin-left: 12px;
+    font-size: 12px;
+}
+
+.suggestion-follow {
+
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--dark-gray);
+    font-size: 13px;
+    transition: all 0.1s ease-in-out;
+}
+
+.suggestion-follow:hover {
+    color: var(--blue);
+
+}

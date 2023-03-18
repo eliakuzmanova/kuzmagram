@@ -1,0 +1,9 @@
+.comments-container{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    margin-top: 17px; 
+    width: 100%;
+    height: 80%;
+    border-bottom: 1px solid var(--light-gray);
+}

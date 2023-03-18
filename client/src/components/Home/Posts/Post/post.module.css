@@ -113,34 +113,8 @@
     font-family: 'Noto Sans', sans-serif;
 }
 
-.comment-container{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 13px;
-}
-
-.comment-username{
-    text-decoration: none;
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--dark-gray);
-    font-family: 'Noto Sans', sans-serif;
-}
-
-.comment{
-    font-size: 12.5px;
-    color: var(--dark-gray);
-    font-family: 'Noto Sans', sans-serif;
-}
-
-.comment-like-icon{
-    color: var(--dark-gray);
-}
-
 .textarea-container{
-    margin-top: 13px;
+    margin-top: 7px;
     margin-bottom: 20px;
     display: flex;
     flex-direction: row;
