@@ -7,10 +7,11 @@ const cors = require('cors');
 const {authentication} = require("../middlewares/authMiddleware")
 
 const app = express();
+app.use(cors())
 app.use(express.urlencoded({ extended: false }))
+app.use("/uploads", express.static("uploads"))
 app.use(cookieParser());
 app.use(authentication)
-app.use(cors())
 app.use(router)
 
 mongoose.set({"strictQuery": false})

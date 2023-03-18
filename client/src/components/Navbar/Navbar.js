@@ -13,7 +13,16 @@ import { SlMagnifier } from "react-icons/sl";
 import { SlPaperPlane } from "react-icons/sl";
 import { SlPlus } from "react-icons/sl";
 
-export default function Navbar() {
+export default function Navbar({setCreateClicked}) {
+   
+
+    function onClickCreate(e) {
+        setCreateClicked(true)
+       
+        // navigate("/post/:postId")
+        //add more logic
+    }
+
     return (
         <nav className={styles["navbar"]}>
             <span className={styles["logo"]}>Kuzmagram</span>
@@ -37,7 +46,7 @@ export default function Navbar() {
                 </li>
                 <li className={styles["li-nav"]}>
                     <SlPlus className={styles["nav-icon"]}/>
-                    <Link className={styles["link"]} to={"/create"}>Create</Link>
+                    <Link className={styles["link"]} onClick={onClickCreate}>Create</Link>
                 </li>
                 <li className={styles["li-nav"]}>
                     <img className={styles["nav-image"]} src={require("./../../images/profil.jpg")} alt="profile" />

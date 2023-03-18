@@ -1,4 +1,5 @@
 const Post = require("../models/Post");
 
-exports.create = (image) => Post.create({image:image}).lean();
-exports.create = () => Post.find({}).lean();
+exports.create = (imagePath) => Post.create({image:imagePath});
+
+'exports.create = () => Post.find({}).lean();'

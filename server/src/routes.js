@@ -1,5 +1,6 @@
 const router = require("express").Router();
-// const multer = require("multer")
+const multer = require("multer")
+const upload = multer({dest: "uploads/"})
 // const {v4: uuidv4} = require("uuid")
 // const path = require("path")
 
@@ -31,7 +32,7 @@ const postController = require("../controllers/postController");
 //add middleware to the needed routes <<<<-----------------------
 
 router.get("/users", userController.getUsers)
-router.post("/create", postController.createPost)
+router.post("/create", upload.single("image"),postController.createPost)
 
 
 // router.route("/create").post(upload.single(image), (req, res) => {
