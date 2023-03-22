@@ -13,7 +13,7 @@
     justify-content: center;
 }
 
-.register-wrapper {
+.login-wrapper {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -63,6 +63,7 @@
 
 .form {
     margin-top: 45px;
+    padding-bottom: 20px;
 }
 
 .label {
@@ -100,7 +101,7 @@
 .btn{
     display: flex;
     justify-content: center;
-    margin-top: 20px;
+    margin-top: 14px;
     padding: 7px;
     width: 95px;
     border: 2px solid var(--blue);

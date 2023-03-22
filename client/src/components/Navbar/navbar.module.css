@@ -1,7 +1,7 @@
 .navbar {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     justify-content: space-between;
     border-right: 2px solid var(--light-gray);
     background-color: rgb(255, 255, 255);
@@ -58,14 +58,12 @@
 
 .logout {
     margin-bottom: 15px;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .nav-icon {
     color: var(--dark-gray);
     font-size: 28px;
-
+    margin-left: 24px;
     margin-right: 12px;
 
 }
@@ -73,7 +71,7 @@
 .nav-image {
     width: 27px;
     height: 27px;
-
+    margin-left: 24px;
     margin-right: 12px;
     border-radius: 50%;
     object-fit: cover;

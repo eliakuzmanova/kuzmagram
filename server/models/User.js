@@ -5,8 +5,9 @@ const mongoose = require('mongoose');
 const userSchema = new mongoose.Schema({
     username: {
         type: String,
-        required: true,
-        
+        required: [true, "Username is required"],
+        validate: [/^[a-z0-9_\.]{3,12}$/,
+        "Invalid username address"]
     },
     email: {
         type: String,
@@ -18,6 +19,22 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: [true, "Password is required"],
     },
+    followers: [{
+        type: mongoose.Types.ObjectId,
+        ref: "User"
+    }],
+    follow: [{
+        type: mongoose.Types.ObjectId,
+        ref: "User"
+    }],
+    posts: [{
+        type: mongoose.Types.ObjectId,
+        ref: "Post"
+    }],
+    // saved: [{
+    //     type: mongoose.Types.ObjectId,
+    //     ref: "Post"
+    // }],
   
 
 });

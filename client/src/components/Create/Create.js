@@ -48,7 +48,7 @@ export default function Create({
                            <div className={styles["input-image-container"]}>
                             <label className={styles["label-image"]}  htmlFor="image">{image? "Selected photo": "Select your photo"}</label>
                             <input className={styles["input-image"]} type="file" accept=".png, .jpg, .jpeg" name="image" id="image" onChange={onUploadImage}></input>
-                            <p className={styles["image-name"]}>{imageName}</p>
+                            {image && <p className={styles["image-name"]}>{imageName}</p>}
                             </div>
                             <div className={styles["description-container"]}>
                             

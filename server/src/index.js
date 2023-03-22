@@ -1,17 +1,16 @@
 const express = require('express');
-
+const bodyParser = require('body-parser');
 const router = require("./routes.js");
 const mongoose = require('mongoose');
-const cookieParser = require("cookie-parser")
 const cors = require('cors');
-const {authentication} = require("../middlewares/authMiddleware")
+
 
 const app = express();
 app.use(cors())
+app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: false }))
 app.use("/uploads", express.static("uploads"))
-app.use(cookieParser());
-app.use(authentication)
+
 app.use(router)
 
 mongoose.set({"strictQuery": false})
