@@ -5,10 +5,11 @@ import { Link } from "react-router-dom"
 import Footer from "../Footer/Footer";
 import useForm from "../../hooks/useForm"
 import { useState } from "react";
-import * as authService from "../../services/authService"
+import {authServiceFactory} from "../../services/authService"
+import { useAuthContext } from '../../contexts/AuthContext';
 
-export default function Register({ userLogin }) {
-
+export default function Register() {
+    const {onLogin, onRegister} = useAuthContext()
     const { formValues, onChangeHandler } = useForm({
         username: "",
         email: "",
@@ -76,9 +77,9 @@ export default function Register({ userLogin }) {
 
     async function onSubmitHandler(e) {
         e.preventDefault();
-
-        const result = await authService.register(formValues.username, formValues.email, formValues.password)
-            userLogin(formValues.email, formValues.password)
+       
+      await  onRegister(formValues.username, formValues.email, formValues.password)
+      await onLogin(formValues.email, formValues.password)
 
         
     }

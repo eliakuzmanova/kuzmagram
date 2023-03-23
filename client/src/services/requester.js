@@ -1,18 +1,11 @@
-const request = async (method, url, data) => {
+const request = async (method,url, data) => {
     try {
-        // const user = localStorage.getItem("auth");
-        // const auth = JSON.parse(user || {});
-   
         let headers = {};
 
-        // if (auth.accessToken) {
-        //     headers["X-Authorization"] = auth.accessToken
-        // }
-       
         let buildRequest;
 
         if (method === 'GET') {
-            buildRequest = fetch(url, { headers })
+            buildRequest = fetch(url)
         } else {
             buildRequest = fetch(url, {
                 method,
@@ -24,15 +17,17 @@ const request = async (method, url, data) => {
                 // body: data
             });
         }
+       console.log("hello from request");
        
         const response = await buildRequest;
-      
+        console.log("hello after request");
+        console.log(response);
         const result = await response.json();
       
         return result;
         
     } catch (err) {
-        console.log("Here one error");
+        console.log("Here one error in requester");
             console.log(err);
 
     }

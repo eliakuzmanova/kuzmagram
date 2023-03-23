@@ -1,11 +1,7 @@
 import { Link } from "react-router-dom"
 import styles from "./navbar.module.css";
+import { useEffect } from "react";
 
-// import { HiOutlineHome } from "react-icons/hi2";
-// import { HiOutlineMagnifyingGlass } from "react-icons/hi2";
-// import { HiOutlineHeart } from "react-icons/hi2";
-// import { IoPaperPlaneOutline } from "react-icons/io5";
-// import { IoAddCircleOutline } from "react-icons/io5";
 
 import { SlHeart } from "react-icons/sl";
 import { SlHome } from "react-icons/sl";
@@ -13,14 +9,25 @@ import { SlMagnifier } from "react-icons/sl";
 import { SlPaperPlane } from "react-icons/sl";
 import { SlPlus } from "react-icons/sl";
 
+import { useAuthContext } from '../../contexts/AuthContext';
+
+
 export default function Navbar({setCreateClicked}) {
-   
+ const {userImage, onLogout} = useAuthContext()
+    useEffect( () => {
+        
+    },[])
 
     function onClickCreate(e) {
         setCreateClicked(true)
        
         // navigate("/post/:postId")
         //add more logic
+    }
+
+    function onClickLogout(e){
+        e.preventDefault()
+        onLogout()
     }
 
     return (
@@ -49,13 +56,13 @@ export default function Navbar({setCreateClicked}) {
                     <Link className={styles["link"]} onClick={onClickCreate}>Create</Link>
                 </li>
                 <li className={styles["li-nav"]}>
-                    <img className={styles["nav-image"]} src={require("./../../images/profil.jpg")} alt="profile" />
+                    <img className={styles["nav-image"]} src={userImage} alt="profile" />
                     <Link className={styles["link"]} to={"/profile/:username"}>Profile</Link>
                 </li>
 
             </ul>
            
-                <Link className={`${styles["link"]} ${styles["logout"]}`} to={"/logout"}>Logout</Link>
+                <Link className={`${styles["link"]} ${styles["logout"]}`} onClick={onClickLogout}>Logout</Link>
             
         </nav>
     )

@@ -1,6 +1,6 @@
 const User = require("../models/User");
 
-exports.getAll = () => User.find({}).lean();
+exports.getOne = (email) => User.findOne({email}).lean();
 
 // exports.getById = (id) => Add.findById(id).lean();
 

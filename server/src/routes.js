@@ -11,7 +11,7 @@ const authController = require("../controllers/authController");
 router.post("/auth/register", authController.register)
 router.post("/auth/login", authController.login)
 
-router.get("/users", userController.getUsers)
+router.post("/users/getOne", userController.getOne)
 router.post("/create", upload.single("image"),postController.createPost)
 
 

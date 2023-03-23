@@ -1,10 +1,16 @@
 const userService = require("../services/userService");
 
-exports.getUsers = async (req, res) => {
+exports.getOne = async (req, res) => {
    
     try {
-        const users = await userService.getAll();
-        res.status(200).send(users);
+      const {email} = req.body
+      console.log("Hello from getUser");
+      console.log(req.body);
+ 
+        const user = await userService.getOne(email);
+        console.log("Hello after getUser");
+        console.log(user);
+        res.status(200).send(user);
         
     } catch (err) {
         res.status(400).send(err);

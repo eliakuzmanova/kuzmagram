@@ -2,8 +2,9 @@ import { Link } from "react-router-dom"
 import styles from "./login.module.css";
 import Footer from "../Footer/Footer";
 import useForm from "../../hooks/useForm"
-
-export default function Login({userLogin}) {
+import { useAuthContext } from '../../contexts/AuthContext';
+export default function Login() {
+    const {onLogin} = useAuthContext()
     const {formValues, onChangeHandler} =useForm({
         email: "",
         password: "",
@@ -12,7 +13,7 @@ export default function Login({userLogin}) {
     async function onSubmitHandler(e) {
         e.preventDefault();
        
-       userLogin(formValues.email, formValues.password)
+        onLogin(formValues.email, formValues.password)
 
     }
     return(
