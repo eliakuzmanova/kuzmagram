@@ -67,7 +67,20 @@
     margin-right: 12px;
 
 }
+.link-image{
+    display: flex;
+    justify-content: center;
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--dark-gray);
+    font-size: 17px;
+    transition: all 0.1s ease-in-out;
+}
+.link-image:hover {
+    color: var(--blue);
 
+}
 .nav-image {
     width: 27px;
     height: 27px;

@@ -2,6 +2,13 @@ const User = require("../models/User");
 
 exports.getOne = (email) => User.findOne({email}).lean();
 
+exports.getOneById = (userId) => User.findById(userId).lean();
+
+exports.getOneByUsernameWithRetentions = (username) => User.findOne({username}).populate("posts").lean();
+
+exports.updatePostsById = (userId, data) => User.findByIdAndUpdate(userId, data)
+// exports.getOneByUsernameWithRetentions = (username) => User.findOne({username}).populate("posts").lean();
+
 // exports.getById = (id) => Add.findById(id).lean();
 
 // exports.create = (data, userId) => Add.create({...data, author: userId}); // <---- check owner

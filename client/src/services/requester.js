@@ -17,17 +17,16 @@ const request = async (method,url, data) => {
                 // body: data
             });
         }
-       console.log("hello from request");
+      
        
         const response = await buildRequest;
-        console.log("hello after request");
-        console.log(response);
+       
         const result = await response.json();
       
         return result;
         
     } catch (err) {
-        console.log("Here one error in requester");
+ 
             console.log(err);
 
     }

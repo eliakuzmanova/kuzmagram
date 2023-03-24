@@ -8,12 +8,18 @@
     --light-gray: rgb(205, 204, 204);
 } */
 .profile-post-image{
-    width: 300px;
-    height: 300px;
+    width: 310px;
+    height: 310px;
     object-fit: cover;
     margin-bottom: 30px;
     cursor: pointer;
+    margin-right: 20px;
   
+}
+
+.profile-post-image:nth-child(3n){
+
+    margin-right: 0px;
 }
 
 .profile-post-image:hover{

@@ -3,19 +3,12 @@ import styles from "./home.module.css";
 import Navbar from "../Navbar/Navbar";
 import Posts from "./Posts/Posts";
 import AsideHome from "./AsideHome/AsideHome"
-import Create from "../Create/Create";
-import { useState } from "react";
 
-export default function Home() {
-    const [createClicked, setCreateClicked] = useState(false)
-    const [image, setImage] = useState("")
-  
-    function onModalClose() {
-        setCreateClicked(false)
-        setImage("")
-       
 
-    }
+export default function Home({
+    setCreateClicked
+}) {
+    
     return (
         <>
             <div className={styles["container-home"]}>
@@ -32,12 +25,7 @@ export default function Home() {
 
                 </div>
             </div>
-            {createClicked &&
-                <Create
-                    onModalClose={onModalClose}
-                    image={image}
-                    setImage={setImage}
-            />}
+           
         </>
     )
 }

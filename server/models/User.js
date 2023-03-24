@@ -22,6 +22,9 @@ const userSchema = new mongoose.Schema({
     image: {
         type: String,
     },
+    description: {
+        type: String
+    },
     followers: [{
         type: mongoose.Types.ObjectId,
         ref: "User"

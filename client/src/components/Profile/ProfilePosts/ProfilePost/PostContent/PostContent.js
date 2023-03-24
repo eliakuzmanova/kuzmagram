@@ -6,11 +6,14 @@ import { HiOutlineBookmark } from "react-icons/hi2";
 import { HiOutlineHeart } from "react-icons/hi2";
 import { HiOutlineChatBubbleOvalLeft } from "react-icons/hi2";
 import { HiOutlineXMark } from "react-icons/hi2";
+import { useContext } from "react"
+import { ProfileContext } from "../../../../../contexts/ProfileContext"
 
 export default function PostContent({
-    onModalClose
+    onModalClose,
+    post
 }) {
-
+    const user = useContext(ProfileContext)
     return (
         <div className={styles["modal"]}>
             <HiOutlineXMark className={styles["close-btn"]} onClick={onModalClose} />
@@ -18,25 +21,25 @@ export default function PostContent({
 
                 <article className={styles["post"]}>
                     <section className={styles["image-section"]}>
-                        <img className={styles["image"]} src={require("../../../../../images/couple.jpg")} alt="post" />
+                        <img className={styles["image"]} src={`http://localhost:7070/${post.image}`} alt="post" />
                     </section>
 
                     <section className={styles["post-information-side"]}>
                         <section className={styles["user-section"]}>
                             <div className={styles["user-container"]}>
-                                <img className={styles["user-photo"]} src={require("../../../../../images/profil.jpg")} alt="" />
-                                <Link className={styles["username"]}>username</Link>
+                                <img className={styles["user-photo"]} src={user.image? user.image :require("../../../../../images/user-profile-image.png")} alt="" />
+                                <Link className={styles["username"]}>{user.username}</Link>
                             </div>
                             <HiEllipsisHorizontal className={styles["user-section-icon"]} />
                         </section>
                         <div className={styles["description-container"]}>
                             <div className={styles["description-user-image-container"]}>
-                            <img className={styles["description-user-image"]} src={require("../../../../../images/dog.jpg")} alt="user" />
+                            <img className={styles["description-user-image"]} src={user.image? user.image :require("../../../../../images/user-profile-image.png")} alt="user" />
                             </div>
-                            
-                            <p className={styles["description"]}> <Link className={styles["username-description"]}>username</Link> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempore cumque dolorem ea explicabo totam alias aut, voluptatem maiores saepe quaerat, veniam sit vitae eligendi molestias, illum nobis assumenda magni at. </p>
-                        </div>
-                        <ModalComments />
+                            {post.description && <p className={styles["description"]}> <Link className={styles["username-description"]}>{user.username}</Link> {post.description} </p>}
+                        </div>}
+                            <ModalComments post={post}/>
+                        
 
                         <section className={styles["icons-section"]}>
                             <div className={styles["actions-container"]}>

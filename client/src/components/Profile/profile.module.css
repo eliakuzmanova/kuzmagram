@@ -173,4 +173,18 @@
     color:var(--dark-gray);
     cursor: pointer;
 }
+.no-posts-container{
+    display: flex;
+justify-content: center;
+margin-top: 20px;
+padding-top: 20px;
+border-top: 1px solid var(--light-gray);
+height: 400px;
+}
+.no-posts{
 
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    color:var(--dark-gray);
+}

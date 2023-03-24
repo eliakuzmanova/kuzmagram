@@ -12,6 +12,7 @@ router.post("/auth/register", authController.register)
 router.post("/auth/login", authController.login)
 
 router.post("/users/getOne", userController.getOne)
+router.post("/users/getOneWithRelations", userController.getOneByEmailWithRel)
 router.post("/create", upload.single("image"),postController.createPost)
 
 

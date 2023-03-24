@@ -1,13 +1,16 @@
+import { useState } from "react"
 import styles from "./profile-post.module.css"
+
 // import {useNavigate} from "react-router-dom"
 
 export default function ProfilePost({
-    photo,
+    post,
     onClickPhoto}){
-    // const navigate = useNavigate()
+        const [image, setImage] = useState("")
+
     
 
     return(
-     <img className={styles["profile-post-image"]} src={photo} alt="post" onClick={onClickPhoto} />
+     <img className={styles["profile-post-image"]} src={`http://localhost:7070/${post.image}`} alt="post" onClick={e => onClickPhoto(e,post) } />
     )
 }

@@ -8,18 +8,21 @@ import { SlHome } from "react-icons/sl";
 import { SlMagnifier } from "react-icons/sl";
 import { SlPaperPlane } from "react-icons/sl";
 import { SlPlus } from "react-icons/sl";
-
+import { NavContext } from "../../contexts/NavContext";
+import { useContext } from "react";
 import { useAuthContext } from '../../contexts/AuthContext';
 
 
-export default function Navbar({setCreateClicked}) {
- const {userImage, onLogout} = useAuthContext()
+export default function Navbar() {
+    const setCreateClicked = useContext(NavContext)
+ const {userUsername,userImage, onLogout} = useAuthContext()
     useEffect( () => {
         
     },[])
 
     function onClickCreate(e) {
-        setCreateClicked(true)
+        e.preventDefault()
+         setCreateClicked(true)
        
         // navigate("/post/:postId")
         //add more logic
@@ -56,8 +59,8 @@ export default function Navbar({setCreateClicked}) {
                     <Link className={styles["link"]} onClick={onClickCreate}>Create</Link>
                 </li>
                 <li className={styles["li-nav"]}>
-                    <img className={styles["nav-image"]} src={userImage} alt="profile" />
-                    <Link className={styles["link"]} to={"/profile/:username"}>Profile</Link>
+                    
+                    <Link className={styles["link-image"]} to={`/profile/${userUsername}`}> <img className={styles["nav-image"]} src={userImage} alt="profile" /> Profile</Link>
                 </li>
 
             </ul>

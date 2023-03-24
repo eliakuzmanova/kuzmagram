@@ -7,3 +7,9 @@ export const getOneUser = async ({email}) => {
   const user = await request.post(`${baseUrl}/getOne`, {email});
   return user
 } 
+
+export const getOneUserWithRelations = async (username) => {
+
+  const user = await request.post(`${baseUrl}/getOneWithRelations`, {username});
+  return user
+} 

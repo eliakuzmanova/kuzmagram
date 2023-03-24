@@ -1,13 +1,43 @@
 import Navbar from "../Navbar/Navbar"
 import Footer from "../Footer/Footer"
 import styles from "./profile.module.css"
-import { Link } from "react-router-dom"
-import { HiOutlineBookmark } from "react-icons/hi2";
+import { Link , useParams} from "react-router-dom"
+// import { HiOutlineBookmark } from "react-icons/hi2";
 import { BsGrid3X3Gap } from "react-icons/bs";
 import ProfilePosts from "./ProfilePosts/ProfilePosts";
+import { useAuthContext } from '../../contexts/AuthContext';
+import { useEffect, useState} from "react";
+import * as userService from "../../services/userService";
+import { ProfileContext } from "../../contexts/ProfileContext";
 
-export default function Profile() {
+export default function Profile({
+    postCreated
+}) {
+    const [user, setUser] = useState({
+        "_id": "",
+        username: "",
+        email: "",
+        image:"",
+        description:"",
+        posts:"",
+        followers:"",
+        follow: "",
+
+    })
+    const {username} = useParams()
+    const {userUsername,userImage,userId} = useAuthContext()
+    
+   useEffect(() => {
+        const fetchUser = async() => {
+           const userInfo = await userService.getOneUserWithRelations(username)
+           setUser(state => ({...state, ...userInfo, posts: userInfo.posts.reverse()}))
+        }
+        fetchUser();
+        
+   },[postCreated])
+   const isOwner = username === userUsername
     return (
+        <ProfileContext.Provider value={user} >
         <div className={styles["profile-container"]}>
             <header className={styles["profile-header"]}>
                 <Navbar />
@@ -15,21 +45,23 @@ export default function Profile() {
             <main className={styles["profile-main"]}>
                 <div className={styles["profile-all-info-container"]}>
                     <div className={styles["profile-photo-container"]}>
-                        <img className={styles["profile-photo"]} src={require("../../images/girl.jpg")} alt="profile" />
+                        <img className={styles["profile-photo"]} src={user.image? user.image :require("../../images/user-profile-image.png")} alt="profile" />
                     </div>
                     <div className={styles["profile-info"]}>
                         <div className={styles["profile-options"]}>
-                            <p className={styles["profile-username"]}>username</p>
-                            <button className={styles["profile-info-button"]}>Edit profile</button>
-                            {/* <button className={styles["profile-info-button"]}> Follow/Unfolow</button> */}
+                            <p className={styles["profile-username"]}>{username}</p>
+                            {isOwner? <button className={styles["profile-info-button"]}>Edit profile</button> 
+                            : <button className={styles["profile-info-button"]}>{user.followers.includes(userId)? "Unfollow" : "Follow"}</button>}
+                            
+
                         </div>
                         <div className={styles["profile-followers"]}>
-                            <p className={styles["profile-followers-text"]}><b>10</b> Posts</p>
-                            <Link className={styles["profile-followers-link"]}><b>20</b> Followers</Link>
-                            <Link className={styles["profile-followers-link"]}><b>15</b> Followed</Link>
+                            <p className={styles["profile-followers-text"]}><b>{user.posts.length}</b> Posts</p>
+                            <Link className={styles["profile-followers-link"]}><b>{user.followers.length}</b> Followers</Link>
+                            <Link className={styles["profile-followers-link"]}><b>{user.follow.length}</b> Followed</Link>
                         </div>
                         <div className={styles["profile-description-container"]}>
-                            <p className={styles["profile-description"]}>Check out all my posts</p>
+                            <p className={styles["profile-description"]}>{user.description}</p>
                         </div>
                     </div>
                 </div>
@@ -52,12 +84,18 @@ export default function Profile() {
                         <p className={styles["profile-content-option-text"]}>Saved</p>
                         </Link> */}
                     </div>
-                   
-                        <ProfilePosts />
+                   {user.posts.length? 
+                   <ProfilePosts posts={user.posts} /> 
+                   : <div className={styles["no-posts-container"]}>
+                    <p className={styles["no-posts"]}>There are no posts from this user yet</p>
+                    </div>
+                    }
+                        
                 </div>
 
                 <Footer />
             </main>
         </div>
+        </ProfileContext.Provider>
     )
 }

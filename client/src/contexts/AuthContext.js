@@ -15,15 +15,16 @@ export const AuthProvider = ({
     const onLogin = async (email, password) => {
         try {
             const token = await authService.login({email,password})
-  console.log("token ----->  "+token);
-            const {_id,username, image} = await userService.getOneUser({email})
+
+            const {_id,username, image, description} = await userService.getOneUser({email})
             let userImage;
             if(!image) {
-                userImage = "../../images/user-profile-image.png"
+                userImage = require("../images/user-profile-image.png")
             } else {
                 userImage = await fetch(`http://localhost:7070/uploads/${image}`)
             }
-            setAuth(state => ({...state,_id,username, userImage, email, token}));
+            setAuth({_id,username, userImage, description, email, token});
+          
             navigate("/")
                   
         } catch (error) {
@@ -53,6 +54,7 @@ export const AuthProvider = ({
         userUsername: auth.username,
         userEmail: auth.email,
         userImage: auth.userImage,
+        userDescription: auth.description,
         isAuthenticated: !!auth.accessToken,
     };
 
