@@ -12,28 +12,37 @@ export const AuthProvider = ({
     const [auth, setAuth] = useLocalStorage('auth', {});
     const navigate = useNavigate();
 
-    const onLogin = async (email, password) => {
-        try {
-            const token = await authService.login({email,password})
 
-            const {_id,username, image, description} = await userService.getOneUser({email})
+    const onLogin = async (email, password) => {
+        
+        try {
+
             let userImage;
-            if(!image) {
-                userImage = require("../images/user-profile-image.png")
-            } else {
-                userImage = await fetch(`http://localhost:7070/uploads/${image}`)
-            }
-            setAuth({_id,username, userImage, description, email, token});
+        
+                const token = await authService.login({ email, password })
+             
+                const { _id, username, image, description } = await userService.getOneUser({ email })
+           
           
+                if (!image) {
+                    userImage = require("client/src/images/user-profile-image.png")
+                    
+                } else {
+                   
+                    userImage = image
+                   
+                }
+                setAuth({ _id, username, userImage, description, email, token });
+
             navigate("/")
-                  
+
         } catch (error) {
             console.log(error);
         }
     };
     const onRegister = async (username, email, password) => {
         try {
-            await authService.register({username, email,password})
+            await authService.register({ username, email, password })
         } catch (error) {
             console.log(error);
         }

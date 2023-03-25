@@ -1,0 +1,212 @@
+.outside-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 100vh;
+}
+
+.edit-profile-outside-container {
+    display: flex;
+    padding: 1em;
+    flex-direction: column;
+    align-items: center;
+
+    margin-right: auto;
+    margin-left: auto;
+    width: 670px;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    border: 1px solid var(--light-gray);
+}
+
+.edit-profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width: 60%;
+}
+
+.image-username-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user-image {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    object-fit: cover;
+
+}
+
+.user-username {
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    color: var(--dark-gray);
+    margin-top: 10px;
+}
+
+.form-container {
+    display: flex;
+    margin-top: 60px;
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    width: 400px;
+    margin-bottom: 35px;
+    margin-right: 0px;
+}
+
+.label {
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    color: var(--dark-gray);
+    margin-right: 20px;
+}
+
+.input {
+    color: var(--dark-gray);
+    width: 270px;
+    height: 30px;
+    padding: 6px;
+    border-radius: 10px;
+    border: 1px solid var(--light-gray);
+    font-size: 13px;
+    color: var(--dark-gray);
+    font-family: 'Noto Sans', sans-serif;
+}
+
+.description-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: end;
+    width: 400px;
+    margin-bottom: 35px;
+    margin-right: 0px;
+}
+
+.description-label {
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    color: var(--dark-gray);
+    margin-top: 6px;
+    margin-right: 20px;
+
+}
+
+.description-input {
+    color: var(--dark-gray);
+    width: 270px;
+    height: 60px;
+    padding: 6px;
+    border-radius: 10px;
+    border: 1px solid var(--light-gray);
+    font-size: 13px;
+    color: var(--dark-gray);
+    font-family: 'Noto Sans', sans-serif;
+    resize: none;
+    outline: none;
+}
+
+.image-upload-container {
+    display: flex;
+    justify-content: center;
+
+    width: 400px;
+    margin-bottom: 35px;
+    margin-right: 0px;
+}
+
+.image-upload-label {
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    color: var(--dark-gray);
+    margin-top: 6px;
+    margin-right: 40px;
+}
+
+/* .image-upload{
+    color: var(--dark-gray);
+    width: 270px; 
+    height: 60px;
+    padding: 6px;
+    
+    
+} */
+
+input[type=file]::file-selector-button {
+
+    margin-right: 20px;
+    border: none;
+    font-weight: 600;
+    background: var(--light-gray);
+    padding: 10px 20px;
+    border-radius: 10px;
+    color: var(--dark-gray);
+    cursor: pointer;
+    transition: background .2s ease-in-out;
+}
+
+input[type=file]::file-selector-button:hover {
+    background: #bfbfbf;
+}
+
+.btns-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+
+}
+
+.delete-btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 14px;
+    padding: 7px;
+    width: 95px;
+    border: 2px solid rgb(239, 87, 87);
+    background-color: rgb(239, 87, 87);
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    color: rgb(240, 240, 240);
+    border-radius: 17px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.delete-btn:hover {
+    border: 2px solid rgb(227, 65, 65);
+    background-color: rgb(227, 65, 65);
+}
+
+.submit-btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 14px;
+    padding: 7px;
+    width: 95px;
+    border: 2px solid var(--blue);
+    background-color: var(--blue);
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    color: rgb(240, 240, 240);
+    border-radius: 17px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.submit-btn:hover {
+    border: 2px solid rgb(29, 173, 175);;
+    background-color: rgb(29, 173, 175);
+}

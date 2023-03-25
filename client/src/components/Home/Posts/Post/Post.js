@@ -43,7 +43,7 @@ export default function Post({photo}) {
                 
                <Comments />
                 <div className={styles["textarea-container"]}>
-                    <textarea className={styles["textarea"]} name="comment-area" id="comment-area" maxlength="50" placeholder="Comment..."></textarea>
+                    <textarea className={styles["textarea"]} name="comment-area" id="comment-area" maxLength="50" placeholder="Comment..."></textarea>
                     <Link className={styles["comment-btn"]}>Comment</Link>
                 </div>
             </section>

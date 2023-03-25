@@ -8,6 +8,10 @@ export default function useForm(initialValues, onSubmitHandler) {
     
         }
 
+        const onChangeAllValues= (values) => {
+            setFormValues(state => ({...state, ...values}));
+        }
+
         const onSubmit = (e) => {
             e.preventDefault();
 
@@ -19,6 +23,8 @@ export default function useForm(initialValues, onSubmitHandler) {
         return{
             formValues,
             onChangeHandler,
+            onChangeAllValues,
             onSubmit
         }
+    
 }

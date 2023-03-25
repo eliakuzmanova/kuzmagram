@@ -45,12 +45,12 @@ export default function Profile({
             <main className={styles["profile-main"]}>
                 <div className={styles["profile-all-info-container"]}>
                     <div className={styles["profile-photo-container"]}>
-                        <img className={styles["profile-photo"]} src={user.image? user.image :require("../../images/user-profile-image.png")} alt="profile" />
+                        <img className={styles["profile-photo"]} src={`http://localhost:7070/${user.image}`} alt="profile" />
                     </div>
                     <div className={styles["profile-info"]}>
                         <div className={styles["profile-options"]}>
                             <p className={styles["profile-username"]}>{username}</p>
-                            {isOwner? <button className={styles["profile-info-button"]}>Edit profile</button> 
+                            {isOwner? <Link to={"/profile/edit"} className={styles["profile-info-button"]}>Edit profile</Link> 
                             : <button className={styles["profile-info-button"]}>{user.followers.includes(userId)? "Unfollow" : "Follow"}</button>}
                             
 

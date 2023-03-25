@@ -4,9 +4,6 @@ import { useState } from "react"
 import PostContent from "./ProfilePost/PostContent/PostContent"
 
 
-
-
-
 export default function ProfilePosts({
     posts
 }) {
@@ -25,7 +22,6 @@ export default function ProfilePosts({
         
     }
 
-    let i = 0
 
     return (
         <>

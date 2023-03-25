@@ -1,17 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@500&display=swap');
 
-/* :root{
-    --blue: rgb(28, 183, 185);
-    --dark-gray: rgb(84, 84, 84);
-    --light-gray: rgb(205, 204, 204);
-} */
 .profile-post-image{
     width: 310px;
     height: 310px;
     object-fit: cover;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     cursor: pointer;
     margin-right: 20px;
   
@@ -24,4 +16,10 @@
 
 .profile-post-image:hover{
     filter:brightness(70%)
+}
+
+@media screen and (max-width: 1250px) {
+    .profile-post-image:nth-child(3n){
+        margin-right: 20px;
+    }
 }

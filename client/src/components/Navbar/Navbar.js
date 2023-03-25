@@ -15,17 +15,13 @@ import { useAuthContext } from '../../contexts/AuthContext';
 
 export default function Navbar() {
     const setCreateClicked = useContext(NavContext)
- const {userUsername,userImage, onLogout} = useAuthContext()
-    useEffect( () => {
-        
-    },[])
+ const {userUsername,userImage, onLogout, userId} = useAuthContext()
+
+ console.log(userImage);
 
     function onClickCreate(e) {
         e.preventDefault()
          setCreateClicked(true)
-       
-        // navigate("/post/:postId")
-        //add more logic
     }
 
     function onClickLogout(e){
@@ -60,7 +56,7 @@ export default function Navbar() {
                 </li>
                 <li className={styles["li-nav"]}>
                     
-                    <Link className={styles["link-image"]} to={`/profile/${userUsername}`}> <img className={styles["nav-image"]} src={userImage} alt="profile" /> Profile</Link>
+                    <Link className={styles["link-image"]} to={`/profile/${userUsername}`}> <img className={styles["nav-image"]} src={`http://localhost:7070/${userImage}`} alt="profile" /> Profile</Link>
                 </li>
 
             </ul>

@@ -8,7 +8,7 @@ export default function AsideHome() {
     return (
         <aside className={styles["aside-home"]}>
             <div className={styles["profile-container"]}>
-                <img className={styles["user-photo"]} src={userImage} alt="profile" />
+                <img className={styles["user-photo"]} src={`http://localhost:7070/${userImage}`} alt="profile" />
                 <Link className={styles["user-username"]}>{userUsername}</Link>
             </div>
             <Suggestions />

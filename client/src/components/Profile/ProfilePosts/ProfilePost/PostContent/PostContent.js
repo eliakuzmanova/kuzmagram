@@ -27,17 +27,17 @@ export default function PostContent({
                     <section className={styles["post-information-side"]}>
                         <section className={styles["user-section"]}>
                             <div className={styles["user-container"]}>
-                                <img className={styles["user-photo"]} src={user.image? user.image :require("../../../../../images/user-profile-image.png")} alt="" />
+                                <img className={styles["user-photo"]} src={user.image? `http://localhost:7070/${user.image}` :require("../../../../../images/user-profile-image.png")} alt="" />
                                 <Link className={styles["username"]}>{user.username}</Link>
                             </div>
                             <HiEllipsisHorizontal className={styles["user-section-icon"]} />
                         </section>
                         <div className={styles["description-container"]}>
                             <div className={styles["description-user-image-container"]}>
-                            <img className={styles["description-user-image"]} src={user.image? user.image :require("../../../../../images/user-profile-image.png")} alt="user" />
+                            <img className={styles["description-user-image"]} src={user.image? `http://localhost:7070/${user.image}` :require("../../../../../images/user-profile-image.png")} alt="user" />
                             </div>
                             {post.description && <p className={styles["description"]}> <Link className={styles["username-description"]}>{user.username}</Link> {post.description} </p>}
-                        </div>}
+                        </div>
                             <ModalComments post={post}/>
                         
 
@@ -59,7 +59,7 @@ export default function PostContent({
                             </div>
 
                             <div className={styles["textarea-container"]}>
-                                <textarea className={styles["textarea"]} name="comment-area" id="comment-area" maxlength="50" placeholder="Comment..."></textarea>
+                                <textarea className={styles["textarea"]} name="comment-area" id="comment-area" maxLength="50" placeholder="Comment..."></textarea>
                                 <Link className={styles["comment-btn"]}>Comment</Link>
                             </div>
                         </section>
