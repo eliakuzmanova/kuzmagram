@@ -207,6 +207,6 @@ input[type=file]::file-selector-button:hover {
 }
 
 .submit-btn:hover {
-    border: 2px solid rgb(29, 173, 175);;
+    border: 2px solid rgb(29, 173, 175);
     background-color: rgb(29, 173, 175);
 }

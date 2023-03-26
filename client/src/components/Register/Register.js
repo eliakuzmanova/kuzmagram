@@ -107,7 +107,7 @@ export default function Register() {
                             <input className={`${styles["input"]} ${areInputsCorrect["confirm-password"]}`} type="password" name="confirm-password" id="confirm-password" placeholder="******" value={formValues["confirm-password"]} onChange={onChangeHandler} onBlur={onBlurValidate} onClick={onClick} />
 
                             <div className={styles["container-btn"]}>
-                                <button className={`${styles["btn"]} ${!isReadyForRegister() && styles["disabled-btn"]}`} type="submit" disabled={!isReadyForRegister() ? true : false}>Register</button>
+                                <button className={`${!isReadyForRegister() ? styles["disabled-btn"] : styles["btn"]}`} type="submit" disabled={!isReadyForRegister() ? true : false}>Register</button>
                             </div>
                             <div className={styles["container-sign-in"]}>
                                 <p className={styles["paragraph-account"]}>You have an account?</p>

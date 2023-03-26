@@ -39,7 +39,7 @@ exports.login = async(email, password) => {
         }
        
         const isValid = await bcrypt.compare(password, existingUser.password)
-    
+  
         if(!isValid){
           throw Error("Invalid password")
         }
@@ -49,6 +49,8 @@ exports.login = async(email, password) => {
         return token
 
     } catch(err){ 
+        console.log("ola");
+        console.log(err);
         throw Error(err)
     }
   

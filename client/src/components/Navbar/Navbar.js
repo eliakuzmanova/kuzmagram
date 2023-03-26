@@ -17,7 +17,6 @@ export default function Navbar() {
     const setCreateClicked = useContext(NavContext)
  const {userUsername,userImage, onLogout, userId} = useAuthContext()
 
- console.log(userImage);
 
     function onClickCreate(e) {
         e.preventDefault()

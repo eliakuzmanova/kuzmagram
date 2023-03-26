@@ -120,19 +120,27 @@
     transition:all 0.3s ease-in-out;
 }
 
-/* 
-.btn:hover{
-    color: var(--blue);
-    border: 2px solid var(--dark-gray);
 
-    background-color: var(--dark-gray);
+.btn:hover{
+    border: 2px solid rgb(29, 173, 175);
+    background-color: rgb(29, 173, 175);
 
     
-} */
+} 
 .disabled-btn{
+    display: flex;
+    justify-content: center;
+    margin-top: 16px;
+    padding: 7px;
+    width: 85px;
     border: 2px solid rgb(110, 196, 198);
     background-color:  rgb(110, 196, 198);
-    cursor:auto
+    cursor:auto;
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    color:rgb(240, 240, 240);
+    border-radius: 17px;
 
 }
 .container-sign-in{

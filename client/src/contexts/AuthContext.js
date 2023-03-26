@@ -20,10 +20,14 @@ export const AuthProvider = ({
             let userImage;
         
                 const token = await authService.login({ email, password })
+                if(!token || JSON.stringify(token) === "{}"){
+                    throw new Error("Invalid email or password")
+                }
              
-                const { _id, username, image, description } = await userService.getOneUser({ email })
+                const user = await userService.getOneUser({ email })
            
-          
+           
+                const {_id, username, image, description } = user
                 if (!image) {
                     userImage = require("client/src/images/user-profile-image.png")
                     
@@ -38,6 +42,7 @@ export const AuthProvider = ({
 
         } catch (error) {
             console.log(error);
+            return error
         }
     };
     const onRegister = async (username, email, password) => {

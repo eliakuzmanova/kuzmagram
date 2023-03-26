@@ -55,6 +55,18 @@
     margin-top: 45px;
     padding-bottom: 20px;
 }
+.err-message-container{
+    margin-top: -12px;
+    margin-bottom: 9px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.err-message{
+   color: rgb(239, 87, 87);
+   font-family: 'Noto Sans', sans-serif;
+   font-size: 17px;
+}
 
 .label {
     display: flex;
@@ -106,10 +118,8 @@
 }
 
 .btn:hover{
-    color: var(--blue);
-    border: 2px solid var(--dark-gray);
-
-    background-color: var(--dark-gray);
+    border: 2px solid rgb(29, 173, 175);
+    background-color: rgb(29, 173, 175);
 }
 
 .container-sign-up{
