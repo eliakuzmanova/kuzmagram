@@ -8,6 +8,7 @@ import { IoMdEyeOff } from "react-icons/io";
 import { IoMdEye } from "react-icons/io";
 
 export default function Login() {
+    const [isHiddenPassword, setIsHiddenPassword] = useState(true)
     const { onLogin } = useAuthContext()
     const { formValues, onChangeHandler } = useForm({
         email: "",
@@ -35,6 +36,10 @@ export default function Login() {
         }
     }
 
+    function onEyeIconPassword(e) {
+        setIsHiddenPassword(state => !state)
+   }
+
     return (
         <>
             <main className={styles["main"]}>
@@ -54,8 +59,10 @@ export default function Login() {
                         <input className={styles["input"]} type="text" name="email" id="email" placeholder="Enter your email..." value={formValues.email} onChange={onChangeHandler} onClick={onHideError} />
 
                         <label className={styles["label"]} htmlFor="password">Password</label>
-                        <input className={styles["input"]} type="password" name="password" id="password" placeholder="Enter your password..." value={formValues.password} onChange={onChangeHandler} onClick={onHideError} />
-
+                        <input className={`${styles["input"]} ${formValues.password.length > 0 ? styles["input-with-eye"]:""}`} type={isHiddenPassword?"password":"text"} name="password" id="password" placeholder="Enter your password..." value={formValues.password} onChange={onChangeHandler} onClick={onHideError} />
+                        {formValues.password.length > 0 && (isHiddenPassword ?
+                            <IoMdEyeOff className={`${styles["eye-icon"]}`} onClick={onEyeIconPassword} name="password-icon" /> 
+                            : <IoMdEye className={`${styles["eye-icon"]}`} onClick={onEyeIconPassword}/>)}
                         <div className={styles["container-btn"]}>
                             <button className={styles["btn"]} type="submit">Login</button>
                         </div>

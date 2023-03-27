@@ -96,6 +96,19 @@
     font-family: 'Noto Sans', sans-serif;
    
 }
+.input-with-eye{
+    margin-bottom: 0px;
+    }
+    .eye-icon{
+        /* position: absolute;
+        bottom: 245px;
+        right: 595px; */
+        position: relative;
+        bottom: 33px;
+        left: 320px;
+        font-size: 20px;
+    
+    }
 .container-btn{
     display: flex;
     justify-content: center;
