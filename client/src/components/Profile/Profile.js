@@ -25,7 +25,7 @@ export default function Profile({
 
     })
     const {username} = useParams()
-    const {userUsername,userImage,userId} = useAuthContext()
+    const {userUsername,userId} = useAuthContext()
     
    useEffect(() => {
         const fetchUser = async() => {
@@ -45,7 +45,7 @@ export default function Profile({
             <main className={styles["profile-main"]}>
                 <div className={styles["profile-all-info-container"]}>
                     <div className={styles["profile-photo-container"]}>
-                        <img className={styles["profile-photo"]} src={`http://localhost:7070/${user.image}`} alt="profile" />
+                        <img className={styles["profile-photo"]} src={user.image ?`http://localhost:7070/${user.image}`: require("../../images/user-profile-image.png")} alt="profile" />
                     </div>
                     <div className={styles["profile-info"]}>
                         <div className={styles["profile-options"]}>

@@ -7,18 +7,21 @@ exports.getOneById = (userId) => User.findById(userId).lean();
 exports.getOneByUsernameWithRetentions = (username) => User.findOne({username}).populate("posts").lean();
 
 exports.updatePostsById = (userId, data) => User.findByIdAndUpdate(userId, data)
+
+exports.delete = (id) => User.findByIdAndRemove(id)
+
+
 // exports.getOneByUsernameWithRetentions = (username) => User.findOne({username}).populate("posts").lean();
 
-// exports.getById = (id) => Add.findById(id).lean();
+// exports.getById = (id) => User.findById(id).lean();
 
-// exports.create = (data, userId) => Add.create({...data, author: userId}); // <---- check owner
+// exports.create = (data, userId) => User.create({...data, author: userId}); // <---- check owner
 
-// exports.update = (data, id) => Add.findByIdAndUpdate(id, {...data});
+// exports.update = (data, id) => User.findByIdAndUpdate(id, {...data});
 
-// exports.delete = (id) => Add.findByIdAndRemove(id)
 
-// exports.getFirstThree = () => Add.find({}).limit(3).lean();
+// exports.getFirstThree = () => User.find({}).limit(3).lean();
 
-// exports.getByIdWithAuthor= (id) => Add.findById(id).populate("author").populate("appliers").lean();
+// exports.getByIdWithAuthor= (id) => User.findById(id).populate("author").populate("appliers").lean();
 
-// exports.getAllAddsPop = () => Add.find({}).populate("author").lean();
+// exports.getAllUserPop = () => User.find({}).populate("author").lean();

@@ -134,14 +134,6 @@
     margin-right: 40px;
 }
 
-/* .image-upload{
-    color: var(--dark-gray);
-    width: 270px; 
-    height: 60px;
-    padding: 6px;
-    
-    
-} */
 
 input[type=file]::file-selector-button {
 

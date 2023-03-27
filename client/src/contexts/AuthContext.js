@@ -17,25 +17,18 @@ export const AuthProvider = ({
         
         try {
 
-            let userImage;
-        
                 const token = await authService.login({ email, password })
                 if(!token || JSON.stringify(token) === "{}"){
                     throw new Error("Invalid email or password")
                 }
-             
-                const user = await userService.getOneUser({ email })
-           
+             console.log("After token");
+                const user = await userService.getOneUser(email)
+           console.log(user);
            
                 const {_id, username, image, description } = user
-                if (!image) {
-                    userImage = require("client/src/images/user-profile-image.png")
-                    
-                } else {
-                   
-                    userImage = image
-                   
-                }
+
+              const userImage = image? `http://localhost:7070/${image}` : require("../images/user-profile-image.png")
+             
                 setAuth({ _id, username, userImage, description, email, token });
 
             navigate("/")

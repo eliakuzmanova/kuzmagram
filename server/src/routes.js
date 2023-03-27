@@ -13,7 +13,9 @@ router.post("/auth/login", authController.login)
 
 router.post("/users/getOne", userController.getOne)
 router.post("/users/getOneWithRelations", userController.getOneByEmailWithRel)
-router.post("/create", upload.single("image"),postController.createPost)
+router.post("/users/delete", userController.deleteUser)
+
+router.post("/create-post", upload.single("image"),postController.createPost)
 router.post("/profile/edit", upload.single("image"),userController.editProfile)
 
 

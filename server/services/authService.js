@@ -33,23 +33,23 @@ exports.login = async(email, password) => {
 
      try{
         const existingUser = await this.findUserByEmail(email)
-       
+  
         if(!existingUser) {
             throw Error("Invalid email");
         }
-       
+      
         const isValid = await bcrypt.compare(password, existingUser.password)
-  
+        
         if(!isValid){
           throw Error("Invalid password")
         }
-     
+      
         const token = await jwt.sign({},SECRET);
-       
+      
         return token
 
     } catch(err){ 
-        console.log("ola");
+       
         console.log(err);
         throw Error(err)
     }
