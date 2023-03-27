@@ -4,6 +4,9 @@ import Footer from "../Footer/Footer";
 import useForm from "../../hooks/useForm"
 import { useAuthContext } from '../../contexts/AuthContext';
 import { useState } from "react";
+import { IoMdEyeOff } from "react-icons/io";
+import { IoMdEye } from "react-icons/io";
+
 export default function Login() {
     const { onLogin } = useAuthContext()
     const { formValues, onChangeHandler } = useForm({

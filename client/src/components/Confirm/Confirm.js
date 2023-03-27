@@ -16,9 +16,9 @@ export default function Confirm({
         console.log("delete");
         try {
             await userService.deleteUser(userId)
-            console.log("after delete");
+         
             onLogout()
-            console.log("after logout");
+          
             navigate("/register")
         } catch (error) {
             console.log(error);
