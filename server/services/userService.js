@@ -6,7 +6,7 @@ exports.getOneById = (userId) => User.findById(userId).lean();
 
 exports.getOneByUsernameWithRetentions = (username) => User.findOne({username}).populate("posts").lean();
 
-exports.updatePostsById = (userId, data) => User.findByIdAndUpdate(userId, data)
+exports.updateUserById = (userId, data) => User.findByIdAndUpdate(userId, data)
 
 exports.delete = (id) => User.findByIdAndRemove(id)
 

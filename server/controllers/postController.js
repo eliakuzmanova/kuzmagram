@@ -10,7 +10,7 @@ exports.createPost= async (req, res) => {
        const post = await postService.create(imagePath, userId, description);
        const user = await userService.getOneById(userId);
        user.posts.push(post._id);
-        await userService.updatePostsById(userId, user);
+        await userService.updateUserById(userId, user);
         res.status(200).end();
         
     } catch (err) {

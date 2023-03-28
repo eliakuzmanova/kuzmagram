@@ -57,7 +57,7 @@
 .input-container {
     display: flex;
     align-items: center;
-    justify-content: end;
+    justify-content: flex-end;
     width: 400px;
     margin-bottom: 35px;
     margin-right: 0px;
@@ -86,7 +86,7 @@
 .description-container {
     display: flex;
     align-items: flex-start;
-    justify-content: end;
+    justify-content: flex-end;
     width: 400px;
     margin-bottom: 35px;
     margin-right: 0px;

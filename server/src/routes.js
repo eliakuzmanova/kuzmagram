@@ -12,7 +12,9 @@ router.post("/auth/register", authController.register)
 router.post("/auth/login", authController.login)
 
 router.post("/users/getOne", userController.getOne)
-router.post("/users/getOneWithRelations", userController.getOneByEmailWithRel)
+router.post("/users/getOneWithRelations", userController.getOneByUsernameWithRel)
+router.post("/users/addFollower", userController.addFollower)
+router.post("/users/removeFollower", userController.removeFollower)
 router.post("/users/delete", userController.deleteUser)
 
 router.post("/create-post", upload.single("image"),postController.createPost)

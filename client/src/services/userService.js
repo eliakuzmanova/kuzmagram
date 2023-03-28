@@ -20,3 +20,14 @@ export const deleteUser = async (userId) => {
   return result
 } 
 
+export const addFollower = async (email, userId) => {
+
+  const updatedUser = await request.post(`${baseUrl}/addFollower`, {email, userId});
+  return updatedUser
+} 
+
+export const removeFollower = async (email, userId) => {
+
+  const updatedUser = await request.post(`${baseUrl}/removeFollower`, {email, userId});
+  return updatedUser
+} 
