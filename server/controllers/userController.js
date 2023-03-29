@@ -19,7 +19,7 @@ exports.getOneByUsernameWithRel = async (req, res) => {
         const { username } = req.body
 
         const user = await userService.getOneByUsernameWithRetentions(username);
-    
+
         res.status(200).send(user);
 
     } catch (err) {
@@ -34,7 +34,6 @@ exports.editProfile = async (req, res) => {
 
         const imagePath = req.file.path
         const { userId, description, username, email } = req.body
-        console.log(imagePath + " <------------------------- img path ");
 
         await userService.updateUserById(userId, { description, username, email, image: imagePath });
         res.status(200).end();
@@ -49,7 +48,7 @@ exports.editProfile = async (req, res) => {
 exports.addFollower = async (req, res) => {
 
     try {
-        console.log("Hello from add follower");
+     
         const { email, userId } = req.body
 
         const user = await userService.getOne(email)
@@ -59,7 +58,7 @@ exports.addFollower = async (req, res) => {
 
         const follower = await userService.getOneById(userId);
         follower.follow.push(user._id)
-       await userService.updateUserById(userId, follower)
+        await userService.updateUserById(userId, follower)
 
         res.status(200).send(updatedUser);
 
@@ -75,15 +74,15 @@ exports.removeFollower = async (req, res) => {
 
         const { email, userId } = req.body
         const user = await userService.getOne(email)
-       
-       const filteredFollowers = user.followers.filter(f => f._id !== userId)
-       
-       await userService.updateUserById(user._id, {...user, followers: filteredFollowers})
-      const updatedUser = await userService.getOneByUsernameWithRetentions(user.username);
+
+        const filteredFollowers = user.followers.filter(f => f._id !== userId)
+
+        await userService.updateUserById(user._id, { ...user, followers: filteredFollowers })
+        const updatedUser = await userService.getOneByUsernameWithRetentions(user.username);
 
         const follower = await userService.getOneById(userId);
-       const filteredFollow = follower.follow.filter(f => f._id !== user._id)
-        await userService.updateUserById(userId, {...follower, follow: filteredFollow})
+        const filteredFollow = follower.follow.filter(f => f._id !== user._id)
+        await userService.updateUserById(userId, { ...follower, follow: filteredFollow })
         res.status(200).send(updatedUser);
 
     } catch (err) {

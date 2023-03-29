@@ -8,6 +8,7 @@ return token
 }
 
 export const register = async ({username, email, password}) => {
-    await  request.post(`${baseUrl}/register`, {username, email, password})
+  const result = await  request.post(`${baseUrl}/register`, {username, email, password})
+  return result
 }
 

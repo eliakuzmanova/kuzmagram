@@ -20,6 +20,7 @@ exports.register = async (username, email, password) => {
    
         return user
     } catch(err){ 
+        console.log(err);
         throw Error(err)
     }
 

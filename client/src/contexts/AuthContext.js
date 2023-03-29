@@ -14,22 +14,21 @@ export const AuthProvider = ({
 
 
     const onLogin = async (email, password) => {
-        
+
         try {
 
-                const token = await authService.login({ email, password })
-                if(!token || JSON.stringify(token) === "{}"){
-                    throw new Error("Invalid email or password")
-                }
-             console.log("After token");
-                const user = await userService.getOneUser(email)
-           console.log(user);
-           
-                const {_id, username, image, description } = user
+            const token = await authService.login({ email, password })
+            if (!token || JSON.stringify(token) === "{}") {
+                throw new Error("Invalid email or password")
+            }
 
-              const userImage = image? `http://localhost:7070/${image}` : require("../images/user-profile-image.png")
-             
-                setAuth({ _id, username, userImage, description, email, token });
+            const user = await userService.getOneUser(email)
+
+            const { _id, username, image, description } = user
+
+            const userImage = image ? `http://localhost:7070/${image}` : require("../images/user-profile-image.png")
+
+            setAuth({ _id, username, userImage, description, email, token });
 
             navigate("/")
 
@@ -40,9 +39,14 @@ export const AuthProvider = ({
     };
     const onRegister = async (username, email, password) => {
         try {
-            await authService.register({ username, email, password })
+            const result = await authService.register({ username, email, password })
+            if (!result || JSON.stringify(result) === "{}") {
+                throw new Error("Existing user with that email or username")
+            }
+
         } catch (error) {
             console.log(error);
+            return error
         }
     };
 

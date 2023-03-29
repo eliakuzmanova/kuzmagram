@@ -62,6 +62,18 @@
     margin-top: 25px;
     padding-bottom: 20px;
 }
+.err-message-container{
+    margin-top: -12px;
+    margin-bottom: 9px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.err-message{
+   color: rgb(239, 87, 87);
+   font-family: 'Noto Sans', sans-serif;
+   font-size: 17px;
+}
 
 .label {
     display: flex;

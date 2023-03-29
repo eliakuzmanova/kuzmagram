@@ -12,13 +12,14 @@ import { IoMdEye } from "react-icons/io";
 export default function Register() {
     const [isHiddenPassword, setIsHiddenPassword] = useState(true)
     const [isHiddenConfPassword, setIsHiddenConfPassword] = useState(true)
-    const {onLogin, onRegister} = useAuthContext()
+    const { onLogin, onRegister } = useAuthContext()
     const { formValues, onChangeHandler } = useForm({
         username: "",
         email: "",
         password: "",
         "confirm-password": "",
     });
+    const [err, setErr] = useState("")
 
     const [areInputsCorrect, setAreInputsCorrect] = useState({
         username: "",
@@ -76,63 +77,78 @@ export default function Register() {
 
     function onClick(e) {
         setAreInputsCorrect(state => ({ ...state, [e.target.name]: "" }))
+        if(err) {
+            setErr("")
+        } else {
+            return
+        }
     }
 
     async function onSubmitHandler(e) {
         e.preventDefault();
-       
-      await  onRegister(formValues.username, formValues.email, formValues.password)
-      await onLogin(formValues.email, formValues.password)
-  
+
+       const error = await onRegister(formValues.username, formValues.email, formValues.password)
+    
+       if (error) {
+        setErr(error.message);
+    } else {
+        setErr("")
+        await onLogin(formValues.email, formValues.password)
+    }
+
     }
 
     function onEyeIconPassword(e) {
-     
-         setIsHiddenPassword(state => !state)
+
+        setIsHiddenPassword(state => !state)
     }
     function onEyeIconConfPass(e) {
-       
-         setIsHiddenConfPassword(state => !state)
+
+        setIsHiddenConfPassword(state => !state)
     }
-        return (
-            <div className={styles["top-container"]}>
-                <main className={styles["main"]}>
-                    <div className={styles["register-wrapper"]}>
-                        <div className={styles["div-logo"]}>
-                            <h1 className={styles["logo"]}>Kuzmagram</h1>
-                            <p className={styles["text"]}>Sign up to see your friends' photos and videos, or just to chat with them.</p>
-                        </div>
-                        <div className={styles["line"]}></div>
-                        <form className={styles["form"]} method="POST" onSubmit={onSubmitHandler}>
-
-                            <label className={styles["label"]} >Username</label>
-                            <input className={`${styles["input"]} ${areInputsCorrect.username}`} type="text" name="username" id="username" placeholder="example7" value={formValues.username} onChange={onChangeHandler} onBlur={onBlurValidate} onClick={onClick} />
-
-                            <label className={styles["label"]} >Email</label>
-                            <input className={`${styles["input"]} ${areInputsCorrect.email}`} type="text" name="email" id="email" placeholder="example@gmail.com" value={formValues.email} onChange={onChangeHandler} onBlur={onBlurValidate} onClick={onClick} />
-
-                            <label className={styles["label"]} >Password</label>
-                            <input className={`${styles["input"]} ${formValues.password.length > 0 ? styles["input-with-eye"]:""} ${areInputsCorrect.password}`} type={isHiddenPassword?"password":"text"} name="password" id="password" placeholder="******" value={formValues.password} onChange={onChangeHandler} onBlur={onBlurValidate} onClick={onClick} />
-                            {formValues.password.length > 0 && (isHiddenPassword ?
-                            <IoMdEyeOff className={`${styles["eye-icon"]}`} onClick={onEyeIconPassword} name="password-icon" /> 
-                            : <IoMdEye className={`${styles["eye-icon"]}`} onClick={onEyeIconPassword}/>)}
-                            <label className={styles["label"]} >Confirm password</label>
-                            <input className={`${styles["input"]} ${formValues["confirm-password"].length > 0 ? styles["input-with-eye"]:""} ${areInputsCorrect["confirm-password"]}`} type={isHiddenConfPassword?"password":"text"}  name="confirm-password" id="confirm-password" placeholder="******" value={formValues["confirm-password"]} onChange={onChangeHandler} onBlur={onBlurValidate} onClick={onClick} />
-                            {formValues["confirm-password"].length > 0 && (isHiddenConfPassword ?
-                            <IoMdEyeOff className={`${styles["eye-icon"]}`} onClick={onEyeIconConfPass}/> 
-                            : <IoMdEye className={`${styles["eye-icon"]}`} onClick={onEyeIconConfPass}/>)}
-                            <div className={styles["container-btn"]}>
-                                <button className={`${!isReadyForRegister() ? styles["disabled-btn"] : styles["btn"]}`} type="submit" disabled={!isReadyForRegister() ? true : false}>Register</button>
-                            </div>
-                            <div className={styles["container-sign-in"]}>
-                                <p className={styles["paragraph-account"]}>You have an account?</p>
-                                <Link className={styles["sign-in"]} to="/login">Sign in</Link>
-                            </div>
-                        </form>
+    return (
+        <div className={styles["top-container"]}>
+            <main className={styles["main"]}>
+                <div className={styles["register-wrapper"]}>
+                    <div className={styles["div-logo"]}>
+                        <h1 className={styles["logo"]}>Kuzmagram</h1>
+                        <p className={styles["text"]}>Sign up to see your friends' photos and videos, or just to chat with them.</p>
                     </div>
-                </main>
-                <Footer />
-            </div>
-        )
+                    <div className={styles["line"]}></div>
+                    <form className={styles["form"]} method="POST" onSubmit={onSubmitHandler}>
+
+                        <div className={styles["err-message-container"]}>
+                            <p className={styles["err-message"]}>{err}</p>
+                        </div>
+
+                        <label className={styles["label"]} >Username</label>
+                        <input className={`${styles["input"]} ${areInputsCorrect.username}`} type="text" name="username" id="username" placeholder="example7" value={formValues.username} onChange={onChangeHandler} onBlur={onBlurValidate} onClick={onClick} />
+
+                        <label className={styles["label"]} >Email</label>
+                        <input className={`${styles["input"]} ${areInputsCorrect.email}`} type="text" name="email" id="email" placeholder="example@gmail.com" value={formValues.email} onChange={onChangeHandler} onBlur={onBlurValidate} onClick={onClick} />
+
+                        <label className={styles["label"]} >Password</label>
+                        <input className={`${styles["input"]} ${formValues.password.length > 0 ? styles["input-with-eye"] : ""} ${areInputsCorrect.password}`} type={isHiddenPassword ? "password" : "text"} name="password" id="password" placeholder="******" value={formValues.password} onChange={onChangeHandler} onBlur={onBlurValidate} onClick={onClick} />
+                        {formValues.password.length > 0 && (isHiddenPassword ?
+                            <IoMdEyeOff className={`${styles["eye-icon"]}`} onClick={onEyeIconPassword} name="password-icon" />
+                            : <IoMdEye className={`${styles["eye-icon"]}`} onClick={onEyeIconPassword} />)}
+                        <label className={styles["label"]} >Confirm password</label>
+                        <input className={`${styles["input"]} ${formValues["confirm-password"].length > 0 ? styles["input-with-eye"] : ""} ${areInputsCorrect["confirm-password"]}`} type={isHiddenConfPassword ? "password" : "text"} name="confirm-password" id="confirm-password" placeholder="******" value={formValues["confirm-password"]} onChange={onChangeHandler} onBlur={onBlurValidate} onClick={onClick} />
+                        {formValues["confirm-password"].length > 0 && (isHiddenConfPassword ?
+                            <IoMdEyeOff className={`${styles["eye-icon"]}`} onClick={onEyeIconConfPass} />
+                            : <IoMdEye className={`${styles["eye-icon"]}`} onClick={onEyeIconConfPass} />)}
+                        <div className={styles["container-btn"]}>
+                            <button className={`${!isReadyForRegister() ? styles["disabled-btn"] : styles["btn"]}`} type="submit" disabled={!isReadyForRegister() ? true : false}>Register</button>
+                        </div>
+                        <div className={styles["container-sign-in"]}>
+                            <p className={styles["paragraph-account"]}>You have an account?</p>
+                            <Link className={styles["sign-in"]} to="/login">Sign in</Link>
+                        </div>
+                    </form>
+                </div>
+            </main>
+            <Footer />
+        </div>
+    )
 
 }

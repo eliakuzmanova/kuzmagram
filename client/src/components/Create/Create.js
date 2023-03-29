@@ -33,7 +33,7 @@ export default function Create({
         formData.append("userId", userId);
         formData.append("description", description);
         try {
-          const post = await fetch("http://localhost:7070/create-post", {
+          const post = await fetch("http://localhost:7070/posts/create", {
                 method: "POST",
                 body: formData
             })

@@ -9,6 +9,7 @@ import { useAuthContext } from '../../contexts/AuthContext';
 import { useEffect, useState } from "react";
 import * as userService from "../../services/userService";
 import { ProfileContext } from "../../contexts/ProfileContext";
+import Followers from "./Followers/Followers";
 
 export default function Profile({
     postCreated
@@ -27,10 +28,14 @@ export default function Profile({
     const { username } = useParams()
     const { userUsername, userId } = useAuthContext()
 
+    const [followersClicked, setFollowersClicked] = useState(false)
+    const [followedClicked, setFollowedClicked] = useState(false)
+
     useEffect(() => {
         const fetchUser = async () => {
+            onModalClose()
             const userInfo = await userService.getOneUserWithRelations(username)
-            console.log(userInfo);
+            
             setUser(state => ({ ...state, ...userInfo, posts: userInfo.posts.reverse() }))
         }
         fetchUser();
@@ -41,12 +46,37 @@ export default function Profile({
    async function onFollow(e) {
         e.preventDefault()
         let updatedUser;
-        if(!user.followers.includes(userId)) {
+        const isFollower = user.followers.filter(f => f._id === userId)
+        if(!isFollower) {
            updatedUser = await userService.addFollower(user.email,userId) 
         } else {
            updatedUser = await userService.removeFollower(user.email,userId)
         }
         setUser(state => ({ ...state, ...updatedUser,posts: updatedUser.posts.reverse()}))
+    }
+
+    function onFollowers(e) {
+        e.preventDefault();
+        if (user.followers.length > 0) {
+        setFollowersClicked(true)
+        }
+    }
+
+    function onFollowed(e) {
+        e.preventDefault();
+        if(user.follow.length > 0) {
+            setFollowedClicked(true)
+        }
+      
+    }
+
+    function onModalClose() {
+
+        if(followersClicked) {
+            setFollowersClicked(false)
+        } else if(followedClicked) {
+            setFollowedClicked(false)
+        } 
     }
 
     return (
@@ -70,8 +100,8 @@ export default function Profile({
                             </div>
                             <div className={styles["profile-followers"]}>
                                 <p className={styles["profile-followers-text"]}><b>{user.posts.length}</b> Posts</p>
-                                <Link className={styles["profile-followers-link"]}><b>{user.followers.length}</b> Followers</Link>
-                                <Link className={styles["profile-followers-link"]}><b>{user.follow.length}</b> Followed</Link>
+                                <Link className={styles["profile-followers-link"]} onClick={onFollowers} ><b>{user.followers.length}</b> Followers</Link>
+                                <Link className={styles["profile-followers-link"]} onClick={onFollowed} ><b>{user.follow.length}</b> Followed</Link>
                             </div>
                             <div className={styles["profile-description-container"]}>
                                 <p className={styles["profile-description"]}>{user.description}</p>
@@ -91,11 +121,6 @@ export default function Profile({
                                 </div>
                             </Link>
 
-
-                            {/* <Link className={styles["profile-content-option"]}>
-                        <HiOutlineBookmark className={styles["profile-content-option-icon"]}/>
-                        <p className={styles["profile-content-option-text"]}>Saved</p>
-                        </Link> */}
                         </div>
                         {user.posts.length ?
                             <ProfilePosts posts={user.posts} />
@@ -109,6 +134,7 @@ export default function Profile({
                     <Footer />
                 </main>
             </div>
+            {(followedClicked || followersClicked) && <Followers onModalClose={onModalClose} text={followersClicked? "Followers" : "Followed"} user={user}/>}
         </ProfileContext.Provider>
     )
 }

@@ -16,9 +16,9 @@ router.post("/users/getOneWithRelations", userController.getOneByUsernameWithRel
 router.post("/users/addFollower", userController.addFollower)
 router.post("/users/removeFollower", userController.removeFollower)
 router.post("/users/delete", userController.deleteUser)
-
-router.post("/create-post", upload.single("image"),postController.createPost)
 router.post("/profile/edit", upload.single("image"),userController.editProfile)
 
+router.post("/posts/create", upload.single("image"),postController.createPost)
+router.post("/posts/:profileId/like",postController.likePost)
 
 module.exports = router

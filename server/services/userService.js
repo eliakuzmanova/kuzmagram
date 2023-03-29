@@ -4,7 +4,7 @@ exports.getOne = (email) => User.findOne({email}).lean();
 
 exports.getOneById = (userId) => User.findById(userId).lean();
 
-exports.getOneByUsernameWithRetentions = (username) => User.findOne({username}).populate("posts").lean();
+exports.getOneByUsernameWithRetentions = (username) => User.findOne({username}).populate("posts").populate("followers").populate("follow").lean();
 
 exports.updateUserById = (userId, data) => User.findByIdAndUpdate(userId, data)
 

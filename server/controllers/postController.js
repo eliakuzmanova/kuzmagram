@@ -6,7 +6,6 @@ exports.createPost= async (req, res) => {
     try {
         const imagePath = req.file.path
         const {userId, description} = req.body
-        // console.log(imagePath + " <------------------------- img path ");
        const post = await postService.create(imagePath, userId, description);
        const user = await userService.getOneById(userId);
        user.posts.push(post._id);
