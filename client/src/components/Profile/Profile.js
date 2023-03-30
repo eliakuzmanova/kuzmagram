@@ -40,27 +40,25 @@ export default function Profile({
         }
         fetchUser();
 
-    }, [postCreated, username])
-
+    }, [username])
+    const isFollower = user.followers.length? user.followers.filter(f => f._id === userId) : false
     const isOwner = username === userUsername
-
+    console.log(user.followers);
    async function onFollow(e) {
         e.preventDefault()
-        console.log("Hi from follow");
+   
         let updatedUser;
-        console.log(user);
-        console.log(user.followers);
-        const isFollower = user.followers.length? user.followers.filter(f => f._id === userId) : false
-        console.log(isFollower);
+   
         if(!isFollower) {
-            console.log("from to follow");
            updatedUser = await userService.addFollower(user.email,userId) 
         } else {
-            console.log("from not to follow");
+         console.log("hi");
            updatedUser = await userService.removeFollower(user.email,userId)
+           console.log(updatedUser);
         }
-        setUser(state => ({ ...state, ...updatedUser,posts: updatedUser.posts.reverse()}))
-        console.log(user.followers);
+      
+        setUser(state => ({ ...state, ...updatedUser, posts: updatedUser.posts.reverse()}))
+     
 
     }
 
@@ -109,7 +107,7 @@ export default function Profile({
                             <div className={styles["profile-options"]}>
                                 <p className={styles["profile-username"]}>{username}</p>
                                 {isOwner ? <Link to={"/profile/edit"} className={styles["profile-info-button"]}>Edit profile</Link>
-                                    : <button className={styles["profile-info-button"]} onClick={onFollow} >{user.followers.includes(userId) ? "Unfollow" : "Follow"}</button>}
+                                    : <button className={styles["profile-info-button"]} onClick={onFollow} >{isFollower? "Unfollow" : "Follow"}</button>}
 
 
                             </div>

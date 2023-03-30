@@ -48,20 +48,18 @@ exports.editProfile = async (req, res) => {
 exports.addFollower = async (req, res) => {
 
     try {
-     console.log("Hello from addfollower");
+   
         const { email, userId } = req.body
-        console.log(email, userId);
+        
         const user = await userService.getOne(email)
-        console.log(user);
         user.followers.push(userId)
         await userService.updateUserById(user._id, user)
-        console.log("after update user");
         const updatedUser = await userService.getOneByUsernameWithRetentions(user.username);
-        console.log(updatedUser);
+        
         const follower = await userService.getOneById(userId);
         follower.follow.push(user._id)
         await userService.updateUserById(userId, follower)
-        console.log("after update 2user");
+        
 
         res.status(200).send(updatedUser);
 
@@ -78,14 +76,17 @@ exports.removeFollower = async (req, res) => {
         const { email, userId } = req.body
         const user = await userService.getOne(email)
 
-        const filteredFollowers = user.followers.filter(f => f._id !== userId)
+        const filteredFollowers = user.followers.filter(f => f._id.toString() !== userId)
 
         await userService.updateUserById(user._id, { ...user, followers: filteredFollowers })
         const updatedUser = await userService.getOneByUsernameWithRetentions(user.username);
 
         const follower = await userService.getOneById(userId);
-        const filteredFollow = follower.follow.filter(f => f._id !== user._id)
+    
+        const filteredFollow = follower.follow.filter(f => f._id.toString() !== user._id.toString() )
+  
         await userService.updateUserById(userId, { ...follower, follow: filteredFollow })
+
         res.status(200).send(updatedUser);
 
     } catch (err) {
