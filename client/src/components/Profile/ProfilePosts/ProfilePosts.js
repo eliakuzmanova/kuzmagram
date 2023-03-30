@@ -9,14 +9,13 @@ export default function ProfilePosts({
 }) {
     const [btnClicked, setBtnClicked] = useState(false)
     const [clickedPost, setClickedPost] = useState("")
-    console.log("Hello from Profile posts");
+
    async function onClickPhoto(e, post) {
         e.preventDefault()
      
         const result = await postService.getOne(post._id)
         setBtnClicked(true)
         setClickedPost(result)
-        console.log("Hello from Profile posts ionClick");
     }
 
     function onModalClose() {

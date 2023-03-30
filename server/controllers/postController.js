@@ -18,6 +18,16 @@ exports.createPost = async (req, res) => {
 
 }
 
+exports.getOneWithLikes = async (req, res) => {
+    try {
+        const { postId } = req.params
+        const post = await postService.getOneWithLikes(postId)
+        res.status(200).send(post);
+    } catch (err) {
+        res.status(400).send(err);
+    }
+}
+
 exports.getOne = async (req, res) => {
     try {
         const { postId } = req.params

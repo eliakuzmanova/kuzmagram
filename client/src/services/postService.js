@@ -8,6 +8,13 @@ export const getOne = async (profileId) => {
     return post
   } 
 
+  export const getOneWithLikes = async (profileId) => {
+    const post = await request.get(`${baseUrl}/${profileId}/getOneWithLikes`);
+
+    return post
+  } 
+
+
 export const likePost = async (profileId, userId) => {
 
   const post = await request.post(`${baseUrl}/${profileId}/like`, {userId});
