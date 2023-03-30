@@ -4,6 +4,8 @@ exports.create = (imagePath, userId, description) => Post.create({image:imagePat
 
 exports.getOne = (postId) => Post.findById(postId).lean();
 
+exports.getAll = () => Post.find({}).populate("owner").lean();
+
 exports.getOneWithLikes = (postId) => Post.findById(postId).populate("likes").lean();
 
 exports.getOneWithRel = (postId) => Post.findById(postId).lean();

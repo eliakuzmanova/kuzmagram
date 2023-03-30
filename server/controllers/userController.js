@@ -1,4 +1,5 @@
 const userService = require("../services/userService");
+const postService = require("../services/postService");
 
 exports.getOne = async (req, res) => {
 
@@ -48,18 +49,18 @@ exports.editProfile = async (req, res) => {
 exports.addFollower = async (req, res) => {
 
     try {
-   
+
         const { email, userId } = req.body
-        
+
         const user = await userService.getOne(email)
         user.followers.push(userId)
         await userService.updateUserById(user._id, user)
         const updatedUser = await userService.getOneByUsernameWithRetentions(user.username);
-        
+
         const follower = await userService.getOneById(userId);
         follower.follow.push(user._id)
         await userService.updateUserById(userId, follower)
-        
+
 
         res.status(200).send(updatedUser);
 
@@ -82,9 +83,9 @@ exports.removeFollower = async (req, res) => {
         const updatedUser = await userService.getOneByUsernameWithRetentions(user.username);
 
         const follower = await userService.getOneById(userId);
-    
-        const filteredFollow = follower.follow.filter(f => f._id.toString() !== user._id.toString() )
-  
+
+        const filteredFollow = follower.follow.filter(f => f._id.toString() !== user._id.toString())
+
         await userService.updateUserById(userId, { ...follower, follow: filteredFollow })
 
         res.status(200).send(updatedUser);
@@ -114,16 +115,33 @@ exports.deleteUser = async (req, res) => {
 exports.getUserWithFollow = async (req, res) => {
 
     try {
-        console.log("HEllo");
+
         const posts = []
         const { userId } = req.body
-        console.log(userId);
 
-        const userWithFollow = await userService.getOneByUsernameWithFollows(userId)
-        console.log(userWithFollow);
-       const newPosts = userWithFollow.follow.forEach(async(f) => await userService.getOneByUsernameWithPosts(f._id)); 
-console.log(newPosts);
-        res.status(200).send(posts);
+        const user = await userService.getOneById(userId)
+     
+        const allPosts = await postService.getAll()
+       
+        const follows = user.follow
+
+        for (const post of allPosts) {
+   
+            for (const foll of follows) {
+                
+                if (foll.toString() == post.owner._id.toString()) {
+                    posts.push(post);
+                }
+            }
+
+            if(userId == post.owner._id.toString()) {
+                posts.push(post);
+            }
+        }
+
+        const reversedPosts = posts.reverse();
+
+        res.status(200).send(reversedPosts);
 
     } catch (err) {
         res.status(403).send(err);

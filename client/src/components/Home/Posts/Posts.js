@@ -8,20 +8,22 @@ export default function Posts(){
 
     const { userId } = useAuthContext()
     const [posts, setPosts] = useState("")
-
-    useEffect(()=>{
+    
+    useEffect(() => {
         const fetchPosts = async() => {
+        
          const fetchedPost = await userService.getFollowsPosts(userId)
+       
          setPosts(fetchedPost)
         }
         fetchPosts()
     
     },[userId])
-    
+
     return(
-        <h1>Hi</h1>
-        // <main className={styles["main"]}>
-        //      {photos.map(x => <Post key={i++} photo={x}/>)} 
-        //     </main>
+        
+        <main className={styles["main"]}>
+             {posts ? posts.map(p => <Post key={p._id} post={p}/>) : ""} 
+        </main>
     )
 }

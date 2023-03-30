@@ -1,4 +1,4 @@
-import { FaEllipsisH } from "react-icons/fa"
+
 import { HiOutlineBookmark } from "react-icons/hi2";
 import { HiOutlineHeart } from "react-icons/hi2";
 import { HiOutlineChatBubbleOvalLeft } from "react-icons/hi2";
@@ -7,20 +7,19 @@ import { Link } from "react-router-dom"
 import styles from "./post.module.css";
 
 
-export default function Post({photo}) {
+export default function Post({post}) {
     return (
 
-        // take out the "..." icon and the book mark icon <---------- 
         <article className={styles["post"]}>
             <section className={styles["user-section"]}>
                 <div className={styles["user-container"]}>
-                    <img className={styles["user-image"]} src={require("./../../../../images/profil.jpg")} alt="user" />
-                    <Link className={styles["user-username"]}>username</Link>
+                    <img className={styles["user-image"]} src={post.owner.image ? `http://localhost:7070/${post.owner.image}` : require("../../../../images/user-profile-image.png")} alt="user" />
+                    <Link className={styles["user-username"]}>{post.owner.username}</Link>
                 </div>
-                <FaEllipsisH className={styles["icon-more"]}/>
+
             </section>
             <section className={styles["post-image-section"]}>
-                <img className={styles["post-image"]} src={photo} alt="post" />
+                <img className={styles["post-image"]} src={`http://localhost:7070/${post.image}`} alt="post" />
             </section>
             <section className={styles["icons-section"]}>
                 <div className={styles["actions-container"]}>
@@ -36,11 +35,11 @@ export default function Post({photo}) {
             </section>
             <section className={styles["comments-section"]}>
                 <div className={styles["text-likes-container"]}>
-                    <p className={styles["text-likes"]}>Some <b>people</b> like that</p>
+                    <p className={styles["text-likes"]}>Some <b>{post.likes.length}</b> like that</p>
                 </div>
                 <div className={styles["description-container"]}>
                     
-                    <p className={styles["description"]}> <Link className={styles["username-description"]}>username</Link> Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere nam aperiam culpa aut maiores explicabo dicta odio ducimus voluptates, dolorum incidunt deleniti eum inventore assumenda eius commodi consequuntur ipsam consequatur!</p>
+                    <p className={styles["description"]}> <Link className={styles["username-description"]}>{post.owner.username} </Link>{post.description}</p>
                 </div>
                 
                <Comments />
