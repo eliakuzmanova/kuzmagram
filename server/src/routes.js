@@ -19,6 +19,8 @@ router.post("/users/delete", userController.deleteUser)
 router.post("/profile/edit", upload.single("image"),userController.editProfile)
 
 router.post("/posts/create", upload.single("image"),postController.createPost)
-router.post("/posts/:profileId/like",postController.likePost)
+router.get("/posts/:postId/getOne",postController.getOne)
+router.post("/posts/:postId/like",postController.likePost)
+router.post("/posts/:postId/dislike",postController.dislikePost)
 
 module.exports = router
