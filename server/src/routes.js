@@ -11,6 +11,8 @@ const authController = require("../controllers/authController");
 router.post("/auth/register", authController.register)
 router.post("/auth/login", authController.login)
 
+router.post("/users/getFollowsPosts", userController.getUserWithFollow)
+
 router.post("/users/getOne", userController.getOne)
 router.post("/users/getOneWithRelations", userController.getOneByUsernameWithRel)
 router.post("/users/addFollower", userController.addFollower)

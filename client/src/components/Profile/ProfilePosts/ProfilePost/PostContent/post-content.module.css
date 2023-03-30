@@ -141,16 +141,6 @@
     cursor: pointer;
 }
 
-.icon-message{
-    font-size: 32px;
-    font-weight: bold;
-    color: var(--dark-gray);
-    margin-left: 10px;
-}
-.icon-message:hover {
-    color: rgb(125, 125, 125);  
-}
-
 .comments-area-section{
     display: flex;
     flex-direction: column;

@@ -1,8 +1,7 @@
 import Navbar from "../Navbar/Navbar"
 import Footer from "../Footer/Footer"
 import styles from "./profile.module.css"
-import { Link, useParams } from "react-router-dom"
-// import { HiOutlineBookmark } from "react-icons/hi2";
+import { Link, useParams, useNavigate } from "react-router-dom"
 import { BsGrid3X3Gap } from "react-icons/bs";
 import ProfilePosts from "./ProfilePosts/ProfilePosts";
 import { useAuthContext } from '../../contexts/AuthContext';
@@ -25,6 +24,7 @@ export default function Profile({
         follow: "",
 
     })
+    const navigate = useNavigate()
     const { username } = useParams()
     const { userUsername, userId } = useAuthContext()
 
@@ -33,7 +33,7 @@ export default function Profile({
 
     useEffect(() => {
         const fetchUser = async () => {
-            onModalClose()
+         
             const userInfo = await userService.getOneUserWithRelations(username)
             
             setUser(state => ({ ...state, ...userInfo, posts: userInfo.posts.reverse() }))
@@ -41,18 +41,27 @@ export default function Profile({
         fetchUser();
 
     }, [postCreated, username])
+
     const isOwner = username === userUsername
 
    async function onFollow(e) {
         e.preventDefault()
+        console.log("Hi from follow");
         let updatedUser;
-        const isFollower = user.followers.filter(f => f._id === userId)
+        console.log(user);
+        console.log(user.followers);
+        const isFollower = user.followers.length? user.followers.filter(f => f._id === userId) : false
+        console.log(isFollower);
         if(!isFollower) {
+            console.log("from to follow");
            updatedUser = await userService.addFollower(user.email,userId) 
         } else {
+            console.log("from not to follow");
            updatedUser = await userService.removeFollower(user.email,userId)
         }
         setUser(state => ({ ...state, ...updatedUser,posts: updatedUser.posts.reverse()}))
+        console.log(user.followers);
+
     }
 
     function onFollowers(e) {
@@ -70,13 +79,19 @@ export default function Profile({
       
     }
 
-    function onModalClose() {
+    function onModalClose(e,username) {
+        e.preventDefault()
 
         if(followersClicked) {
             setFollowersClicked(false)
         } else if(followedClicked) {
             setFollowedClicked(false)
         } 
+
+        if(username){
+            navigate(`/profile/${username}`)
+        }
+
     }
 
     return (

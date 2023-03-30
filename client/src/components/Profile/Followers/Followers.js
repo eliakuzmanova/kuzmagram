@@ -25,8 +25,8 @@ export default function Followers({
 
                     <div className={styles["profiles-container"]}>
                         {text == "Followers"
-                        ? user.followers.map(f => <Follower key={f._id} profile={f}/>)
-                        : user.follow.map(f => <Follower key={f._id} profile={f}/>)
+                        ? user.followers.map(f => <Follower key={f._id} profile={f} onModalClose={onModalClose}/>)
+                        : user.follow.map(f => <Follower key={f._id} profile={f} onModalClose={onModalClose}/>)
                     }
                     </div>
                 </div>

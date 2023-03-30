@@ -9,6 +9,8 @@ import styles from "./post.module.css";
 
 export default function Post({photo}) {
     return (
+
+        // take out the "..." icon and the book mark icon <---------- 
         <article className={styles["post"]}>
             <section className={styles["user-section"]}>
                 <div className={styles["user-container"]}>

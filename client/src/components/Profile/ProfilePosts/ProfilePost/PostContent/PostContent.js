@@ -3,7 +3,6 @@ import ModalComments from "./ModalComments/ModalComments"
 import { Link } from "react-router-dom"
 import { HiEllipsisHorizontal } from "react-icons/hi2";
 import { HiOutlineHeart } from "react-icons/hi2";
-import { HiOutlineChatBubbleOvalLeft } from "react-icons/hi2";
 import { HiOutlineXMark } from "react-icons/hi2";
 import { useContext, useEffect, useState } from "react"
 import { ProfileContext } from "../../../../../contexts/ProfileContext"
@@ -42,15 +41,15 @@ export default function PostContent({
 
     async function onLike() {
 
-        let updatedPost;
+       
         if (!heartClicked) {
 
-            updatedPost = await postService.likePost(post._id, userId)
+            await postService.likePost(post._id, userId)
             setPostLikes(state => ([...state, userId]))
             setHeartClicked(true)
         } else {
 
-            updatedPost = await postService.dislikePost(post._id, userId)
+            await postService.dislikePost(post._id, userId)
 
             setPostLikes(state => state.filter(state => state != userId))
             setHeartClicked(false)
@@ -100,8 +99,6 @@ export default function PostContent({
                             <div className={styles["actions-container"]}>
 
                                 <HiOutlineHeart className={heartClicked ? styles["icon-heart-clicked"] : styles["icon-heart"]} onClick={onLike} />
-
-                                <HiOutlineChatBubbleOvalLeft className={styles["icon-message"]} />
 
                             </div>
 

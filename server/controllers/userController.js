@@ -48,17 +48,20 @@ exports.editProfile = async (req, res) => {
 exports.addFollower = async (req, res) => {
 
     try {
-     
+     console.log("Hello from addfollower");
         const { email, userId } = req.body
-
+        console.log(email, userId);
         const user = await userService.getOne(email)
+        console.log(user);
         user.followers.push(userId)
         await userService.updateUserById(user._id, user)
+        console.log("after update user");
         const updatedUser = await userService.getOneByUsernameWithRetentions(user.username);
-
+        console.log(updatedUser);
         const follower = await userService.getOneById(userId);
         follower.follow.push(user._id)
         await userService.updateUserById(userId, follower)
+        console.log("after update 2user");
 
         res.status(200).send(updatedUser);
 
@@ -100,6 +103,26 @@ exports.deleteUser = async (req, res) => {
         await userService.delete(userId);
 
         res.status(200).end();
+
+    } catch (err) {
+        res.status(403).send(err);
+    }
+
+}
+
+exports.getUserWithFollow = async (req, res) => {
+
+    try {
+        console.log("HEllo");
+        const posts = []
+        const { userId } = req.body
+        console.log(userId);
+
+        const userWithFollow = await userService.getOneByUsernameWithFollows(userId)
+        console.log(userWithFollow);
+       const newPosts = userWithFollow.follow.forEach(async(f) => await userService.getOneByUsernameWithPosts(f._id)); 
+console.log(newPosts);
+        res.status(200).send(posts);
 
     } catch (err) {
         res.status(403).send(err);
