@@ -2,57 +2,54 @@ import styles from "./post-content.module.css"
 import ModalComments from "./ModalComments/ModalComments"
 import { Link } from "react-router-dom"
 import { HiEllipsisHorizontal } from "react-icons/hi2";
-import { HiOutlineBookmark } from "react-icons/hi2";
 import { HiOutlineHeart } from "react-icons/hi2";
 import { HiOutlineChatBubbleOvalLeft } from "react-icons/hi2";
 import { HiOutlineXMark } from "react-icons/hi2";
 import { useContext, useEffect, useState } from "react"
 import { ProfileContext } from "../../../../../contexts/ProfileContext"
-import * as postService from "../../../../../services/postService"
 import { useAuthContext } from '../../../../..//contexts/AuthContext';
-
+import * as postService from "../../../../../services/postService"
 export default function PostContent({
     onModalClose,
     post
 }) {
-
-    // add logic to stay liked or unlike thhe btn <-------------
+    
     const { userId } = useAuthContext()
+    
     const user = useContext(ProfileContext)
+
     const [heartClicked, setHeartClicked] = useState(false)
-    const [fetchedPost, setFetchedPost] = useState("")
+
     const [postLikes, setPostLikes] = useState(post.likes)
-    useEffect(() => {
-        fetchPost()
-        console.log("Hello from fetch");
-    }, [])
    
-    async function fetchPost() {
-        const result = await postService.getOne(post._id)
-            setFetchedPost(result)
-            setPostLikes(result.likes)
-            if (postLikes.includes(userId)) {
-                setHeartClicked(true)
-            } else {
-                setHeartClicked(false)
-            }
-            console.log("Hello from fetch func");
-    }
+ 
+    useEffect(() => {
 
-    async function onLike() {
-        let updatedPost;
-        if (!heartClicked) {
-
-            updatedPost = await postService.likePost(fetchedPost._id, userId)
-            setPostLikes(state => ([...state, userId]))
+        if (postLikes.includes(userId)) {
+         
             setHeartClicked(true)
         } else {
+         
+            setHeartClicked(false)
+        }
+    }, [userId,postLikes]) 
+ 
 
-            updatedPost = await postService.dislikePost(fetchedPost._id, userId)
+    async function onLike() {
+    
+        let updatedPost;
+            if (!heartClicked) {
+
+            updatedPost = await postService.likePost(post._id, userId)
+            setPostLikes(state => ([...state, userId]))
+            setHeartClicked(true)
+            } else {
+
+            updatedPost = await postService.dislikePost(post._id, userId)
 
             setPostLikes(state => state.filter(state => state != userId))
             setHeartClicked(false)
-        }
+            }
  
     }
     return (
@@ -94,7 +91,7 @@ export default function PostContent({
                         </section>
                         <section className={styles["comments-area-section"]}>
                             <div className={styles["text-likes-container"]}>
-                                <p className={styles["text-likes"]}><b>{postLikes.length}</b> people like that</p>
+                                <p className={styles["text-likes"]}><Link className={styles["link-people-likes"]}>{postLikes.length}</Link> people like that</p>
                             </div>
 
                             <div className={styles["textarea-container"]}>

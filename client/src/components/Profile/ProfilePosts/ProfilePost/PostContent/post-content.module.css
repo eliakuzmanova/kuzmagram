@@ -229,3 +229,8 @@
 .textarea::placeholder{
     font-size: 15px;
 }
+
+.link-people-likes{
+    text-decoration: none;
+    font-weight: 600;
+}
