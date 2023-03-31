@@ -1,19 +1,20 @@
-import { useState } from "react"
+import {useState } from "react"
 import styles from "./create.module.css"
 import { IoImageOutline } from "react-icons/io5";
 import { HiOutlineXMark } from "react-icons/hi2";
 import { useAuthContext } from '../../contexts/AuthContext';
 
+
 export default function Create({
     onModalClose,
     image,
     setImage,
-    setPostCreated
+
 }) {
     const [imageName, setImageName] = useState("")
     const {userId} = useAuthContext()
     const [description, setDescription] = useState("")
-    // window.history.replaceState(null, "New Page Title", "/create-post")
+
     function onUploadImage(e) {
         e.preventDefault()
         setImage(e.target.files[0])
@@ -37,8 +38,8 @@ export default function Create({
                 method: "POST",
                 body: formData
             })
-            setPostCreated(post)
-            onModalClose()
+            
+            onModalClose(e,post);
           
         } catch (error) {
             console.log(error);

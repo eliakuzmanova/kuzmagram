@@ -10,9 +10,7 @@ import * as userService from "../../services/userService";
 import { ProfileContext } from "../../contexts/ProfileContext";
 import Followers from "./Followers/Followers";
 
-export default function Profile({
-    postCreated
-}) {
+export default function Profile() {
     const [user, setUser] = useState({
         "_id": "",
         username: "",
@@ -33,14 +31,17 @@ export default function Profile({
 
     useEffect(() => {
         const fetchUser = async () => {
-         
+         console.log("hello from fetch");
             const userInfo = await userService.getOneUserWithRelations(username)
-            
-            setUser(state => ({ ...state, ...userInfo, posts: userInfo.posts.reverse() }))
+            console.log(userInfo);
+            setUser(state => ({ ...state, ...userInfo,description:userInfo.description ,image: userInfo.image, posts: userInfo.posts.reverse() }))
+
         }
         fetchUser();
-
+        
     }, [username])
+    console.log("hello after fetch");
+    console.log(user);
     const isFollower = user.followers.length? user.followers.filter(f => f._id === userId) : false
     const isOwner = username === userUsername
    
@@ -52,12 +53,12 @@ export default function Profile({
         if(!isFollower) {
            updatedUser = await userService.addFollower(user.email,userId) 
         } else {
-         console.log("hi");
+        
            updatedUser = await userService.removeFollower(user.email,userId)
-           console.log(updatedUser);
+    
         }
       
-        setUser(state => ({ ...state, ...updatedUser, posts: updatedUser.posts.reverse()}))
+        setUser(state => ({ ...state, ...updatedUser,posts: updatedUser.posts.reverse()}))
      
 
     }

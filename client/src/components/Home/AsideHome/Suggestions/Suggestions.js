@@ -10,7 +10,6 @@ export default function Suggestions({
     useEffect(() => {
         const fetchData = async () => {
             const fetchedUsers = await userService.getOneUserWithNonFollow(userId)
-            console.log(fetchedUsers);
             setUsers(fetchedUsers)
         }
         fetchData();

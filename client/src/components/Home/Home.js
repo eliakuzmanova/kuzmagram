@@ -3,21 +3,49 @@ import styles from "./home.module.css";
 import Navbar from "../Navbar/Navbar";
 import Posts from "./Posts/Posts";
 import AsideHome from "./AsideHome/AsideHome"
+import { useAuthContext } from '../../contexts/AuthContext';
+import * as userService from "../../services/userService";
+import { useEffect, useState } from "react";
 
+export default function Home({createdPost,setCreatedPost}) {
 
-export default function Home({
-    setCreateClicked
-}) {
+    const { userId } = useAuthContext()
+    const [posts, setPosts] = useState("")
    
+    useEffect(() => {
+        
+        const fetchPosts = async () => {
+
+            const fetchedPosts = await userService.getFollowsPosts(userId)
+
+            setPosts(fetchedPosts)
+     
+        }
+        fetchPosts()
+    }, [userId])
+   
+    if(createdPost) {
+        getNewData()
+       
+    }
+    async function getNewData() {
+     
+        const fetchedPosts = await userService.getFollowsPosts(userId)
+
+        setPosts(fetchedPosts)
+     
+        setCreatedPost(false)
+    }
+
     return (
         <>
             <div className={styles["container-home"]}>
                 <header className={styles["header"]}>
-                    <Navbar setCreateClicked={setCreateClicked} />
+                    <Navbar />
                 </header>
                 <div className={styles["container-main-aside"]}>
 
-                    <Posts />
+                    <Posts posts={posts} getNewData={getNewData} />
                     <article className={styles["aside-article-home"]}>
                         <AsideHome />
                         <FooterHome />

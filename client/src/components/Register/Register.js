@@ -45,7 +45,7 @@ export default function Register() {
         e.preventDefault();
 
         if (e.target.name === "username") {
-            if (/^[a-z0-9_\.]{3,12}$/.test(formValues.username)) {
+            if (/^[a-z0-9_\.]{3,25}$/.test(formValues.username)) {
                 setAreInputsCorrect(state => ({ ...state, ["username"]: styles["correct-input"] }))
 
             } else {

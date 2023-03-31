@@ -43,14 +43,23 @@ exports.getOneWithNonFollow = async (req, res) => {
 
         for (const user of allUsers) {
             let isNonFollow = [];
+            
            follows.map((follow) => {
-           
+            
             (follow._id.toString() !== user._id.toString()) && (user._id.toString() !== id)
             ? isNonFollow.push(true)
             : isNonFollow.push(false)
+          
            })
-           if(!isNonFollow.includes(false)) {
+           if(!follows.length && (user._id.toString() !== id)) {
+            isNonFollow.push(true)
+           }
+      
+          
+           if(!isNonFollow.includes(false) && isNonFollow.length) {
+           
             nonFollow.push(user);
+            
         }
          }
         // console.log(nonFollow);
