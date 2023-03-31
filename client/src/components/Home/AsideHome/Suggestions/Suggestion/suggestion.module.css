@@ -29,18 +29,3 @@
     margin-left: 12px;
     font-size: 12px;
 }
-
-.suggestion-follow {
-
-    font-family: 'Noto Sans', sans-serif;
-    font-weight: 600;
-    text-decoration: none;
-    color: var(--dark-gray);
-    font-size: 13px;
-    transition: all 0.1s ease-in-out;
-}
-
-.suggestion-follow:hover {
-    color: var(--blue);
-
-}

@@ -8,7 +8,7 @@ import AsideHome from "./AsideHome/AsideHome"
 export default function Home({
     setCreateClicked
 }) {
-    
+   
     return (
         <>
             <div className={styles["container-home"]}>

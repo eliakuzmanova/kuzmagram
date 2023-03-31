@@ -66,17 +66,10 @@
     display: flex;
     align-items: center;
 }
-.last-icon-container{
-    display: flex;
-    align-items: center;
-}
+
 .icon{
    font-size: 30px;
    color: var(--dark-gray);
-}
-
-.icon-message{
-    margin-left: 12px;
 }
 
 .comments-section{

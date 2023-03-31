@@ -7,6 +7,13 @@ export const getOneUser = async (email) => {
   const user = await request.post(`${baseUrl}/getOne`, {email});
   return user
 } 
+
+export const getOneUserWithNonFollow = async (id) => {
+
+  const user = await request.post(`${baseUrl}/getOneWithNonFollow`, {id});
+  return user
+} 
+
 export const getFollowsPosts = async (userId) => {
   const result = await request.post(`${baseUrl}/getFollowsPosts`, {userId});
   return result

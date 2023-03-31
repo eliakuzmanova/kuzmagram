@@ -1,14 +1,16 @@
 import { Link } from "react-router-dom"
 import styles from "./suggestion.module.css";
 
-export default function Suggestion() {
+export default function Suggestion({
+    user
+}) {
     return (
         <div className={styles["suggestion-profile-container"]}>
             <div className={styles["suggestion-profile-info-container"]}>
-                <img className={styles["suggestion-photo"]} src={require("./../../../../../images/couple.jpg")} alt="profile" />
-                <p className={styles["suggestion-username"]}>username</p>
+                <img className={styles["suggestion-photo"]} src={user.image ? `http://localhost:7070/${user.image}` : require("../../../../../images/user-profile-image.png")} alt="profile" />
+                <Link to={`/profile/${user.username}`} className={styles["suggestion-username"]}>{user.username}</Link>
             </div>
-            <Link className={styles["suggestion-follow"]}>Follow</Link>
+         
         </div>
     )
 }

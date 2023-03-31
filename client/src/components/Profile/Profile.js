@@ -43,7 +43,7 @@ export default function Profile({
     }, [username])
     const isFollower = user.followers.length? user.followers.filter(f => f._id === userId) : false
     const isOwner = username === userUsername
-    console.log(user.followers);
+   
    async function onFollow(e) {
         e.preventDefault()
    

@@ -1,7 +1,6 @@
 
-import { HiOutlineBookmark } from "react-icons/hi2";
+
 import { HiOutlineHeart } from "react-icons/hi2";
-import { HiOutlineChatBubbleOvalLeft } from "react-icons/hi2";
 import  Comments  from "./../../../Comments/Comments";
 import { Link } from "react-router-dom"
 import styles from "./post.module.css";
@@ -14,7 +13,7 @@ export default function Post({post}) {
             <section className={styles["user-section"]}>
                 <div className={styles["user-container"]}>
                     <img className={styles["user-image"]} src={post.owner.image ? `http://localhost:7070/${post.owner.image}` : require("../../../../images/user-profile-image.png")} alt="user" />
-                    <Link className={styles["user-username"]}>{post.owner.username}</Link>
+                        <Link to={`/profile/${post.owner.username}`}className={styles["user-username"]}>{post.owner.username}</Link>
                 </div>
 
             </section>
@@ -26,16 +25,12 @@ export default function Post({post}) {
 
                     <HiOutlineHeart className={styles["icon"]} />
 
-                    <HiOutlineChatBubbleOvalLeft className={`${styles["icon"]} ${styles["icon-message"]}`} />
-
                 </div>
-                <div className={styles["last-icon-container"]}>
-                    <HiOutlineBookmark className={styles["icon"]} />
-                </div>
+         
             </section>
             <section className={styles["comments-section"]}>
                 <div className={styles["text-likes-container"]}>
-                    <p className={styles["text-likes"]}>Some <b>{post.likes.length}</b> like that</p>
+                    <p className={styles["text-likes"]}><b>{post.likes.length}</b> people like that</p>
                 </div>
                 <div className={styles["description-container"]}>
                     

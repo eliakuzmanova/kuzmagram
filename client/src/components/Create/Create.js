@@ -13,7 +13,7 @@ export default function Create({
     const [imageName, setImageName] = useState("")
     const {userId} = useAuthContext()
     const [description, setDescription] = useState("")
-
+    // window.history.replaceState(null, "New Page Title", "/create-post")
     function onUploadImage(e) {
         e.preventDefault()
         setImage(e.target.files[0])

@@ -29,6 +29,41 @@ exports.getOneByUsernameWithRel = async (req, res) => {
 
 }
 
+exports.getOneWithNonFollow = async (req, res) => {
+
+    try {
+ 
+        const { id } = req.body
+  
+        const nonFollow = []
+        const user = await userService.getOneWithNonFollow(id);
+        const follows = user.follow
+
+        const allUsers = await userService.getAll()
+
+        for (const user of allUsers) {
+            let isNonFollow = [];
+           follows.map((follow) => {
+           
+            (follow._id.toString() !== user._id.toString()) && (user._id.toString() !== id)
+            ? isNonFollow.push(true)
+            : isNonFollow.push(false)
+           })
+           if(!isNonFollow.includes(false)) {
+            nonFollow.push(user);
+        }
+         }
+        // console.log(nonFollow);
+        const users = nonFollow.slice(0,3)
+        // console.log(users);
+        res.status(200).send(users);
+
+    } catch (err) {
+        res.status(400).send(err);
+    }
+
+}
+
 exports.editProfile = async (req, res) => {
 
     try {

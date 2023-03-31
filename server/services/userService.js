@@ -4,6 +4,10 @@ exports.getOne = (email) => User.findOne({email}).lean();
 
 exports.getOneById = (userId) => User.findById(userId).lean();
 
+exports.getAll = () => User.find({}).lean();
+
+exports.getOneWithNonFollow = (id) => User.findById(id).populate("follow").lean();
+
 exports.getOneByUsernameWithPosts = (id) => User.findById(id).populate("posts").lean();
 
 exports.getOneByUsernameWithFollows = (id) => User.findById(id).populate("follow").lean();
