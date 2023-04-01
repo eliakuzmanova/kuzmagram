@@ -13,7 +13,7 @@ export default function Confirm({
     
     async function onDelete(e) {
         e.preventDefault();
-        console.log("delete");
+    
         try {
             await userService.deleteUser(userId)
          

@@ -10,6 +10,7 @@ import * as userService from "../../services/userService";
 import { ProfileContext } from "../../contexts/ProfileContext";
 import Followers from "./Followers/Followers";
 
+
 export default function Profile() {
     const [user, setUser] = useState({
         "_id": "",
@@ -30,6 +31,7 @@ export default function Profile() {
     const [followedClicked, setFollowedClicked] = useState(false)
 
     useEffect(() => {
+
         const fetchUser = async () => {
   
             const userInfo = await userService.getOneUserWithRelations(username)
@@ -90,7 +92,6 @@ export default function Profile() {
         }
 
     }
-
     return (
         <ProfileContext.Provider value={user} >
             <div className={styles["profile-container"]}>
@@ -135,7 +136,9 @@ export default function Profile() {
 
                         </div>
                         {user.posts.length ?
+                      
                             <ProfilePosts posts={user.posts} />
+                         
                             : <div className={styles["no-posts-container"]}>
                                 <p className={styles["no-posts"]}>There are no posts from this user yet</p>
                             </div>

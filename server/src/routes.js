@@ -29,5 +29,7 @@ router.post("/posts/:postId/like",postController.likePost)
 router.post("/posts/:postId/dislike",postController.dislikePost)
 router.post("/posts/:postId/comment",postController.postComment)
 router.get("/posts/:postId/getPostWithComments",postController.getPostWithComments)
+router.post("/posts/:postId/updatePost",postController.updatePost)
+router.post("/posts/:postId/deletePost",postController.deletePost)
 
 module.exports = router

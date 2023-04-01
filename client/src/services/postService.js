@@ -37,3 +37,13 @@ export const postComment = async (comment, userId ,postId) => {
  const result = await request.post(`${baseUrl}/${postId}/comment`, { comment,userId });
  return result
 }
+
+export const updatePost = async (postId, description) => {
+  const result = await request.post(`${baseUrl}/${postId}/updatePost`, { description });
+  return result
+ }
+
+ export const deletePost = async (postId) => {
+  const result = await request.post(`${baseUrl}/${postId}/deletePost`,{postId});
+  return result
+ }

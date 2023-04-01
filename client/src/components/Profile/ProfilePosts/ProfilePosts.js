@@ -1,14 +1,17 @@
 import styles from "./profile-posts.module.css"
 import ProfilePost from "./ProfilePost/ProfilePost"
 import { useState } from "react"
+
 import PostContent from "./ProfilePost/PostContent/PostContent"
 import * as postService from "../../../services/postService"
+
 
 export default function ProfilePosts({
     posts
 }) {
     const [btnClicked, setBtnClicked] = useState(false)
     const [clickedPost, setClickedPost] = useState("")
+
 
    async function onClickPhoto(e, post) {
         e.preventDefault()
@@ -21,7 +24,6 @@ export default function ProfilePosts({
     function onModalClose() {
         setBtnClicked(false)
         setClickedPost("")
-        
     }
 
 
@@ -29,7 +31,7 @@ export default function ProfilePosts({
         <>
             <div className={styles["profile-posts-container"]}>
            
-                {posts.map(x => <ProfilePost key={x._id} post={x} onClickPhoto={onClickPhoto} />)} 
+                {posts.map(x => <ProfilePost key={x._id} post={x} onClickPhoto={onClickPhoto}/>)} 
                 
             </div>
             <>

@@ -1,0 +1,219 @@
+.modal {
+    background-color: rgba(0, 0, 0, 0.524);
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+}
+
+.modal-content {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px;
+    height: 610px;
+    background: white;
+    color: white;
+    z-index: 10;
+    border-radius: 16px;
+    box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
+}
+
+.close-btn {
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 35px;
+    color: #ffffff;
+    transition: all 0.25s ease;
+    box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.06);
+    position: absolute;
+    right: 0;
+    top: 0;
+    align-self: flex-end;
+    margin-top: 8px;
+    margin-right: 8px;
+
+}
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 55px;
+    border-bottom: 1px solid var(--light-gray);
+}
+.edit-text{
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--dark-gray);
+    font-family: 'Noto Sans', sans-serif;
+}
+.post {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.image-section {
+
+    width: 50%;
+    height: 555px;
+    border-bottom-left-radius: 16px;
+    border-top-left-radius: 16px;
+    background-color: rgb(255, 255, 255);
+
+}
+
+.image {
+    width: 400px;
+    height: 555px;
+    object-fit: scale-down;
+    border-bottom-left-radius: 16px;
+    border-top-left-radius: 16px;
+}
+
+.post-information-side {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 50%;
+    margin-top: 13px;
+    margin-left: 13px;
+    margin-right: 15px;
+}
+
+.user-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    border-bottom: 1px solid var(--light-gray);
+    padding-bottom: 12px;
+}
+
+.user-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.user-photo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+
+}
+
+.username {
+    text-decoration: none;
+    font-weight: 600;
+    color: var(--dark-gray);
+    font-family: 'Noto Sans', sans-serif;
+    margin-left: 12px;
+    font-size: 16px;
+}
+
+.description-container{
+    height: 200px;
+    width:100%;
+    margin-top: 5px;
+}
+
+.description{
+    height: 200px;
+    width:100%;
+    border: none;
+    outline: none;
+    resize: none;
+    padding-top: 10px;
+    border-bottom: 1px solid var(--light-gray);
+}
+
+.description::placeholder {
+    font-size: 15px;
+}
+
+.edit-btn-container{
+    width: 100%;
+    margin-top: 25px;
+     display: flex;
+    justify-content: center;
+}
+
+.edit-btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 14px;
+    padding: 7px;
+    width: 95px;
+    border: 2px solid var(--blue);
+    background-color: var(--blue);
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    color: rgb(240, 240, 240);
+    border-radius: 17px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.edit-btn:hover{
+    border: 2px solid rgb(29, 173, 175);
+    background-color: rgb(29, 173, 175);
+}
+
+.other-btns-container{
+    width: 100%;
+    margin-top: 130px;
+     display: flex;
+    justify-content: space-between;
+    
+}
+
+.delete-btn{
+    display: flex;
+    justify-content: center;
+    margin-top: 14px;
+    padding: 7px;
+    width: 95px;
+    border: 2px solid rgb(239, 87, 87);
+    background-color: rgb(239, 87, 87);
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    color: rgb(240, 240, 240);
+    border-radius: 17px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.delete-btn:hover{
+    border: 2px solid rgb(227, 65, 65);
+    background-color: rgb(227, 65, 65);
+}
+.cancel-btn{
+    display: flex;
+    justify-content: center;
+    margin-top: 14px;
+    padding: 7px;
+    width: 95px;
+    border: 2px solid var(--light-gray);
+    background-color: var(--light-gray);
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--dark-gray);
+    border-radius: 17px;
+    cursor: pointer;
+    transition: all 0.s ease-in-out;
+}
+.cancel-btn:hover{
+    border: 2px solid rgb(180, 180, 180);
+    background-color: rgb(180, 180, 180);
+}

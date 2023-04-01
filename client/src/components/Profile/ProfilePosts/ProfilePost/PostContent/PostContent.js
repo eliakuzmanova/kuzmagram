@@ -1,11 +1,11 @@
 import styles from "./post-content.module.css"
 import ModalComments from "./ModalComments/ModalComments"
-import { Link } from "react-router-dom"
+import { Link , useNavigate} from "react-router-dom"
 import { HiEllipsisHorizontal } from "react-icons/hi2";
 import { HiOutlineHeart } from "react-icons/hi2";
 import { HiOutlineXMark } from "react-icons/hi2";
-import { useEffect, useState } from "react"
-
+import { useEffect, useState} from "react"
+import EditPost from "../../../../EditPost/EditPost"
 import { useAuthContext } from '../../../../..//contexts/AuthContext';
 import * as postService from "../../../../../services/postService"
 import * as userService from "../../../../../services/userService"
@@ -16,16 +16,17 @@ export default function PostContent({
     clickedPost
 }) {
 
-    const { userId } = useAuthContext()
-
+    const { userId, userUsername} = useAuthContext()
+  
     const [user, setUser] = useState("")
     const [comment, setComment] = useState("")
     const [heartClicked, setHeartClicked] = useState(false)
     const [postLikes, setPostLikes] = useState(clickedPost.likes)
     const [post, setPost] = useState(clickedPost)
     const [onLikesClicked, setOnLikesClicked] = useState(false)
+    const [onEditClicked, setOnEditClicked] = useState(false)
     const [postWithRelatedLikes, setPostWithRelatedLikes] = useState("")
-
+    const navigate = useNavigate()
 
     useEffect(() => {
 
@@ -46,6 +47,7 @@ export default function PostContent({
         }
     }, [userId, postLikes, clickedPost._id])
 
+    const isOwner = user._id === userId
     function onChangeComment(e) {
         e.preventDefault()
         setComment(e.target.value)
@@ -90,6 +92,23 @@ export default function PostContent({
         setOnLikesClicked(false)
     }
 
+    function onEditClick(){
+        setOnEditClicked(true)
+    }
+
+    function onCloseModalEdit(e,descr, isDelete){
+        setOnEditClicked(false)
+
+        if(descr){
+            setPost(state => ({...state,description:descr }))
+        }
+        if(isDelete){
+            navigate(`/`)
+            onModalClose()
+ 
+        }
+    }
+
     return (
         <>
         <div className={styles["modal"]}>
@@ -107,14 +126,15 @@ export default function PostContent({
                                 <img className={styles["user-photo"]} src={user.image ? `http://localhost:7070/${user.image}` : require("../../../../../images/user-profile-image.png")} alt="owner" />
                                 <Link className={styles["username"]}>{user.username}</Link>
                             </div>
-                            <HiEllipsisHorizontal className={styles["user-section-icon"]} />
+                            {isOwner && <HiEllipsisHorizontal className={styles["user-section-icon"]} onClick={onEditClick} />}
                         </section>
+                        {post.description &&
                         <div className={styles["description-container"]}>
                             <div className={styles["description-user-image-container"]}>
                                 <img className={styles["description-user-image"]} src={user.image ? `http://localhost:7070/${user.image}` : require("../../../../../images/user-profile-image.png")} alt="user" />
                             </div>
-                            {post.description && <p className={styles["description"]}> <Link className={styles["username-description"]}>{user.username}</Link> {post.description} </p>}
-                        </div>
+                             <p className={styles["description"]}> <Link className={styles["username-description"]}>{user.username}</Link> {post.description} </p>
+                        </div> }
                         <ModalComments post={post} />
 
 
@@ -141,6 +161,7 @@ export default function PostContent({
             </div>
         </div>
         {onLikesClicked && <Likes onModalClose={onModalCloseLikes} post={postWithRelatedLikes}/>}
+        {onEditClicked && <EditPost post={post} onCloseModalEdit={onCloseModalEdit}  />}
         </>
     )
 }

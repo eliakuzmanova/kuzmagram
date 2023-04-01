@@ -11,12 +11,12 @@
 }
 
 .logo {
-
+    text-decoration: none;
     font-family: 'Dancing Script', cursive;
     font-size: 35px;
     color: rgb(54, 54, 54);
     margin-top: 15px;
-    transition: all 0.9s linear;
+    transition: all 0.2s linear;
 }
 
 .logo:hover {

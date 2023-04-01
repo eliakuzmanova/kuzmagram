@@ -102,3 +102,29 @@ exports.postComment = async (req, res) => {
     }
 
 }
+
+exports.updatePost = async (req, res) => {
+    try {
+        const { postId } = req.params
+        const { description } = req.body
+        const post = await postService.getOne(postId)
+        post.description = description
+        await postService.update(postId, post)
+
+        res.status(200).send(post);
+    } catch (err) {
+        res.status(400).send(err);
+    }
+}
+
+exports.deletePost = async (req, res) => {
+    try {
+        const { postId } = req.body
+    const result = await postService.delete(postId)
+
+        res.status(200).send(result);
+    } catch (err) {
+        console.log(err + "<--- error");
+        res.status(400).send(err);
+    }
+}

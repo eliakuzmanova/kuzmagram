@@ -45,7 +45,7 @@ export default function Navbar() {
 
     return (
         <nav className={styles["navbar"]}>
-            <span className={styles["logo"]}>Kuzmagram</span>
+            <Link to={"/"} className={styles["logo"]}>Kuzmagram</Link>
             <ul className={styles["ul-nav"]}>
 
                 <li className={styles["li-nav"]}>

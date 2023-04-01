@@ -1,5 +1,4 @@
 import styles from "./comments.module.css";
-import Comment from "./Comment/Comment";
 import { useState } from "react";
 import PostContent from "../Profile/ProfilePosts/ProfilePost/PostContent/PostContent";
 
