@@ -14,6 +14,19 @@ exports.getOne = async (req, res) => {
 
 }
 
+exports.getOneById = async (req, res) => {
+
+    try {
+        const { id } = req.body
+        const user = await userService.getOneById(id);
+        res.status(200).send(user);
+
+    } catch (err) {
+        res.status(400).send(err);
+    }
+
+}
+
 exports.getOneByUsernameWithRel = async (req, res) => {
 
     try {

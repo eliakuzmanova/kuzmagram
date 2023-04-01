@@ -8,6 +8,12 @@ export const getOneUser = async (email) => {
   return user
 } 
 
+export const getOneById = async (id) => {
+
+  const user = await request.post(`${baseUrl}/getOneById`, {id});
+  return user
+} 
+
 export const getOneUserWithNonFollow = async (id) => {
 
   const user = await request.post(`${baseUrl}/getOneWithNonFollow`, {id});

@@ -53,7 +53,8 @@ export default function PostContent({
 
     async function onClickComment(e) {
         e.preventDefault()
-      const commentedPost = await postService.postComment(comment, userId, post._id)
+ 
+     const commentedPost = await postService.postComment(comment, userId, post._id)
 
       setPost(state => ({...state,...commentedPost }))
         setComment("")
@@ -76,10 +77,13 @@ export default function PostContent({
     }
 
     async function onLikes() {
-       
+       if(postLikes.length) {
        const postWithLikes = await postService.getOneWithLikes(post._id)
        setOnLikesClicked(true)
        setPostWithRelatedLikes(postWithLikes)
+       } else {
+        return
+       }
     }
     function onModalCloseLikes() {
         setOnLikesClicked(false)
@@ -122,13 +126,13 @@ export default function PostContent({
 
                         </section>
                         <section className={styles["comments-area-section"]}>
-                            <div className={styles["text-likes-container"]}>
-                                <p className={styles["text-likes"]}><Link className={styles["link-people-likes"]} onClick={onLikes}>{postLikes.length}</Link> people like that</p>
+                        <div className={`${postLikes.length ? styles["text-likes-container"] : styles["text-no-likes-container"]}`}>
+                            <p className={styles["text-likes"]} onClick={onLikes}><b>{postLikes.length}</b> people like that</p>
                             </div>
 
                             <div className={styles["textarea-container"]}>
                                 <textarea className={styles["textarea"]} name="comment-area" id="comment-area" maxLength="150" placeholder="Comment..." value={comment} onChange={onChangeComment}></textarea>
-                                <Link className={styles["comment-btn"]} onClick={onClickComment}>Comment</Link>
+                                <Link className={styles["comment-btn"]} onClick={onClickComment} >Comment</Link>
                             </div>
                         </section>
                     </section>

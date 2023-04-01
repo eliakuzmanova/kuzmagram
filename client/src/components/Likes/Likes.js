@@ -8,7 +8,7 @@ export default function Likes({
     onModalClose,
     post
 }) {
-   console.log("HEllo from likes");
+
     return (
         <div className={styles["modal"]}>
             <div className={styles["modal-content"]}>

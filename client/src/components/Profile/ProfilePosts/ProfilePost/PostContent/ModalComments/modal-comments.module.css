@@ -4,8 +4,17 @@
     align-items: stretch;
     margin-top: 17px; 
     width: 100%;
+    overflow-x: auto;
     height: 80%;
     border-bottom: 1px solid var(--light-gray);
+
+}
+
+.comments-container::-webkit-scrollbar {
+    width: 0;
+    /* Remove scrollbar space */
+    background: transparent;
+    /* Optional: just make scrollbar invisible */
 }
 .container-no-comments{
     display: flex;

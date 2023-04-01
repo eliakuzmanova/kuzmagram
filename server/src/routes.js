@@ -14,6 +14,7 @@ router.post("/auth/login", authController.login)
 router.post("/users/getFollowsPosts", userController.getUserWithFollow)
 
 router.post("/users/getOne", userController.getOne)
+router.post("/users/getOneById", userController.getOneById)
 router.post("/users/getOneWithRelations", userController.getOneByUsernameWithRel)
 router.post("/users/getOneWithNonFollow", userController.getOneWithNonFollow)
 router.post("/users/addFollower", userController.addFollower)
