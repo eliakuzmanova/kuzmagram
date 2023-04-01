@@ -21,14 +21,15 @@ export default function Post({ clickedPost }) {
     const [post, setPost] = useState(clickedPost)
     const [onLikesClicked, setOnLikesClicked] = useState(false)
     const [postWithRelatedLikes, setPostWithRelatedLikes] = useState("")
+    const [showComments, setShowComments] = useState(false)
 
     useEffect(() => {
         const fetchComments = async () => {
 
             const fetchedPost = await postService.getPostWithComments(clickedPost._id)
-           const userInfo = await userService.getOneById(fetchedPost.owner.toString())
+            const userInfo = await userService.getOneById(fetchedPost.owner.toString())
             setUser(state => ({ ...state, ...userInfo }))
-           setPost(state => ({ ...state, ...fetchedPost }))
+            setPost(state => ({ ...state, ...fetchedPost }))
         }
         fetchComments()
     }, [userId, postLikes, clickedPost._id])
@@ -45,6 +46,7 @@ export default function Post({ clickedPost }) {
         const commentedPost = await postService.postComment(comment, userId, post._id)
 
         setPost(state => ({ ...state, ...commentedPost }))
+        setShowComments(true)
         setComment("")
     }
 
@@ -66,13 +68,13 @@ export default function Post({ clickedPost }) {
 
     async function onLikes() {
 
-        if(postLikes.length) {
+        if (postLikes.length) {
             const postWithLikes = await postService.getOneWithLikes(post._id)
             setOnLikesClicked(true)
             setPostWithRelatedLikes(postWithLikes)
-            } else {
-             return
-            }
+        } else {
+            return
+        }
     }
     function onModalCloseLikes() {
         setOnLikesClicked(false)
@@ -101,13 +103,13 @@ export default function Post({ clickedPost }) {
                 </section>
                 <section className={styles["comments-section"]}>
                     <div className={`${postLikes.length ? styles["text-likes-container"] : styles["text-no-likes-container"]}`}>
-                    <p className={styles["text-likes"]} onClick={onLikes}><b>{postLikes.length}</b> people like that</p>
+                        <p className={styles["text-likes"]} onClick={onLikes}><b>{postLikes.length}</b> people like that</p>
                     </div>
                     <div className={styles["description-container"]}>
-                    {post.description && <p className={styles["description"]}> <Link to={`/profile/${user.username}`} className={styles["username-description"]}>{user.username}</Link> {post.description} </p>}
+                        {post.description && <p className={styles["description"]}> <Link to={`/profile/${user.username}`} className={styles["username-description"]}>{user.username}</Link> {post.description} </p>}
                     </div>
+                    {post.comments.length? <Comments post={post} showComments={showComments} setShowComments={setShowComments} /> : ""}
 
-                    <Comments  post={post}/>
                     <div className={styles["textarea-container"]}>
                         <textarea className={styles["textarea"]} name="comment-area" id="comment-area" maxLength="50" placeholder="Comment..." value={comment} onChange={onChangeComment}></textarea>
                         <Link className={styles["comment-btn"]} onClick={onClickComment}>Comment</Link>
@@ -115,7 +117,7 @@ export default function Post({ clickedPost }) {
                 </section>
 
             </article>
-            {onLikesClicked && <Likes onModalClose={onModalCloseLikes} post={postWithRelatedLikes}/>}
+            {onLikesClicked && <Likes onModalClose={onModalCloseLikes} post={postWithRelatedLikes} />}
         </>
     )
 }

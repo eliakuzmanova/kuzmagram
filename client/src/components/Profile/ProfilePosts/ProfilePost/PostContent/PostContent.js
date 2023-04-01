@@ -4,12 +4,12 @@ import { Link } from "react-router-dom"
 import { HiEllipsisHorizontal } from "react-icons/hi2";
 import { HiOutlineHeart } from "react-icons/hi2";
 import { HiOutlineXMark } from "react-icons/hi2";
-import { useContext, useEffect, useState } from "react"
-import { ProfileContext } from "../../../../../contexts/ProfileContext"
+import { useEffect, useState } from "react"
+
 import { useAuthContext } from '../../../../..//contexts/AuthContext';
 import * as postService from "../../../../../services/postService"
+import * as userService from "../../../../../services/userService"
 import Likes from "../../../../Likes/Likes";
-
 
 export default function PostContent({
     onModalClose,
@@ -18,7 +18,7 @@ export default function PostContent({
 
     const { userId } = useAuthContext()
 
-    const user = useContext(ProfileContext)
+    const [user, setUser] = useState("")
     const [comment, setComment] = useState("")
     const [heartClicked, setHeartClicked] = useState(false)
     const [postLikes, setPostLikes] = useState(clickedPost.likes)
@@ -32,7 +32,8 @@ export default function PostContent({
         const fetchComments = async () => {
          
            const fetchedPost = await postService.getPostWithComments(clickedPost._id)
-   
+           const userInfo = await userService.getOneById(fetchedPost.owner.toString())
+           setUser(state => ({ ...state, ...userInfo }))
            setPost(state => ({...state,...fetchedPost }))
         }
         fetchComments()
