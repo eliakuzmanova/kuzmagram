@@ -33,7 +33,7 @@ export default function ProfilePosts({
                 
             </div>
             <>
-                {btnClicked && <PostContent onModalClose={onModalClose} post={clickedPost} />}
+                {btnClicked && <PostContent onModalClose={onModalClose} clickedPost={clickedPost} />}
             </>
         </>
     )

@@ -31,17 +31,15 @@ export default function Profile() {
 
     useEffect(() => {
         const fetchUser = async () => {
-         console.log("hello from fetch");
+  
             const userInfo = await userService.getOneUserWithRelations(username)
-            console.log(userInfo);
             setUser(state => ({ ...state, ...userInfo,description:userInfo.description ,image: userInfo.image, posts: userInfo.posts.reverse() }))
 
         }
         fetchUser();
         
     }, [username])
-    console.log("hello after fetch");
-    console.log(user);
+
     const isFollower = user.followers.length? user.followers.filter(f => f._id === userId) : false
     const isOwner = username === userUsername
    

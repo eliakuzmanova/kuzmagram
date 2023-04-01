@@ -1,36 +1,15 @@
 import styles from "./modal-comment.module.css";
-import { HiOutlineHeart } from "react-icons/hi2";
 import { Link } from "react-router-dom"
 
-export default function ModalComment() {
+export default function ModalComment({comment}) {
+
     return (
         <>
             <div className={styles["comment-container"]}>
                 <div className={styles["comment-user-container"]}>
-                <img className={styles["comment-user-image"]} src={require("../../../../../../../images/user-profile-image.png")} alt="user" />
-                <p className={styles["comment"]}><Link className={styles["comment-username"]}>username</Link> Comment</p>
+                <img className={styles["comment-user-image"]} src={comment.user.image ? `http://localhost:7070/${comment.user.image}` : require("../../../../../../../images/user-profile-image.png")} alt="user" /> />
+                <p className={styles["comment"]}><Link className={styles["comment-username"]}>{comment.user.username}</Link> {comment.comment}</p>
                 </div>
-                
-                <HiOutlineHeart className={styles["comment-like-icon"]} />
-            </div>
-
-            <div className={styles["comment-container"]}>
-                <div className={styles["comment-user-container"]}>
-                <div className={styles["comment-user-image-container"]}>
-                <img className={styles["comment-user-image"]} src={require("../../../../../../../images/user-profile-image.png")} alt="user" />
-                </div>
-                <p className={styles["comment"]}><Link className={styles["comment-username"]}>username</Link> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi, culpa nam, at ipsa sed recusandae tempora assumenda nesciunt maiores numquam, dolorum totam ea modi? Similique cupiditate accusamus officia non provident?</p>
-                </div>
-                
-                <HiOutlineHeart className={styles["comment-like-icon"]} />
-            </div>
-             <div className={styles["comment-container"]}>
-                <div className={styles["comment-user-container"]}>
-                <img className={styles["comment-user-image"]} src={require("../../../../../../../images/user-profile-image.png")} alt="user" />
-                <p className={styles["comment"]}><Link className={styles["comment-username"]}>username</Link> Comment</p>
-                </div>
-                
-                <HiOutlineHeart className={styles["comment-like-icon"]} />
             </div>
         </>
     )

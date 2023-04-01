@@ -10,4 +10,8 @@ exports.getOneWithLikes = (postId) => Post.findById(postId).populate("likes").le
 
 exports.getOneWithRel = (postId) => Post.findById(postId).lean();
 
+exports.getOneWithComments = (postId) => Post.findById(postId).populate("comments.user").lean();
+
 exports.update = (id, data) => Post.findByIdAndUpdate(id, data).lean();
+
+// exports.postComment = (postId , comment) => Post.findByIdAndUpdate(postId, comment).lean();

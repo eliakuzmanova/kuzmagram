@@ -38,6 +38,19 @@ exports.getOne = async (req, res) => {
     }
 }
 
+exports.getPostWithComments = async (req, res) => {
+    try {
+  
+        const { postId } = req.params
+     
+        const post = await postService.getOneWithComments(postId)
+       
+        res.status(200).send(post);
+    } catch (err) {
+        res.status(400).send(err);
+    }
+}
+
 exports.likePost = async (req, res) => {
     try {
         const { userId } = req.body
@@ -66,4 +79,26 @@ exports.dislikePost = async (req, res) => {
     } catch (err) {
         res.status(400).send(err);
     }
+}
+
+exports.postComment = async (req, res) => {
+
+    try {
+
+        const { comment, userId } = req.body
+   
+        const { postId } = req.params
+        
+        const post = await postService.getOne(postId)
+       
+       post.comments.push({user:userId,comment: comment})
+
+      const result = await postService.update(postId ,post)
+      const commentedPost = await postService.getOneWithComments(postId)
+        res.status(200).send(commentedPost);
+
+    } catch (err) {
+        res.status(400).send(err);
+    }
+
 }
