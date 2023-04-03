@@ -16,13 +16,14 @@ export default function Suggestions({
     }, [userId])
     return (
         <>
+        
             <div className={styles["suggestion-text-container"]}>
                 <p className={styles["suggestion-text"]}>Suggestions for you</p>
             </div>
             <div className={styles["suggestion-container"]}>
                 {users.length
                     ? users.map(user => <Suggestion key={user._id} user={user} />)
-                    : ""
+                    : <p className={styles["no-suggestion"]}>No suggestions at the momment...</p>
                 }
 
             </div>
