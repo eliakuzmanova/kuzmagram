@@ -18,7 +18,7 @@ export default function PostContent({
     clickedPost
 }) {
 
-    const { userId, userUsername} = useAuthContext()
+    const { userId, isAuthenticated} = useAuthContext()
   
     const [user, setUser] = useState("")
     const [comment, setComment] = useState("")
@@ -98,11 +98,11 @@ export default function PostContent({
         setOnEditClicked(true)
     }
 
-    function onCloseModalEdit(e,descr, isDelete){
+    function onCloseModalEdit(e, descr, isDelete){
         setOnEditClicked(false)
 
         if(descr){
-            setPost(state => ({...state,description:descr }))
+            setPost(state => ({...state, description: descr }))
         }
         if(isDelete){
             navigate(`/`)
@@ -140,7 +140,7 @@ export default function PostContent({
                         <ModalComments post={post} />
 
 
-                        <section className={styles["icons-section"]}>
+                        { isAuthenticated && <section className={styles["icons-section"]}>
                             <div className={styles["actions-container"]}>
 
                                 <HiOutlineHeart className={heartClicked ? styles["icon-heart-clicked"] : styles["icon-heart"]} onClick={onLike} />
@@ -148,15 +148,17 @@ export default function PostContent({
                             </div>
 
                         </section>
+                        }
                         <section className={styles["comments-area-section"]}>
                         <div className={`${postLikes.length ? styles["text-likes-container"] : styles["text-no-likes-container"]}`}>
                             <p className={styles["text-likes"]} onClick={onLikes}><b>{postLikes.length}</b> people like that</p>
                             </div>
 
-                            <div className={styles["textarea-container"]}>
+                            { isAuthenticated &&   <div className={styles["textarea-container"]}>
                                 <textarea className={styles["textarea"]} name="comment-area" id="comment-area" maxLength="150" placeholder="Comment..." value={comment} onChange={onChangeComment}></textarea>
                                 <Link className={styles["comment-btn"]} onClick={onClickComment} >Comment</Link>
                             </div>
+                            }
                         </section>
                     </section>
                 </article>

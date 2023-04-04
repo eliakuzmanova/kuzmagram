@@ -1,0 +1,51 @@
+.logo {
+    text-decoration: none;
+    font-family: 'Dancing Script', cursive;
+    font-size: 35px;
+    color: rgb(54, 54, 54);
+}
+
+.btns-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 240px;
+    justify-content: space-around;
+}
+
+.login-btn {
+
+    display: flex;
+    justify-content: center;
+    margin-top: 14px;
+    padding: 5px;
+    width: 85px;
+    border: 2px solid var(--blue);
+    background-color: var(--blue);
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: rgb(240, 240, 240);
+    border-radius: 17px;
+    transition: all 0.3s ease-in-out;
+    text-decoration: none;
+}
+
+.login-btn:hover {
+    border: 2px solid rgb(29, 173, 175);
+    background-color: rgb(29, 173, 175);
+}
+
+.register-btn{
+
+    color: var(--blue);
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 600;
+    font-size: 17px;
+    transition: all 0.3s ease-in-out;
+    text-decoration: none;
+}
+
+.register-btn:hover {
+    color: rgb(29, 173, 175);
+}

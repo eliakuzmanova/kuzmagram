@@ -3,8 +3,22 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    height: 100vh;
-    
+    height: 100vh; 
+}
+.profile-container-guest{
+    display: flex;
+    flex-direction: column;
+    height: 100vh; 
+}
+
+.guest-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 55px;
+    width: 97%;
+    border-bottom: 1px solid var(--light-gray);
+    padding: 10px 20px;
 }
 
 .profile-main{
@@ -18,6 +32,20 @@
     margin-right: auto;
     margin-left: auto;
     max-width: 970px;
+}
+
+.profile-main-guest{
+    display: flex;
+    flex-grow: 1;
+    padding: 1em;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    margin-top: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 1070px;
+    height: 80%;
 }
 
 .profile-main::-webkit-scrollbar {

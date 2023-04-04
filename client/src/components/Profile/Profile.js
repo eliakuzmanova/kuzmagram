@@ -12,6 +12,7 @@ import Followers from "./Followers/Followers";
 import Navbar from "../Navbar/Navbar"
 import Footer from "../Footer/Footer"
 import ProfilePosts from "./ProfilePosts/ProfilePosts";
+import GuestNavBar from "../GuestNavBar/GuestNavBar";
 
 export default function Profile() {
     const [user, setUser] = useState({
@@ -27,7 +28,7 @@ export default function Profile() {
     })
     const navigate = useNavigate()
     const { username } = useParams()
-    const { userUsername, userId } = useAuthContext()
+    const { userUsername, userId, isAuthenticated } = useAuthContext()
 
     const [followersClicked, setFollowersClicked] = useState(false)
     const [followedClicked, setFollowedClicked] = useState(false)
@@ -35,72 +36,77 @@ export default function Profile() {
     useEffect(() => {
 
         const fetchUser = async () => {
-  
+
             const userInfo = await userService.getOneUserWithRelations(username)
-            setUser(state => ({ ...state, ...userInfo,description:userInfo.description ,image: userInfo.image, posts: userInfo.posts.reverse() }))
+            setUser(state => ({ ...state, ...userInfo, description: userInfo.description, image: userInfo.image, posts: userInfo.posts.reverse() }))
 
         }
         fetchUser();
-        
+
     }, [username])
 
-    const isFollower = user.followers.length? user.followers.filter(f => f._id === userId) : false
+    const isFollower = user.followers.length ? user.followers.filter(f => f._id === userId) : false
     const isOwner = username === userUsername
-   
-   async function onFollow(e) {
+
+    async function onFollow(e) {
         e.preventDefault()
-   
+
         let updatedUser;
-   
-        if(!isFollower) {
-           updatedUser = await userService.addFollower(user.email,userId) 
+
+        if (!isFollower) {
+            updatedUser = await userService.addFollower(user.email, userId)
         } else {
-        
-           updatedUser = await userService.removeFollower(user.email,userId)
-    
+
+            updatedUser = await userService.removeFollower(user.email, userId)
+
         }
-      
-        setUser(state => ({ ...state, ...updatedUser,posts: updatedUser.posts.reverse()}))
-     
+
+        setUser(state => ({ ...state, ...updatedUser, posts: updatedUser.posts.reverse() }))
+
 
     }
 
     function onFollowers(e) {
         e.preventDefault();
         if (user.followers.length > 0) {
-        setFollowersClicked(true)
+            setFollowersClicked(true)
         }
     }
 
     function onFollowed(e) {
         e.preventDefault();
-        if(user.follow.length > 0) {
+        if (user.follow.length > 0) {
             setFollowedClicked(true)
         }
-      
+
     }
 
-    function onModalClose(e,username) {
+    function onModalClose(e, username) {
         e.preventDefault()
 
-        if(followersClicked) {
+        if (followersClicked) {
             setFollowersClicked(false)
-        } else if(followedClicked) {
+        } else if (followedClicked) {
             setFollowedClicked(false)
-        } 
+        }
 
-        if(username){
+        if (username) {
             navigate(`/profile/${username}`)
         }
 
     }
     return (
         <ProfileContext.Provider value={user} >
-            <div className={styles["profile-container"]}>
-                <header className={styles["profile-header"]}>
-                    <Navbar />
+            <div className={`${isAuthenticated ? styles["profile-container"] : styles["profile-container-guest"]}`}>
+                {isAuthenticated 
+                ? <header className={styles["profile-header"]}>
+                        <Navbar />
+                    </header>
+                : <header className={styles["guest-header"]}>
+                    <GuestNavBar />
                 </header>
-                <main className={styles["profile-main"]}>
+                }
+                <main className={`${isAuthenticated ? styles["profile-main"] : styles["profile-main-guest"] } `}>
                     <div className={styles["profile-all-info-container"]}>
                         <div className={styles["profile-photo-container"]}>
                             <img className={styles["profile-photo"]} src={user.image ? `http://localhost:7070/${user.image}` : require("../../images/user-profile-image.png")} alt="profile" />
@@ -108,10 +114,13 @@ export default function Profile() {
                         <div className={styles["profile-info"]}>
                             <div className={styles["profile-options"]}>
                                 <p className={styles["profile-username"]}>{username}</p>
-                                {isOwner ? <Link to={"/profile/edit"} className={styles["profile-info-button"]}>Edit profile</Link>
-                                    : <button className={styles["profile-info-button"]} onClick={onFollow} >{isFollower? "Unfollow" : "Follow"}</button>}
-
-
+                                {isAuthenticated &&
+                                    <>
+                                        {isOwner
+                                            ? <Link to={"/profile/edit"} className={styles["profile-info-button"]} > Edit profile</Link>
+                                            : <button className={styles["profile-info-button"]} onClick={onFollow} >{isFollower ? "Unfollow" : "Follow"}</button>}
+                                    </>
+                                }
                             </div>
                             <div className={styles["profile-followers"]}>
                                 <p className={styles["profile-followers-text"]}><b>{user.posts.length}</b> Posts</p>
@@ -138,9 +147,9 @@ export default function Profile() {
 
                         </div>
                         {user.posts.length ?
-                      
+
                             <ProfilePosts posts={user.posts} />
-                         
+
                             : <div className={styles["no-posts-container"]}>
                                 <p className={styles["no-posts"]}>There are no posts from this user yet</p>
                             </div>
@@ -150,8 +159,9 @@ export default function Profile() {
 
                     <Footer />
                 </main>
-            </div>
-            {(followedClicked || followersClicked) && <Followers onModalClose={onModalClose} text={followersClicked? "Followers" : "Followed"} user={user}/>}
-        </ProfileContext.Provider>
+            </div >
+            {(followedClicked || followersClicked) && <Followers onModalClose={onModalClose} text={followersClicked ? "Followers" : "Followed"} user={user} />
+            }
+        </ProfileContext.Provider >
     )
 }
