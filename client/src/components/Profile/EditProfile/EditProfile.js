@@ -1,13 +1,12 @@
-
 import styles from "./edit-profile.module.css"
+
 import { useState } from "react";
 
-import Navbar from "../../Navbar/Navbar";
-import { useAuthContext } from "../../../contexts/AuthContext";
 import useForm from "../../../hooks/useForm";
+import { useAuthContext } from "../../../contexts/AuthContext";
 import * as userService from "../../../services/userService";
 import Confirm from "../../Confirm/Confirm";
-
+import Navbar from "../../Navbar/Navbar";
 
 export default function EditProfile() {
     const { userUsername, userEmail, userDescription, userImage, userId, onLogout } = useAuthContext()

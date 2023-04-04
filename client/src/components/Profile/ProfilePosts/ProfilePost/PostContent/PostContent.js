@@ -1,15 +1,17 @@
 import styles from "./post-content.module.css"
-import ModalComments from "./ModalComments/ModalComments"
-import { Link , useNavigate} from "react-router-dom"
 import { HiEllipsisHorizontal } from "react-icons/hi2";
 import { HiOutlineHeart } from "react-icons/hi2";
 import { HiOutlineXMark } from "react-icons/hi2";
+
+import { Link , useNavigate} from "react-router-dom"
 import { useEffect, useState} from "react"
-import EditPost from "../../../../EditPost/EditPost"
-import { useAuthContext } from '../../../../..//contexts/AuthContext';
+
+import { useAuthContext } from '../../../../../contexts/AuthContext';
 import * as postService from "../../../../../services/postService"
 import * as userService from "../../../../../services/userService"
 import Likes from "../../../../Likes/Likes";
+import ModalComments from "./ModalComments/ModalComments"
+import EditPost from "../../../../EditPost/EditPost"
 
 export default function PostContent({
     onModalClose,

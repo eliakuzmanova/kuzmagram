@@ -1,5 +1,6 @@
-import Post from "./Post/Post"
 import styles from "./posts.module.css";
+
+import Post from "./Post/Post"
 
 export default function Posts({posts}) {
 

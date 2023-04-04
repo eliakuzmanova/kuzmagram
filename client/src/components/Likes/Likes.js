@@ -1,8 +1,7 @@
 import styles from "./likes.module.css"
 import { HiOutlineXMark } from "react-icons/hi2";
+
 import Like from "./Like/Like";
-
-
 
 export default function Likes({
     onModalClose,

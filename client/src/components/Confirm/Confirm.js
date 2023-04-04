@@ -1,9 +1,11 @@
+import styles from "./confirm.module.css"
 import { HiOutlineXMark } from "react-icons/hi2";
-import * as userService from "../../services/userService";
-import { useAuthContext } from "../../contexts/AuthContext";
+
 import { useNavigate } from "react-router-dom";
 
-import styles from "./confirm.module.css"
+import * as userService from "../../services/userService";
+import { useAuthContext } from "../../contexts/AuthContext";
+
 export default function Confirm({
     onModalClose,
 }) {

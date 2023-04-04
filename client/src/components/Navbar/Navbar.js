@@ -1,17 +1,15 @@
-import { Link, useLocation } from "react-router-dom"
 import styles from "./navbar.module.css";
-
 import { IoHomeOutline } from "react-icons/io5";
 import { IoHomeSharp } from "react-icons/io5";
-
 import { IoAddCircleOutline } from "react-icons/io5";
 import { IoAddCircle } from "react-icons/io5";
-
 import { IoSearchOutline } from "react-icons/io5";
 // import { IoSearch } from "react-icons/io5";
 
-import { NavContext } from "../../contexts/NavContext";
 import { useContext, useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom"
+
+import { NavContext } from "../../contexts/NavContext";
 import { useAuthContext } from '../../contexts/AuthContext';
 
 

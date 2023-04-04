@@ -1,15 +1,17 @@
+import styles from "./profile.module.css"
+import { BsGrid3X3Gap } from "react-icons/bs";
+
+import { Link, useParams, useNavigate } from "react-router-dom"
+import { useEffect, useState } from "react";
+
+import { useAuthContext } from '../../contexts/AuthContext';
+import { ProfileContext } from "../../contexts/ProfileContext";
+
+import * as userService from "../../services/userService";
+import Followers from "./Followers/Followers";
 import Navbar from "../Navbar/Navbar"
 import Footer from "../Footer/Footer"
-import styles from "./profile.module.css"
-import { Link, useParams, useNavigate } from "react-router-dom"
-import { BsGrid3X3Gap } from "react-icons/bs";
 import ProfilePosts from "./ProfilePosts/ProfilePosts";
-import { useAuthContext } from '../../contexts/AuthContext';
-import { useEffect, useState } from "react";
-import * as userService from "../../services/userService";
-import { ProfileContext } from "../../contexts/ProfileContext";
-import Followers from "./Followers/Followers";
-
 
 export default function Profile() {
     const [user, setUser] = useState({

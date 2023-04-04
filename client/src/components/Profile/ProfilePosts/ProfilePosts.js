@@ -1,10 +1,10 @@
 import styles from "./profile-posts.module.css"
-import ProfilePost from "./ProfilePost/ProfilePost"
+
 import { useState } from "react"
 
-import PostContent from "./ProfilePost/PostContent/PostContent"
 import * as postService from "../../../services/postService"
-
+import ProfilePost from "./ProfilePost/ProfilePost"
+import PostContent from "./ProfilePost/PostContent/PostContent"
 
 export default function ProfilePosts({
     posts

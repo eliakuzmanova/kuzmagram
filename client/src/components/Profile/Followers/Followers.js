@@ -1,8 +1,7 @@
 import styles from "./followers.module.css"
 import { HiOutlineXMark } from "react-icons/hi2";
+
 import Follower from "./Follower/Follower";
-
-
 
 export default function Followers({
     onModalClose,

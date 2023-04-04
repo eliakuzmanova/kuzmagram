@@ -1,13 +1,13 @@
-
 import styles from "./register.module.css";
-// import * as authService from "../../services/authService"
-import { Link } from "react-router-dom"
-import Footer from "../Footer/Footer";
-import useForm from "../../hooks/useForm"
-import { useState } from "react";
-import { useAuthContext } from '../../contexts/AuthContext';
 import { IoMdEyeOff } from "react-icons/io";
 import { IoMdEye } from "react-icons/io";
+
+import { Link } from "react-router-dom"
+import { useState } from "react";
+
+import useForm from "../../hooks/useForm"
+import { useAuthContext } from '../../contexts/AuthContext';
+import Footer from "../Footer/Footer";
 
 export default function Register() {
     const [isHiddenPassword, setIsHiddenPassword] = useState(true)

@@ -1,7 +1,9 @@
-import Suggestion from "./Suggestion/Suggestion"
-import { useEffect, useState } from "react";
-import * as userService from "../../../../services/userService";
 import styles from "./suggestions.module.css";
+
+import { useEffect, useState } from "react";
+
+import * as userService from "../../../../services/userService";
+import Suggestion from "./Suggestion/Suggestion"
 
 export default function Suggestions({
     userId

@@ -1,15 +1,14 @@
-
-
-import { HiOutlineHeart } from "react-icons/hi2";
-import Comments from "./../../../Comments/Comments";
-import { Link } from "react-router-dom"
 import styles from "./post.module.css";
+import { HiOutlineHeart } from "react-icons/hi2";
+
+import { Link } from "react-router-dom"
 import { useEffect, useState } from "react";
 
 import { useAuthContext } from '../../../../contexts/AuthContext';
 import * as postService from "../../../../services/postService"
 import * as userService from "../../../../services/userService"
 import Likes from "../../../Likes/Likes";
+import Comments from "./../../../Comments/Comments";
 
 export default function Post({ clickedPost }) {
 

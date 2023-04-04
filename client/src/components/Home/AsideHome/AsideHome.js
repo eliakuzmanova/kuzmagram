@@ -1,8 +1,9 @@
-import { Link } from "react-router-dom"
 import styles from "./aside.module.css";
-import Suggestions from "./Suggestions/Suggestions";
-import { useAuthContext } from '../../../contexts/AuthContext';
 
+import { Link } from "react-router-dom"
+
+import { useAuthContext } from '../../../contexts/AuthContext';
+import Suggestions from "./Suggestions/Suggestions";
 
 export default function AsideHome() {
     const {userUsername,userImage, userId} = useAuthContext()

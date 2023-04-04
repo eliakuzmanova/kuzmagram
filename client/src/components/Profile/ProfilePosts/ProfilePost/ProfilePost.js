@@ -1,4 +1,3 @@
-
 import styles from "./profile-post.module.css"
 
 export default function ProfilePost({

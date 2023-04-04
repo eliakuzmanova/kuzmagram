@@ -1,9 +1,11 @@
 import styles from "./edit-post.module.css"
 import { HiOutlineXMark } from "react-icons/hi2";
-import { useAuthContext } from '../../contexts/AuthContext';
+
 import { Link } from "react-router-dom";
 import { useState } from "react";
+
 import * as postService from "../../services/postService";
+import { useAuthContext } from '../../contexts/AuthContext';
 
 export default function EditPost({
     post,

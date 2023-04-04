@@ -1,11 +1,13 @@
-import FooterHome from "./FooterHome/FooterHome";
 import styles from "./home.module.css";
+
+import { useEffect, useState } from "react";
+
+import { useAuthContext } from '../../contexts/AuthContext';
+import * as userService from "../../services/userService";
+import FooterHome from "./FooterHome/FooterHome";
 import Navbar from "../Navbar/Navbar";
 import Posts from "./Posts/Posts";
 import AsideHome from "./AsideHome/AsideHome"
-import { useAuthContext } from '../../contexts/AuthContext';
-import * as userService from "../../services/userService";
-import { useEffect, useState } from "react";
 
 export default function Home({createdPost,setCreatedPost}) {
 

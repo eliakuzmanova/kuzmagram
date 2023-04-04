@@ -1,11 +1,14 @@
-import { Link } from "react-router-dom"
 import styles from "./login.module.css";
-import Footer from "../Footer/Footer";
-import useForm from "../../hooks/useForm"
-import { useAuthContext } from '../../contexts/AuthContext';
-import { useState } from "react";
 import { IoMdEyeOff } from "react-icons/io";
 import { IoMdEye } from "react-icons/io";
+
+import { Link } from "react-router-dom"
+import { useState } from "react";
+
+import useForm from "../../hooks/useForm"
+import { useAuthContext } from '../../contexts/AuthContext';
+import Footer from "../Footer/Footer";
+
 
 export default function Login() {
     const [isHiddenPassword, setIsHiddenPassword] = useState(true)

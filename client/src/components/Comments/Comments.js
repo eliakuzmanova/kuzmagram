@@ -1,5 +1,7 @@
 import styles from "./comments.module.css";
+
 import { useState } from "react";
+
 import PostContent from "../Profile/ProfilePosts/ProfilePost/PostContent/PostContent";
 
 export default function Comments({post, showComments, setShowComments}) {
