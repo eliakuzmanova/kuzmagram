@@ -57,7 +57,7 @@ export default function EditPost({
 
                         </section>
                         <div className={styles["description-container"]}>
-                            <textarea className={styles["description"]} name="description" id="description" rows="150" placeholder="Enter your description....." value={postDescription} onChange={onChangeDescription}></textarea>
+                            <textarea className={styles["description"]} name="description" id="description" maxLength="150" placeholder="Enter your description....." value={postDescription} onChange={onChangeDescription}></textarea>
                         </div>
 
                         <div className={styles["edit-btn-container"]}>

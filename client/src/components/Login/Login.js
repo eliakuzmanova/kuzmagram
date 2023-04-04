@@ -31,7 +31,8 @@ export default function Login() {
 
     }
 
-    function onHideError() {
+    function onHideError(e) {
+        e?.preventDefault()
         if(err) {
             setErr("")
         } else {
@@ -40,6 +41,7 @@ export default function Login() {
     }
 
     function onEyeIconPassword(e) {
+        e?.preventDefault()
         setIsHiddenPassword(state => !state)
    }
 

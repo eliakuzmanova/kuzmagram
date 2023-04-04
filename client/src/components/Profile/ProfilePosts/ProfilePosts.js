@@ -21,7 +21,8 @@ export default function ProfilePosts({
         setClickedPost(result)
     }
 
-    function onModalClose() {
+    function onModalClose(e) {
+        e?.preventDefault()
         setBtnClicked(false)
         setClickedPost("")
     }

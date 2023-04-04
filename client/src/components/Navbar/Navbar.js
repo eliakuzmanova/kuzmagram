@@ -29,7 +29,6 @@ export default function Navbar() {
         }
   
     },[location])
-    // <------- add logic for Search style --------------------
 
     function onClickCreate(e) {
         e.preventDefault()

@@ -67,7 +67,7 @@ export default function Create({
                         </div>
                         <div className={styles["description-container"]}>
 
-                            <textarea className={styles["input"]} type="text" id="description" name="description" placeholder="Describe it..." value={description} onChange={onDescriptionChange}/>
+                            <textarea className={styles["input"]} type="text" id="description" maxLength="150" name="description" placeholder="Describe it..." value={description} onChange={onDescriptionChange}/>
                         </div>
                         <div className={styles["submit-btn-container"]}>
                             <button className={styles["submit-btn"]} type="submit">Post</button>

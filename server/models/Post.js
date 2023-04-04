@@ -7,6 +7,7 @@ const postSchema = new mongoose.Schema({
     },
     description: {
         type: String,
+        maxLength: [150, "Too long description"]
     },
     likes: [{
         type: mongoose.Types.ObjectId,

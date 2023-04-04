@@ -49,8 +49,8 @@ export default function Post({ clickedPost }) {
         setComment("")
     }
 
-    async function onLike() {
-
+    async function onLike(e) {
+        e?.preventDefault()
         if (!heartClicked) {
 
             await postService.likePost(post._id, userId)
@@ -65,8 +65,8 @@ export default function Post({ clickedPost }) {
 
     }
 
-    async function onLikes() {
-
+    async function onLikes(e) {
+        e?.preventDefault()
         if (postLikes.length) {
             const postWithLikes = await postService.getOneWithLikes(post._id)
             setOnLikesClicked(true)
@@ -75,7 +75,8 @@ export default function Post({ clickedPost }) {
             return
         }
     }
-    function onModalCloseLikes() {
+    function onModalCloseLikes(e) {
+        e?.preventDefault()
         setOnLikesClicked(false)
     }
 

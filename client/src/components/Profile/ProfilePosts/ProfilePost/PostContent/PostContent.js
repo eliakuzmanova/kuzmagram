@@ -65,8 +65,8 @@ export default function PostContent({
         setComment("")
     }
 
-    async function onLike() {
-
+    async function onLike(e) {
+        e?.preventDefault()
         if (!heartClicked) {
 
             await postService.likePost(post._id, userId)
@@ -81,7 +81,8 @@ export default function PostContent({
 
     }
 
-    async function onLikes() {
+    async function onLikes(e) {
+        e?.preventDefault()
        if(postLikes.length) {
        const postWithLikes = await postService.getOneWithLikes(post._id)
        setOnLikesClicked(true)
@@ -90,15 +91,18 @@ export default function PostContent({
         return
        }
     }
-    function onModalCloseLikes() {
+    function onModalCloseLikes(e) {
+        e?.preventDefault()
         setOnLikesClicked(false)
     }
 
-    function onEditClick(){
+    function onEditClick(e){
+        e?.preventDefault()
         setOnEditClicked(true)
     }
 
     function onCloseModalEdit(e, descr, isDelete){
+        e?.preventDefault()
         setOnEditClicked(false)
 
         if(descr){

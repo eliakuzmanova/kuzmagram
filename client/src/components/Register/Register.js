@@ -76,6 +76,7 @@ export default function Register() {
     }
 
     function onClick(e) {
+        e?.preventDefault()
         setAreInputsCorrect(state => ({ ...state, [e.target.name]: "" }))
         if(err) {
             setErr("")
@@ -99,11 +100,11 @@ export default function Register() {
     }
 
     function onEyeIconPassword(e) {
-
+        e?.preventDefault()
         setIsHiddenPassword(state => !state)
     }
     function onEyeIconConfPass(e) {
-
+        e?.preventDefault()
         setIsHiddenConfPassword(state => !state)
     }
     return (

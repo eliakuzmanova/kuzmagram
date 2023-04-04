@@ -8,6 +8,7 @@ export default function Follower({
 }) {
 
     function onClickFollower(e) {
+        e?.preventDefault()
         onModalClose(e,profile.username)
     }
     return(

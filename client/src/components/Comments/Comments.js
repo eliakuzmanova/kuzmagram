@@ -14,7 +14,8 @@ export default function Comments({post, showComments, setShowComments}) {
 
     }
 
-    function onModalClose() {
+    function onModalClose(e) {
+        e?.preventDefault()
         setBtnClicked(false)
         setShowComments(false)
     }
