@@ -7,7 +7,7 @@ import Profile from "./components/Profile/Profile";
 
 import EditProfile from "./components/Profile/EditProfile/EditProfile";
 import {useState } from "react";
-
+import ErrorPage from "./components/ErrorPage/ErrorPage"
 import Create from "./components//Create/Create";
 import { AuthProvider } from './contexts/AuthContext';
 import { NavContext } from "./contexts/NavContext";
@@ -46,7 +46,8 @@ const [navClicked, setNavClicked] =useState({
           <Route path='/register' element={<Register />} />
           <Route path='/login' element={<Login />} />
           <Route path='/profile/:username' element={<Profile setNavClicked={setNavClicked}/>} />
-          <Route path='/profile/edit' element={<EditProfile/>} />    
+          <Route path='/profile/edit' element={<EditProfile/>} />  
+          <Route path='*' element={<ErrorPage/>} />  
         </Routes>
         {navClicked.createClicked &&
           <Create

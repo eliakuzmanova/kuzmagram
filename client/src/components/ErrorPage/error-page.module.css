@@ -1,0 +1,46 @@
+.error-page-container{
+display: flex;
+align-items: center;
+flex-direction: column;
+margin-top: 100px;
+}
+
+.error-404{
+    color: var(--red);
+    font-size: 180px;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+.error-text{
+    font-size: 30px;
+    color: var(--dark-gray);
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 500;
+}
+.error-btn-container{
+margin-top: 50px;
+}
+
+.error-btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 14px;
+    text-decoration: none;
+    padding: 8px;
+    width: 110px;
+    border: 2px solid var(--blue);
+    background-color: var(--blue);
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 600;
+    font-size: 19px;
+    color: rgb(240, 240, 240);
+    border-radius: 17px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  
+}
+
+.error-btn:hover {
+    border: 2px solid rgb(29, 173, 175);
+    background-color: rgb(29, 173, 175);
+}
