@@ -6,7 +6,7 @@ const userSchema = new mongoose.Schema({
     username: {
         type: String,
         required: [true, "Username is required"],
-        validate: [/^[a-z0-9_\.]{3,25}$/,
+        validate: [/^[A-Za-z0-9_\.]{3,25}$/,
         "Invalid username address"]
     },
     email: {
@@ -23,7 +23,8 @@ const userSchema = new mongoose.Schema({
         type: String,
     },
     description: {
-        type: String
+        type: String,
+        maxLength: [100, "Too long description"]
     },
     followers: [{
         type: mongoose.Types.ObjectId,

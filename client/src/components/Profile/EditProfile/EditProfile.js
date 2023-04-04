@@ -18,6 +18,51 @@ export default function EditProfile() {
     const [uploadImage, setUploadImage] = useState(userImage)
     const [deleteClicked, setDeleteClicked] = useState(false)
 
+    const [areInputsCorrect, setAreInputsCorrect] = useState({
+        username: "",
+        email: "",
+    })
+
+    function isReadyForEdit() {
+
+        let isReady = false;
+        if (Object.values(areInputsCorrect).includes(styles["incorrect-input"])) {
+            isReady = false;
+        } else {
+            isReady = true;
+        }
+
+        return isReady
+    }
+
+    function onClick(e) {
+        e?.preventDefault()
+        setAreInputsCorrect(state => ({ ...state, [e.target.name]: "" }))
+       
+    }
+
+    function onBlurValidate(e) {
+        e.preventDefault();
+
+        if (e.target.name === "username") {
+            if (/^[A-Za-z0-9_\.]{3,25}$/.test(formValues.username)) {
+                setAreInputsCorrect(state => ({ ...state, ["username"]: styles["correct-input"] }))
+
+            } else {
+                setAreInputsCorrect(state => ({ ...state, ["username"]: styles["incorrect-input"] }))
+
+            }
+        } else if (e.target.name === "email") {
+            if (/([-!#-'*+/-9=?A-Z^-~]+(\.[-!#-'*+/-9=?A-Z^-~]+)*|"([]!#-[^-~ \t]|(\\[\t -~]))+")@([0-9A-Za-z]([0-9A-Za-z-]{0,61}[0-9A-Za-z])?(\.[0-9A-Za-z]([0-9A-Za-z-]{0,61}[0-9A-Za-z])?)*|\[((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])){3}|IPv6:((((0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}):){6}|::((0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}):){5}|[0-9A-Fa-f]{0,4}::((0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}):){4}|(((0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}):)?(0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}))?::((0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}):){3}|(((0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}):){0,2}(0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}))?::((0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}):){2}|(((0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}):){0,3}(0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}))?::(0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}):|(((0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}):){0,4}(0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}))?::)((0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}):(0|[1-9A-Fa-f][0-9A-Fa-f]{0,3})|(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])){3})|(((0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}):){0,5}(0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}))?::(0|[1-9A-Fa-f][0-9A-Fa-f]{0,3})|(((0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}):){0,6}(0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}))?::)|(?!IPv6:)[0-9A-Za-z-]*[0-9A-Za-z]:[!-Z^-~]+)])/
+                .test(formValues.email)) {
+                setAreInputsCorrect(state => ({ ...state, ["email"]: styles["correct-input"] }))
+            } else {
+                setAreInputsCorrect(state => ({ ...state, ["email"]: styles["incorrect-input"] }))
+            }
+        } 
+
+    }
+
     function onUploadImage(e) {
         e.preventDefault()
         setUploadImage(e.target.files[0])
@@ -38,7 +83,7 @@ export default function EditProfile() {
             })
             const userInfo = await userService.getOneUser(formValues.email)
             onLogout()
-            //    ' navigate(`/profile/${formValues.username}`)'
+    
         } catch (error) {
             console.log(error);
         }
@@ -71,11 +116,11 @@ export default function EditProfile() {
                             <form method="POST" onSubmit={onSubmitForm}>
                                 <div className={styles["input-container"]}>
                                     <label htmlFor="username" className={styles["label"]}>Username</label>
-                                    <input type="text" name="username" id="username" className={styles["input"]} value={formValues.username} onChange={onChangeHandler} />
+                                    <input type="text" name="username" id="username" className={`${styles["input"]} ${areInputsCorrect.username}`} value={formValues.username} onChange={onChangeHandler} onBlur={onBlurValidate} onClick={onClick}/>
                                 </div>
                                 <div className={styles["input-container"]}>
                                     <label htmlFor="email" className={styles["label"]}>Email</label>
-                                    <input type="text" name="email" id="email" className={styles["input"]} value={formValues.email} onChange={onChangeHandler} />
+                                    <input type="text" name="email" id="email" className={`${styles["input"]} ${areInputsCorrect.email}`} value={formValues.email} onChange={onChangeHandler} onBlur={onBlurValidate} onClick={onClick}/>
                                 </div>
                                 <div className={styles["description-container"]}>
                                     <label htmlFor="description" className={styles["description-label"]}>Description</label>
@@ -87,7 +132,7 @@ export default function EditProfile() {
                                 </div>
                                 <div className={styles["btns-container"]}>
                                     <button className={styles["delete-btn"]} type="button" onClick={openConfirm}>Delete</button>
-                                    <button className={styles["submit-btn"]} type="submit">Edit</button>
+                                    <button className={`${!isReadyForEdit() ? styles["disabled-btn"] : styles["submit-btn"]}`} type="submit" disabled={!isReadyForEdit() ? true : false}>Edit</button>
                                 </div>
                             </form>
                         </div>
