@@ -29,7 +29,7 @@ export const AuthProvider = ({
             const userImage = image ? `http://localhost:7070/${image}` : require("../images/user-profile-image.png")
 
             setAuth({ _id, username, userImage, description, email, token });
-
+    
             navigate("/")
 
         } catch (error) {
@@ -61,12 +61,12 @@ export const AuthProvider = ({
         onRegister,
         onLogout,
         userId: auth._id,
-        token: auth.accessToken,
+        token: auth.token,
         userUsername: auth.username,
         userEmail: auth.email,
         userImage: auth.userImage,
         userDescription: auth.description,
-        isAuthenticated: !!auth.accessToken,
+        isAuthenticated: !!auth.token,
     };
 
     return (

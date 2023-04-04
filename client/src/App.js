@@ -12,6 +12,7 @@ import Profile from "./components/Profile/Profile";
 import EditProfile from "./components/Profile/EditProfile/EditProfile";
 import ErrorPage from "./components/ErrorPage/ErrorPage"
 import Create from "./components//Create/Create";
+import {RouteGuard} from "./utils/RouteGuard";
 
 function App() {
 
@@ -41,11 +42,15 @@ const [navClicked, setNavClicked] =useState({
         {navClicked, setNavClicked}}>
 
         <Routes>
-          <Route path='/' element={<Home  createdPost={createdPost? true: false} setCreatedPost={setCreatedPost}/>}/>
+          <Route element={<RouteGuard/>}>
+            <Route path='/' element={<Home  createdPost={createdPost? true: false} setCreatedPost={setCreatedPost}/>}/>
+          </Route>
           <Route path='/register' element={<Register />} />
           <Route path='/login' element={<Login />} />
           <Route path='/profile/:username' element={<Profile setNavClicked={setNavClicked}/>} />
-          <Route path='/profile/edit' element={<EditProfile/>} />  
+          <Route element={<RouteGuard/>}>
+            <Route path='/profile/edit' element={<EditProfile/>} />  
+          </Route>
           <Route path='*' element={<ErrorPage/>} />  
         </Routes>
         {navClicked.createClicked &&
