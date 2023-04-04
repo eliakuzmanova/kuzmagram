@@ -75,9 +75,9 @@ exports.getOneWithNonFollow = async (req, res) => {
             
         }
          }
-        // console.log(nonFollow);
+    
         const users = nonFollow.slice(0,3)
-        // console.log(users);
+   
         res.status(200).send(users);
 
     } catch (err) {
@@ -89,11 +89,20 @@ exports.getOneWithNonFollow = async (req, res) => {
 exports.editProfile = async (req, res) => {
 
     try {
+       
+        let imagePath;
 
-        const imagePath = req.file.path
+        imagePath = req.file?.path
+       
         const { userId, description, username, email } = req.body
+     
+        if(!imagePath){
+            const {image} = req.body
+            imagePath = image
+        }
 
         await userService.updateUserById(userId, { description, username, email, image: imagePath });
+
         res.status(200).end();
 
     } catch (err) {

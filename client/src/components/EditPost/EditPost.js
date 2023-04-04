@@ -21,7 +21,9 @@ export default function EditPost({
 
     async function onEditClick(e) {
         e.preventDefault()
+       
         await postService.updatePost(post._id, postDescription)
+       
         onCloseModalEdit(e, postDescription)
     }
 
@@ -61,7 +63,7 @@ export default function EditPost({
                         </div>
 
                         <div className={styles["edit-btn-container"]}>
-                            <button className={styles["edit-btn"]} onClick={onEditClick}>Edit</button>
+                            <button className={`${post.description === postDescription ? styles["disabled-btn"] : styles["edit-btn"]}`} disabled={post.description === postDescription ? true : false} onClick={onEditClick}>Edit</button>
                         </div>
                         <div className={styles["other-btns-container"]}>
                             <button className={styles["delete-btn"]} onClick={onDeleteClick}>Delete</button>

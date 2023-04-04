@@ -163,6 +163,24 @@
     transition: all 0.2s ease-in-out;
 }
 
+.disabled-btn{
+    display: flex;
+    justify-content: center;
+    margin-top: 14px;
+    padding: 7px;
+    width: 95px;
+    border: 2px solid rgb(110, 196, 198);
+    background-color:  rgb(110, 196, 198);
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    color: rgb(240, 240, 240);
+    border-radius: 17px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+
+}
+
 .edit-btn:hover{
     border: 2px solid rgb(29, 173, 175);
     background-color: rgb(29, 173, 175);

@@ -4,7 +4,6 @@ import { useState } from "react";
 
 import useForm from "../../../hooks/useForm";
 import { useAuthContext } from "../../../contexts/AuthContext";
-import * as userService from "../../../services/userService";
 import Confirm from "../../Confirm/Confirm";
 import Navbar from "../../Navbar/Navbar";
 
@@ -15,7 +14,7 @@ export default function EditProfile() {
         email: userEmail,
         description: userDescription,
     });
-    const [uploadImage, setUploadImage] = useState(userImage)
+    const [uploadImage, setUploadImage] = useState(userImage.slice(22,))
     const [deleteClicked, setDeleteClicked] = useState(false)
 
     const [areInputsCorrect, setAreInputsCorrect] = useState({
@@ -24,12 +23,16 @@ export default function EditProfile() {
     })
 
     function isReadyForEdit() {
-
         let isReady = false;
-        if (Object.values(areInputsCorrect).includes(styles["incorrect-input"])) {
-            isReady = false;
+        if ((formValues.username !== userUsername) || (formValues.email !== userEmail) || (formValues.description !== userDescription) || (uploadImage !== userImage)) {
+
+            if (Object.values(areInputsCorrect).includes(styles["incorrect-input"])) {
+                isReady = false;
+            } else {
+                isReady = true;
+            }
         } else {
-            isReady = true;
+            isReady = false;
         }
 
         return isReady
@@ -38,12 +41,12 @@ export default function EditProfile() {
     function onClick(e) {
         e?.preventDefault()
         setAreInputsCorrect(state => ({ ...state, [e.target.name]: "" }))
-       
+
     }
 
     function onBlurValidate(e) {
         e.preventDefault();
-
+        if ((formValues.username !== userUsername) || (formValues.email !== userEmail) || (formValues.description !== userDescription) || (uploadImage !== userImage)) {
         if (e.target.name === "username") {
             if (/^[A-Za-z0-9_\.]{3,25}$/.test(formValues.username)) {
                 setAreInputsCorrect(state => ({ ...state, ["username"]: styles["correct-input"] }))
@@ -59,7 +62,11 @@ export default function EditProfile() {
             } else {
                 setAreInputsCorrect(state => ({ ...state, ["email"]: styles["incorrect-input"] }))
             }
-        } 
+        }
+    } else {
+        return
+    }
+
 
     }
 
@@ -70,6 +77,7 @@ export default function EditProfile() {
 
     async function onSubmitForm(e) {
         e.preventDefault()
+
         const formData = new FormData();
         formData.append("image", uploadImage);
         formData.append("userId", userId);
@@ -81,13 +89,12 @@ export default function EditProfile() {
                 method: "POST",
                 body: formData
             })
-            const userInfo = await userService.getOneUser(formValues.email)
+            
             onLogout()
-    
+
         } catch (error) {
             console.log(error);
         }
-
     }
 
     function onModalClose(e) {
@@ -98,7 +105,7 @@ export default function EditProfile() {
 
     async function openConfirm(e) {
         e.preventDefault();
-        setDeleteClicked(true)        
+        setDeleteClicked(true)
     }
 
 
@@ -116,11 +123,11 @@ export default function EditProfile() {
                             <form method="POST" onSubmit={onSubmitForm}>
                                 <div className={styles["input-container"]}>
                                     <label htmlFor="username" className={styles["label"]}>Username</label>
-                                    <input type="text" name="username" id="username" className={`${styles["input"]} ${areInputsCorrect.username}`} value={formValues.username} onChange={onChangeHandler} onBlur={onBlurValidate} onClick={onClick}/>
+                                    <input type="text" name="username" id="username" className={`${styles["input"]} ${areInputsCorrect.username}`} value={formValues.username} onChange={onChangeHandler} onBlur={onBlurValidate} onClick={onClick} />
                                 </div>
                                 <div className={styles["input-container"]}>
                                     <label htmlFor="email" className={styles["label"]}>Email</label>
-                                    <input type="text" name="email" id="email" className={`${styles["input"]} ${areInputsCorrect.email}`} value={formValues.email} onChange={onChangeHandler} onBlur={onBlurValidate} onClick={onClick}/>
+                                    <input type="text" name="email" id="email" className={`${styles["input"]} ${areInputsCorrect.email}`} value={formValues.email} onChange={onChangeHandler} onBlur={onBlurValidate} onClick={onClick} />
                                 </div>
                                 <div className={styles["description-container"]}>
                                     <label htmlFor="description" className={styles["description-label"]}>Description</label>
@@ -139,7 +146,7 @@ export default function EditProfile() {
                     </div>
                 </div>
             </div>
-            {deleteClicked && <Confirm onModalClose={onModalClose}/>}
+            {deleteClicked && <Confirm onModalClose={onModalClose} />}
 
         </>
     )
