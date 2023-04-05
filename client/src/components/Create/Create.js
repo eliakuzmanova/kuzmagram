@@ -36,7 +36,7 @@ export default function Create({
         formData.append("userId", userId);
         formData.append("description", description);
         try {
-          const post = await fetch("http://localhost:7070/posts/create", {
+          const post = await fetch("https://kuzmagram-api.onrender.com/posts/create", {
                 method: "POST",
                 body: formData
             })

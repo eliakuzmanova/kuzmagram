@@ -1,6 +1,6 @@
 import * as request from "./requester";
 
-const baseUrl = "http://localhost:7070/users";
+const baseUrl = "https://kuzmagram-api.onrender.com/users";
 
 export const getOneUser = async (email) => {
 

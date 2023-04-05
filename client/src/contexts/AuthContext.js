@@ -26,7 +26,7 @@ export const AuthProvider = ({
 
             const { _id, username, image, description } = user
 
-            const userImage = image ? `http://localhost:7070/${image}` : require("../images/user-profile-image.png")
+            const userImage = image ? `https://kuzmagram-api.onrender.com/${image}` : require("../images/user-profile-image.png")
 
             setAuth({ _id, username, userImage, description, email, token });
     
@@ -59,7 +59,7 @@ export const AuthProvider = ({
      const onEditProfile = async (userId) => {
         try {
             const user = await userService.getOneById(userId)
-            const userImage = user.image? `http://localhost:7070/${user.image}` : require("../images/user-profile-image.png")
+            const userImage = user.image? `https://kuzmagram-api.onrender.com/${user.image}` : require("../images/user-profile-image.png")
              setAuth(state =>({...state, ...user, userImage}));
              navigate(`/profile/${user.username}`)
         } catch (err) {

@@ -1,6 +1,6 @@
 import * as request from "./requester";
 
-const baseUrl = "http://localhost:7070/posts";
+const baseUrl = "https://kuzmagram-api.onrender.com/posts";
 
 export const getOne = async (profileId) => {
   const post = await request.get(`${baseUrl}/${profileId}/getOne`);

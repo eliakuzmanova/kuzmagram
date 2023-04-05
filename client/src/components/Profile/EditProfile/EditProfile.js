@@ -88,7 +88,7 @@ export default function EditProfile() {
         formData.append("email", formValues.email);
         formData.append("description", formValues.description);
         try {
-            const post = await fetch("http://localhost:7070/profile/edit", {
+            const post = await fetch("https://kuzmagram-api.onrender.com/profile/edit", {
                 method: "POST",
                 body: formData
             })

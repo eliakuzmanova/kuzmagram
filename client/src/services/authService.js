@@ -1,6 +1,6 @@
 import * as request from './requester';
 
-const baseUrl = "http://localhost:7070/auth";
+const baseUrl = "https://kuzmagram-api.onrender.com/auth";
 
 export const login = async ({ email, password}) => {
  const token = await request.post(`${baseUrl}/login`, { email, password})
