@@ -45,40 +45,45 @@ export default function Register() {
         e.preventDefault();
 
         if (e.target.name === "username") {
+
             if (/^[A-Za-z0-9_\.]{3,25}$/.test(formValues.username)) {
                 setAreInputsCorrect(state => ({ ...state, ["username"]: styles["correct-input"] }))
-
             } else {
                 setAreInputsCorrect(state => ({ ...state, ["username"]: styles["incorrect-input"] }))
-
             }
+
         } else if (e.target.name === "email") {
+
             if (/([-!#-'*+/-9=?A-Z^-~]+(\.[-!#-'*+/-9=?A-Z^-~]+)*|"([]!#-[^-~ \t]|(\\[\t -~]))+")@([0-9A-Za-z]([0-9A-Za-z-]{0,61}[0-9A-Za-z])?(\.[0-9A-Za-z]([0-9A-Za-z-]{0,61}[0-9A-Za-z])?)*|\[((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])){3}|IPv6:((((0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}):){6}|::((0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}):){5}|[0-9A-Fa-f]{0,4}::((0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}):){4}|(((0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}):)?(0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}))?::((0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}):){3}|(((0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}):){0,2}(0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}))?::((0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}):){2}|(((0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}):){0,3}(0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}))?::(0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}):|(((0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}):){0,4}(0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}))?::)((0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}):(0|[1-9A-Fa-f][0-9A-Fa-f]{0,3})|(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])){3})|(((0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}):){0,5}(0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}))?::(0|[1-9A-Fa-f][0-9A-Fa-f]{0,3})|(((0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}):){0,6}(0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}))?::)|(?!IPv6:)[0-9A-Za-z-]*[0-9A-Za-z]:[!-Z^-~]+)])/
                 .test(formValues.email)) {
                 setAreInputsCorrect(state => ({ ...state, ["email"]: styles["correct-input"] }))
             } else {
                 setAreInputsCorrect(state => ({ ...state, ["email"]: styles["incorrect-input"] }))
             }
+
         } else if (e.target.name === "password") {
+
             if (/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&]{6,20}$/.test(formValues.password)) {
                 setAreInputsCorrect(state => ({ ...state, ["password"]: styles["correct-input"] }))
             } else {
                 setAreInputsCorrect(state => ({ ...state, ["password"]: styles["incorrect-input"] }))
             }
+
         } else if (e.target.name === "confirm-password") {
+
             if (formValues.password === formValues["confirm-password"] && formValues["confirm-password"] !== "") {
                 setAreInputsCorrect(state => ({ ...state, ["confirm-password"]: styles["correct-input"] }))
             } else {
                 setAreInputsCorrect(state => ({ ...state, ["confirm-password"]: styles["incorrect-input"] }))
             }
-        }
 
+        }
     }
 
     function onClick(e) {
         e?.preventDefault()
         setAreInputsCorrect(state => ({ ...state, [e.target.name]: "" }))
-        if(err) {
+        if (err) {
             setErr("")
         } else {
             return
@@ -88,15 +93,14 @@ export default function Register() {
     async function onSubmitHandler(e) {
         e.preventDefault();
 
-       const error = await onRegister(formValues.username, formValues.email, formValues.password)
-    
-       if (error) {
-        setErr(error.message);
-    } else {
-        setErr("")
-        await onLogin(formValues.email, formValues.password)
-    }
+        const error = await onRegister(formValues.username, formValues.email, formValues.password)
 
+        if (error) {
+            setErr(error.message);
+        } else {
+            setErr("")
+            await onLogin(formValues.email, formValues.password)
+        }
     }
 
     function onEyeIconPassword(e) {

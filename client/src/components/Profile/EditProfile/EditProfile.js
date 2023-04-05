@@ -8,7 +8,7 @@ import Confirm from "../../Confirm/Confirm";
 import Navbar from "../../Navbar/Navbar";
 
 export default function EditProfile() {
-    const { userUsername, userEmail, userDescription, userImage, userId, onEditProfile} = useAuthContext()
+    const { userUsername, userEmail, userDescription, userImage, userId, onEditProfile } = useAuthContext()
     const { formValues, onChangeHandler } = useForm({
         username: userUsername,
         email: userEmail,
@@ -46,28 +46,30 @@ export default function EditProfile() {
 
     function onBlurValidate(e) {
         e.preventDefault();
+
         if ((formValues.username !== userUsername) || (formValues.email !== userEmail) || (formValues.description !== userDescription) || (uploadImage !== userImage)) {
-        if (e.target.name === "username") {
-            if (/^[A-Za-z0-9_\.]{3,25}$/.test(formValues.username)) {
-                setAreInputsCorrect(state => ({ ...state, ["username"]: styles["correct-input"] }))
 
-            } else {
-                setAreInputsCorrect(state => ({ ...state, ["username"]: styles["incorrect-input"] }))
+            if (e.target.name === "username") {
+
+                if (/^[A-Za-z0-9_\.]{3,25}$/.test(formValues.username)) {
+                    setAreInputsCorrect(state => ({ ...state, ["username"]: styles["correct-input"] }))
+                } else {
+                    setAreInputsCorrect(state => ({ ...state, ["username"]: styles["incorrect-input"] }))
+                }
+
+            } else if (e.target.name === "email") {
+
+                if (/([-!#-'*+/-9=?A-Z^-~]+(\.[-!#-'*+/-9=?A-Z^-~]+)*|"([]!#-[^-~ \t]|(\\[\t -~]))+")@([0-9A-Za-z]([0-9A-Za-z-]{0,61}[0-9A-Za-z])?(\.[0-9A-Za-z]([0-9A-Za-z-]{0,61}[0-9A-Za-z])?)*|\[((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])){3}|IPv6:((((0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}):){6}|::((0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}):){5}|[0-9A-Fa-f]{0,4}::((0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}):){4}|(((0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}):)?(0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}))?::((0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}):){3}|(((0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}):){0,2}(0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}))?::((0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}):){2}|(((0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}):){0,3}(0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}))?::(0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}):|(((0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}):){0,4}(0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}))?::)((0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}):(0|[1-9A-Fa-f][0-9A-Fa-f]{0,3})|(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])){3})|(((0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}):){0,5}(0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}))?::(0|[1-9A-Fa-f][0-9A-Fa-f]{0,3})|(((0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}):){0,6}(0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}))?::)|(?!IPv6:)[0-9A-Za-z-]*[0-9A-Za-z]:[!-Z^-~]+)])/
+                    .test(formValues.email)) {
+                    setAreInputsCorrect(state => ({ ...state, ["email"]: styles["correct-input"] }))
+                } else {
+                    setAreInputsCorrect(state => ({ ...state, ["email"]: styles["incorrect-input"] }))
+                }
 
             }
-        } else if (e.target.name === "email") {
-            if (/([-!#-'*+/-9=?A-Z^-~]+(\.[-!#-'*+/-9=?A-Z^-~]+)*|"([]!#-[^-~ \t]|(\\[\t -~]))+")@([0-9A-Za-z]([0-9A-Za-z-]{0,61}[0-9A-Za-z])?(\.[0-9A-Za-z]([0-9A-Za-z-]{0,61}[0-9A-Za-z])?)*|\[((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])){3}|IPv6:((((0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}):){6}|::((0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}):){5}|[0-9A-Fa-f]{0,4}::((0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}):){4}|(((0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}):)?(0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}))?::((0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}):){3}|(((0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}):){0,2}(0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}))?::((0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}):){2}|(((0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}):){0,3}(0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}))?::(0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}):|(((0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}):){0,4}(0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}))?::)((0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}):(0|[1-9A-Fa-f][0-9A-Fa-f]{0,3})|(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])){3})|(((0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}):){0,5}(0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}))?::(0|[1-9A-Fa-f][0-9A-Fa-f]{0,3})|(((0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}):){0,6}(0|[1-9A-Fa-f][0-9A-Fa-f]{0,3}))?::)|(?!IPv6:)[0-9A-Za-z-]*[0-9A-Za-z]:[!-Z^-~]+)])/
-                .test(formValues.email)) {
-                setAreInputsCorrect(state => ({ ...state, ["email"]: styles["correct-input"] }))
-            } else {
-                setAreInputsCorrect(state => ({ ...state, ["email"]: styles["incorrect-input"] }))
-            }
+        } else {
+            return
         }
-    } else {
-        return
-    }
-
-
     }
 
     function onUploadImage(e) {
@@ -89,8 +91,8 @@ export default function EditProfile() {
                 method: "POST",
                 body: formData
             })
-            
-            	onEditProfile(userId)
+
+            onEditProfile(userId)
         } catch (error) {
             console.log(error);
         }

@@ -9,34 +9,37 @@ import Navbar from "../Navbar/Navbar";
 import Posts from "./Posts/Posts";
 import AsideHome from "./AsideHome/AsideHome"
 
-export default function Home({createdPost,setCreatedPost}) {
+export default function Home({ createdPost, setCreatedPost }) {
 
     const { userId } = useAuthContext()
     const [posts, setPosts] = useState("")
-   
+
     useEffect(() => {
-        
+
         const fetchPosts = async () => {
+            try {
+                const fetchedPosts = await userService.getFollowsPosts(userId)
 
-            const fetchedPosts = await userService.getFollowsPosts(userId)
+                setPosts(fetchedPosts)
+            } catch (error) {
+                console.log(error);
+            }
 
-            setPosts(fetchedPosts)
-     
         }
         fetchPosts()
     }, [userId])
-   
-    if(createdPost) {
+
+    if (createdPost) {
         getNewData()
-       
     }
     async function getNewData() {
-     
-        const fetchedPosts = await userService.getFollowsPosts(userId)
-
-        setPosts(fetchedPosts)
-     
-        setCreatedPost(false)
+        try {
+            const fetchedPosts = await userService.getFollowsPosts(userId)
+            setPosts(fetchedPosts)
+            setCreatedPost(false)
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     return (
@@ -55,7 +58,7 @@ export default function Home({createdPost,setCreatedPost}) {
 
                 </div>
             </div>
-           
+
         </>
     )
 }

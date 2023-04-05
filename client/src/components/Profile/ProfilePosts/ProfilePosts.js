@@ -13,12 +13,15 @@ export default function ProfilePosts({
     const [clickedPost, setClickedPost] = useState("")
 
 
-   async function onClickPhoto(e, post) {
+    async function onClickPhoto(e, post) {
         e.preventDefault()
-     
-        const result = await postService.getOne(post._id)
-        setBtnClicked(true)
-        setClickedPost(result)
+        try {
+            const result = await postService.getOne(post._id)
+            setBtnClicked(true)
+            setClickedPost(result)
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     function onModalClose(e) {
@@ -31,9 +34,7 @@ export default function ProfilePosts({
     return (
         <>
             <div className={styles["profile-posts-container"]}>
-           
-                {posts.map(x => <ProfilePost key={x._id} post={x} onClickPhoto={onClickPhoto}/>)} 
-                
+                {posts.map(x => <ProfilePost key={x._id} post={x} onClickPhoto={onClickPhoto} />)}
             </div>
             <>
                 {btnClicked && <PostContent onModalClose={onModalClose} clickedPost={clickedPost} />}

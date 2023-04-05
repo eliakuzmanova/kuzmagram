@@ -21,10 +21,14 @@ export default function EditPost({
 
     async function onEditClick(e) {
         e.preventDefault()
-       
+       try {
         await postService.updatePost(post._id, postDescription)
        
         onCloseModalEdit(e, postDescription)
+       } catch (error) {
+        console.log(error);
+       }
+       
     }
 
     async function onDeleteClick(e) {

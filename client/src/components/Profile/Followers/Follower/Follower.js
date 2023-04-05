@@ -12,11 +12,9 @@ export default function Follower({
         onModalClose(e,profile.username)
     }
     return(
-        // <div className={styles["user-container"]}>
             <div className={styles["user-info-container"]}>
                 <img className={styles["image"]} src={profile.image ? `http://localhost:7070/${profile.image}` : require("../../../../images/user-profile-image.png")} alt="profile" />
                 <Link onClick={onClickFollower} className={styles["username"]}>{profile.username}</Link>
             </div>
-        // </div>
     )
 }

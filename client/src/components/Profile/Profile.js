@@ -36,10 +36,12 @@ export default function Profile() {
     useEffect(() => {
 
         const fetchUser = async () => {
-
-            const userInfo = await userService.getOneUserWithRelations(username)
-            setUser(state => ({ ...state, ...userInfo, description: userInfo.description, image: userInfo.image, posts: userInfo.posts.reverse() }))
-
+            try {
+                const userInfo = await userService.getOneUserWithRelations(username)
+                setUser(state => ({ ...state, ...userInfo, description: userInfo.description, image: userInfo.image, posts: userInfo.posts.reverse() }))
+            } catch (error) {
+                console.log(error);
+            }
         }
         fetchUser();
 
@@ -50,20 +52,19 @@ export default function Profile() {
 
     async function onFollow(e) {
         e.preventDefault()
+        try {
+            let updatedUser;
 
-        let updatedUser;
+            if (!isFollower) {
+                updatedUser = await userService.addFollower(user.email, userId)
+            } else {
+                updatedUser = await userService.removeFollower(user.email, userId)
+            }
 
-        if (!isFollower) {
-            updatedUser = await userService.addFollower(user.email, userId)
-        } else {
-
-            updatedUser = await userService.removeFollower(user.email, userId)
-
+            setUser(state => ({ ...state, ...updatedUser, posts: updatedUser.posts.reverse() }))
+        } catch (error) {
+            console.log(error);
         }
-
-        setUser(state => ({ ...state, ...updatedUser, posts: updatedUser.posts.reverse() }))
-
-
     }
 
     function onFollowers(e) {
@@ -98,15 +99,15 @@ export default function Profile() {
     return (
         <ProfileContext.Provider value={user} >
             <div className={`${isAuthenticated ? styles["profile-container"] : styles["profile-container-guest"]}`}>
-                {isAuthenticated 
-                ? <header className={styles["profile-header"]}>
+                {isAuthenticated
+                    ? <header className={styles["profile-header"]}>
                         <Navbar />
                     </header>
-                : <header className={styles["guest-header"]}>
-                    <GuestNavBar />
-                </header>
+                    : <header className={styles["guest-header"]}>
+                        <GuestNavBar />
+                    </header>
                 }
-                <main className={`${isAuthenticated ? styles["profile-main"] : styles["profile-main-guest"] } `}>
+                <main className={`${isAuthenticated ? styles["profile-main"] : styles["profile-main-guest"]} `}>
                     <div className={styles["profile-all-info-container"]}>
                         <div className={styles["profile-photo-container"]}>
                             <img className={styles["profile-photo"]} src={user.image ? `http://localhost:7070/${user.image}` : require("../../images/user-profile-image.png")} alt="profile" />

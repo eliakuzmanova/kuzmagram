@@ -11,8 +11,13 @@ export default function Suggestions({
     const [users, setUsers] = useState("")
     useEffect(() => {
         const fetchData = async () => {
-            const fetchedUsers = await userService.getOneUserWithNonFollow(userId)
-            setUsers(fetchedUsers)
+            try {
+                const fetchedUsers = await userService.getOneUserWithNonFollow(userId)
+                setUsers(fetchedUsers)
+            } catch (error) {
+                console.log(error);
+            }
+         
         }
         fetchData();
     }, [userId])

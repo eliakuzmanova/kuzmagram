@@ -24,11 +24,14 @@ export default function Post({ clickedPost }) {
 
     useEffect(() => {
         const fetchComments = async () => {
-
-            const fetchedPost = await postService.getPostWithComments(clickedPost._id)
-            const userInfo = await userService.getOneById(fetchedPost.owner.toString())
-            setUser(state => ({ ...state, ...userInfo }))
-            setPost(state => ({ ...state, ...fetchedPost }))
+                try {
+                    const fetchedPost = await postService.getPostWithComments(clickedPost._id)
+                    const userInfo = await userService.getOneById(fetchedPost.owner.toString())
+                    setUser(state => ({ ...state, ...userInfo }))
+                    setPost(state => ({ ...state, ...fetchedPost }))
+                } catch (error) {
+                    console.log(error);
+                }
         }
         fetchComments()
         if (postLikes.includes(userId)) {
