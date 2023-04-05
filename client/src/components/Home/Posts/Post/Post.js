@@ -31,6 +31,13 @@ export default function Post({ clickedPost }) {
             setPost(state => ({ ...state, ...fetchedPost }))
         }
         fetchComments()
+        if (postLikes.includes(userId)) {
+
+            setHeartClicked(true)
+        } else {
+
+            setHeartClicked(false)
+        }
     }, [userId, postLikes, clickedPost._id])
 
     function onChangeComment(e) {
