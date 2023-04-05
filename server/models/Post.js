@@ -18,7 +18,10 @@ const postSchema = new mongoose.Schema({
             type: mongoose.Types.ObjectId,
             ref: "User"
         },
-        comment: String
+        comment: {
+            type: String,
+            maxLength: [150, "Too long comment"]
+        },
     }],
     owner: {
         type: mongoose.Types.ObjectId,

@@ -118,7 +118,7 @@ export default function Post({ clickedPost }) {
                     {post.comments.length? <Comments post={post} showComments={showComments} setShowComments={setShowComments} /> : ""}
 
                     <div className={styles["textarea-container"]}>
-                        <textarea className={styles["textarea"]} name="comment-area" id="comment-area" maxLength="50" placeholder="Comment..." value={comment} onChange={onChangeComment}></textarea>
+                        <textarea className={styles["textarea"]} name="comment-area" id="comment-area" maxLength="150" placeholder="Comment..." value={comment} onChange={onChangeComment}></textarea>
                         <Link className={styles["comment-btn"]} onClick={onClickComment}>Comment</Link>
                     </div>
                 </section>
