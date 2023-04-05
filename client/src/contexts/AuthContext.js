@@ -56,10 +56,18 @@ export const AuthProvider = ({
         navigate("/login")
     };
 
+     const onEditProfile = async (userId) => {
+        const user = await userService.getOneById(userId)
+       const userImage = user.image? `http://localhost:7070/${user.image}` : require("../images/user-profile-image.png")
+        setAuth(state =>({...state, ...user, userImage}));
+        navigate(`/profile/${user.username}`)
+     }
+
     const contextValues = {
         onLogin,
         onRegister,
         onLogout,
+        onEditProfile,
         userId: auth._id,
         token: auth.token,
         userUsername: auth.username,

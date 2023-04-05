@@ -176,7 +176,7 @@
     font-size: 15px;
     color: rgb(240, 240, 240);
     border-radius: 17px;
-    cursor: pointer;
+    cursor: auto;
     transition: all 0.2s ease-in-out;
 
 }

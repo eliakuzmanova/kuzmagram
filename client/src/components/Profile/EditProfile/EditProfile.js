@@ -8,7 +8,7 @@ import Confirm from "../../Confirm/Confirm";
 import Navbar from "../../Navbar/Navbar";
 
 export default function EditProfile() {
-    const { userUsername, userEmail, userDescription, userImage, userId, onLogout } = useAuthContext()
+    const { userUsername, userEmail, userDescription, userImage, userId, onEditProfile} = useAuthContext()
     const { formValues, onChangeHandler } = useForm({
         username: userUsername,
         email: userEmail,
@@ -90,8 +90,7 @@ export default function EditProfile() {
                 body: formData
             })
             
-            onLogout()
-
+            	onEditProfile(userId)
         } catch (error) {
             console.log(error);
         }
