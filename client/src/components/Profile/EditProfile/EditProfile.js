@@ -24,7 +24,8 @@ export default function EditProfile() {
 
     function isReadyForEdit() {
         let isReady = false;
-        if ((formValues.username !== userUsername) || (formValues.email !== userEmail) || (formValues.description !== userDescription) || (uploadImage !== userImage)) {
+        
+        if ((formValues.username !== userUsername) || (formValues.email !== userEmail) || (formValues.description !== userDescription) || (uploadImage !== userImage.slice(22,))) {
 
             if (Object.values(areInputsCorrect).includes(styles["incorrect-input"])) {
                 isReady = false;
