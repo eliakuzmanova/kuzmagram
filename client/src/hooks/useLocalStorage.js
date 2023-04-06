@@ -6,13 +6,13 @@ export const useLocalStorage = (key, initialValue) => {
       
         const persistedStateSerialized = localStorage.getItem(key);
        
-        if (persistedStateSerialized) {
-            console.log(Boolean(persistedStateSerialized));
+        if (persistedStateSerialized && (persistedStateSerialized !== undefined)) {
+            
             const persistedState = JSON.parse(persistedStateSerialized);
           
            return persistedState;
         }
-        console.log(initialValue);
+      
         return initialValue;
       
     });
