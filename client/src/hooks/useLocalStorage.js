@@ -7,7 +7,7 @@ export const useLocalStorage = (key, initialValue) => {
         const persistedStateSerialized = localStorage.getItem(key);
        console.log(persistedStateSerialized !== undefined);
        console.log(persistedStateSerialized !== "undefined");
-        if (persistedStateSerialized && (persistedStateSerialized !== undefined)) {
+        if (persistedStateSerialized && (persistedStateSerialized !== "undefined")) {
            console.log("hallo"); 
            console.log(persistedStateSerialized);
             const persistedState = JSON.parse(persistedStateSerialized);
