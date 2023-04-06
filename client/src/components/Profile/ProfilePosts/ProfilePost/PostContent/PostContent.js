@@ -133,13 +133,13 @@ export default function PostContent({
 
                     <article className={styles["post"]}>
                         <section className={styles["image-section"]}>
-                            <img className={styles["image"]} src={`http://localhost:7070/${post.image}`} alt="post" />
+                            <img className={styles["image"]} src={`https://kuzmagram-api.onrender.com/${post.image}`} alt="post" />
                         </section>
 
                         <section className={styles["post-information-side"]}>
                             <section className={styles["user-section"]}>
                                 <div className={styles["user-container"]}>
-                                    <img className={styles["user-photo"]} src={user.image ? `http://localhost:7070/${user.image}` : require("../../../../../images/user-profile-image.png")} alt="owner" />
+                                    <img className={styles["user-photo"]} src={user.image ? `https://kuzmagram-api.onrender.com/${user.image}` : require("../../../../../images/user-profile-image.png")} alt="owner" />
                                     <Link className={styles["username"]}>{user.username}</Link>
                                 </div>
                                 {isOwner && <HiEllipsisHorizontal className={styles["user-section-icon"]} onClick={onEditClick} />}
@@ -147,7 +147,7 @@ export default function PostContent({
                             {post.description &&
                                 <div className={styles["description-container"]}>
                                     <div className={styles["description-user-image-container"]}>
-                                        <img className={styles["description-user-image"]} src={user.image ? `http://localhost:7070/${user.image}` : require("../../../../../images/user-profile-image.png")} alt="user" />
+                                        <img className={styles["description-user-image"]} src={user.image ? `https://kuzmagram-api.onrender.com/${user.image}` : require("../../../../../images/user-profile-image.png")} alt="user" />
                                     </div>
                                     <p className={styles["description"]}> <Link className={styles["username-description"]}>{user.username}</Link> {post.description} </p>
                                 </div>}

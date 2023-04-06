@@ -95,13 +95,13 @@ export default function Post({ clickedPost }) {
             <article className={styles["post"]}>
                 <section className={styles["user-section"]}>
                     <div className={styles["user-container"]}>
-                        <img className={styles["user-image"]} src={user.image ? `http://localhost:7070/${user.image}` : require("../../../../images/user-profile-image.png")} alt="user" />
+                        <img className={styles["user-image"]} src={user.image ? `https://kuzmagram-api.onrender.com/${user.image}` : require("../../../../images/user-profile-image.png")} alt="user" />
                         <Link to={`/profile/${user.username}`} className={styles["user-username"]}>{user.username}</Link>
                     </div>
 
                 </section>
                 <section className={styles["post-image-section"]}>
-                    <img className={styles["post-image"]} src={`http://localhost:7070/${post.image}`} alt="post" />
+                    <img className={styles["post-image"]} src={`https://kuzmagram-api.onrender.com/${post.image}`} alt="post" />
                 </section>
                 <section className={styles["icons-section"]}>
                     <div className={styles["actions-container"]}>
