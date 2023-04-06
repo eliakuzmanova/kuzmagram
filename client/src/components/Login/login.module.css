@@ -15,7 +15,7 @@
     align-items: center;
     border: 2px solid var(--light-gray);
     border-radius: 15px;
-    width: 500px;
+    min-width: 500px;
     max-height: 680px;
     height: auto;
     margin-top: 20px;
