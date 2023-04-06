@@ -8,7 +8,7 @@ export default function Suggestion({
     return (
         <div className={styles["suggestion-profile-container"]}>
             <div className={styles["suggestion-profile-info-container"]}>
-                <img className={styles["suggestion-photo"]} src={user.image ? `http://localhost:7070/${user.image}` : require("../../../../../images/user-profile-image.png")} alt="profile" />
+                <img className={styles["suggestion-photo"]} src={user.image ? `https://kuzmagram-api.onrender.com/${user.image}` : require("../../../../../images/user-profile-image.png")} alt="profile" />
                 <Link to={`/profile/${user.username}`} className={styles["suggestion-username"]}>{user.username}</Link>
             </div>
          
