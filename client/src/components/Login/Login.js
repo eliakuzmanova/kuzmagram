@@ -46,7 +46,7 @@ export default function Login() {
    }
 
     return (
-        <>
+        <div className={styles["page-wrapper"]}>
             <main className={styles["main"]}>
                 <div className={styles["login-wrapper"]}>
                     <div className={styles["div-logo"]}>
@@ -80,6 +80,6 @@ export default function Login() {
             </main>
 
             <Footer />
-        </>
+        </div>
     )
 }
