@@ -12,7 +12,7 @@ export const useLocalStorage = (key, initialValue) => {
           
            return persistedState;
         }
-     
+        console.log(initialValue);
         return initialValue;
       
     });
