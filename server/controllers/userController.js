@@ -76,7 +76,7 @@ exports.getOneWithNonFollow = async (req, res) => {
         }
          }
     
-        const users = nonFollow.reverse().slice(0,3)
+        const users = nonFollow.reverse().slice(0,3);
    
         res.status(200).send(users);
 
