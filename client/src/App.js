@@ -18,7 +18,6 @@ function App() {
 
 const [navClicked, setNavClicked] =useState({
   createClicked: false,
-  searchClicked:false
 })
  const navigate = useNavigate()
   const [image, setImage] = useState("")

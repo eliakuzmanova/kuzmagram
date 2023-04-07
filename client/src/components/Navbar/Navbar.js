@@ -3,8 +3,6 @@ import { IoHomeOutline } from "react-icons/io5";
 import { IoHomeSharp } from "react-icons/io5";
 import { IoAddCircleOutline } from "react-icons/io5";
 import { IoAddCircle } from "react-icons/io5";
-import { IoSearchOutline } from "react-icons/io5";
-// import { IoSearch } from "react-icons/io5";
 
 import { useContext, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom"
@@ -52,10 +50,6 @@ export default function Navbar() {
                     }
 
                     <Link className={`${styles["link"]} ${isClicked.home ? styles["link-clicked"] : ""}`} to={"/"}>Home</Link>
-                </li>
-                <li className={styles["li-nav"]}>
-                    <IoSearchOutline className={styles["nav-icon"]} />
-                    <Link className={styles["link"]} to={"/search"}>Search</Link>
                 </li>
                 <li className={styles["li-nav"]}>
                     {navClicked.createClicked
