@@ -2,14 +2,15 @@
 
 **https://kuzmagram.vercel.app**
 ## About the project
+
 **This website makes sharing your best memories with friends and family easier. You can upload your own photos and see all the comments and likes on them. You can share your ideas and content with your followers. By exploring home you can see what people that you follow have uploaded and can like and comment on them. When you open someones personal profile you can read their bio (someones personal information), like and comment on their posts.**
+**The website is made for educational purposes**
 
 ## How to start the project
 
 - fork and clone this repository
 - run npm install (for client and server folder)
 - run npm start (for client and server folder)
-
 
 ## Used technologies
 
