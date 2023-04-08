@@ -14,63 +14,64 @@ run npm start (for client and server folder)
 
 ## Used technologies
 
-***For client***
-Create-React-App
-React
-Javascript
-HTML5
-CSS
-Deployment in Vercel
-
-
-**Dependencies**
-React Icons
-React Router DOM
-
-
-***For server***
-
-Express
-Node.js
-Hosting in render
+### For client
+- Create-React-App
+- React
+- Javascript
+- HTML5
+- CSS
+- Deployment in Vercel
 
 **Dependencies**
 
-Bcrypt
-Body Parser
-Cors
-JSON Web Token
-Multer
-Mongoose
+- React Icons
+- React Router DOM
+
+### For server
+
+- Express
+- Node.js
+- Hosting in render
+
+**Dependencies**
+
+- Bcrypt
+- Body Parser
+- Cors
+- JSON Web Token
+- Multer
+- Mongoose
 
 ## Database
 
-MongoDB
-Hosting in MongoDB Atlas
+- MongoDB
+- Hosting in MongoDB Atlas
 
 ## Features 
 
 ***Guests***
 
-Sign in
-Sign up
-Profile (other`s users)
-Followers in Profile
-Follows in Profile
-Post Content in Profile
-Likes in Post Content
-404 page
+- Sign in
+- Sign up
+- Profile (other`s users)
+- Followers in Profile
+- Follows in Profile
+- Post Content in Profile
+- Likes in Post Content
+- 404 page
 
 ***Sign in users***
 
-Home page
-Create
-Option to like
-Option to comment
-Suggestions for other users
+- All pages that "guests" can see
+- Home page
+- Create
+- Option to like
+- Option to comment
+- Suggestions for other users
 
 
-***Owners***
+***Owners and sign in user***
 
-Edit profile
-Edit post
+- All pages that "sign" in and "guest" user can see
+- Edit profile
+- Edit post
