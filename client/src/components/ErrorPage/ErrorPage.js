@@ -9,7 +9,7 @@ export default function ErrorPage() {
         <h1 className={styles["error-404"]}>404</h1>
         </div>
        <div className={styles["error-text-container"]}>
-        <p className={styles["error-text"]}>The page you were looking for does nox exist...</p>
+        <p className={styles["error-text"]}>The page you were looking for does not exist...</p>
         </div>
         <div className={styles["error-btn-container"]}>
             <Link to={"/"}className={styles["error-btn"]} >Go Home</Link>
