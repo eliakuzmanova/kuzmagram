@@ -15,5 +15,3 @@ exports.getOneWithComments = (postId) => Post.findById(postId).populate("comment
 exports.update = (id, data) => Post.findByIdAndUpdate(id, data).lean();
 
 exports.delete = (id) => Post.findByIdAndRemove(id)
-
-// exports.postComment = (postId , comment) => Post.findByIdAndUpdate(postId, comment).lean();
