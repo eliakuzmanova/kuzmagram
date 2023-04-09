@@ -49,6 +49,7 @@ export default function Profile() {
 
      const isFollower = user.followers.length ? user.followers.filter(f => f._id === userId) : false
 
+
     const isOwner = username === userUsername
 
     async function onFollow(e) {
@@ -120,7 +121,7 @@ export default function Profile() {
                                     <>
                                         {isOwner
                                             ? <Link to={"/profile/edit"} className={styles["profile-info-button"]} > Edit profile</Link>
-                                            : <button className={styles["profile-info-button"]} onClick={onFollow} >{isFollower && isFollower != "[]" ? "Unfollow" : "Follow"}</button>}
+                                            : <button className={styles["profile-info-button"]} onClick={onFollow} >{isFollower && isFollower.length ? "Unfollow" : "Follow"}</button>}
                                     </>
                                 }
                             </div>
