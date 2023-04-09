@@ -54,10 +54,12 @@ export default function Profile() {
 
     async function onFollow(e) {
         e.preventDefault()
+       
         try {
             let updatedUser;
 
-            if (!isFollower) {
+            if (!isFollower || !isFollower.length) {
+                console.log("hello there");
                 updatedUser = await userService.addFollower(user.email, userId)
             } else {
                 updatedUser = await userService.removeFollower(user.email, userId)
