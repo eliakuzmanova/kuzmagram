@@ -59,7 +59,7 @@ export default function Profile() {
             let updatedUser;
 
             if (!isFollower || !isFollower.length) {
-                console.log("hello there");
+                
                 updatedUser = await userService.addFollower(user.email, userId)
             } else {
                 updatedUser = await userService.removeFollower(user.email, userId)
