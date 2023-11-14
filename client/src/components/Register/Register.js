@@ -43,7 +43,9 @@ export default function Register() {
 
     function onBlurValidate(e) {
         e.preventDefault();
-
+        console.log(e.target.value);
+        console.log(formValues);
+      
         if (e.target.name === "username") {
 
             if (/^[A-Za-z0-9_\.]{3,25}$/.test(formValues.username)) {
@@ -71,12 +73,19 @@ export default function Register() {
 
         } else if (e.target.name === "confirm-password") {
 
-            if (formValues.password === formValues["confirm-password"] && formValues["confirm-password"] !== "") {
+            if ((formValues.password === formValues["confirm-password"]) && (formValues["confirm-password"] !== "")) {
                 setAreInputsCorrect(state => ({ ...state, ["confirm-password"]: styles["correct-input"] }))
             } else {
                 setAreInputsCorrect(state => ({ ...state, ["confirm-password"]: styles["incorrect-input"] }))
             }
 
+        }
+        if(formValues.password !== "") {
+            if(formValues.password !== formValues["confirm-password"]){
+                setAreInputsCorrect(state => ({ ...state, ["confirm-password"]: styles["incorrect-input"] }))
+            } else {
+                setAreInputsCorrect(state => ({ ...state, ["confirm-password"]: styles["correct-input"] }))
+            }
         }
     }
 
