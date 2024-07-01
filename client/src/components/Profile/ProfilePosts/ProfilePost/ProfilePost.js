@@ -5,6 +5,6 @@ export default function ProfilePost({
     onClickPhoto }) {
 
     return (
-        <img className={styles["profile-post-image"]} src={`https://kuzmagram-api.onrender.com/${post.image}`} alt="post" onClick={e => onClickPhoto(e, post)} />
+        <img className={styles["profile-post-image"]} src={`http://localhost:7070/${post.image}`} alt="post" onClick={e => onClickPhoto(e, post)} />
     )
 }

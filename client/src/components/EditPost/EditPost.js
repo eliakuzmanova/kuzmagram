@@ -51,7 +51,7 @@ export default function EditPost({
                 </div>
                 <div className={styles["post"]}>
                     <section className={styles["image-section"]}>
-                        <img className={styles["image"]} src={`https://kuzmagram-api.onrender.com/${post.image}`} alt="post" />
+                        <img className={styles["image"]} src={`http://localhost:7070/${post.image}`} alt="post" />
                     </section>
 
                     <section className={styles["post-information-side"]}>

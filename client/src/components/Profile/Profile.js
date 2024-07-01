@@ -114,7 +114,7 @@ export default function Profile() {
                 <main className={`${isAuthenticated ? styles["profile-main"] : styles["profile-main-guest"]} `}>
                     <div className={styles["profile-all-info-container"]}>
                         <div className={styles["profile-photo-container"]}>
-                            <img className={styles["profile-photo"]} src={user.image ? `https://kuzmagram-api.onrender.com/${user.image}` : require("../../images/user-profile-image.png")} alt="profile" />
+                            <img className={styles["profile-photo"]} src={user.image ? `http://localhost:7070/${user.image}` : require("../../images/user-profile-image.png")} alt="profile" />
                         </div>
                         <div className={styles["profile-info"]}>
                             <div className={styles["profile-options"]}>
@@ -133,7 +133,7 @@ export default function Profile() {
                                 <Link className={styles["profile-followers-link"]} onClick={onFollowed} ><b>{user.follow.length}</b> Followed</Link>
                             </div>
                             <div className={styles["profile-description-container"]}>
-                                <p className={styles["profile-description"]}>{user.description}</p>
+                                <p className={styles["profile-description"]}>{user.description? user.description: ""}</p>
                             </div>
                         </div>
                     </div>

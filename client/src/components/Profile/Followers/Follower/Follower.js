@@ -13,7 +13,7 @@ export default function Follower({
     }
     return(
             <div className={styles["user-info-container"]}>
-                <img className={styles["image"]} src={profile.image ? `https://kuzmagram-api.onrender.com/${profile.image}` : require("../../../../images/user-profile-image.png")} alt="profile" />
+                <img className={styles["image"]} src={profile.image ? `http://localhost:7070/${profile.image}` : require("../../../../images/user-profile-image.png")} alt="profile" />
                 <Link onClick={onClickFollower} className={styles["username"]}>{profile.username}</Link>
             </div>
     )
