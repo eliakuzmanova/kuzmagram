@@ -14,6 +14,6 @@ app.use("/uploads", express.static("uploads"))
 app.use(router)
 
 mongoose.set({"strictQuery": false})
-mongoose.connect("mongodb+srv://eliakuzmanova7:VnkSWL7nGKEwMbuQ@cluster0.x2agojk.mongodb.net/kuzmagram")
+mongoose.connect("mongodb://localhost:27017/kuzmagram")
 
 app.listen(7070, console.log("Server is listening on port 7070..."))
